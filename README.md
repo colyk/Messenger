@@ -1,3 +1,3 @@
 # Messenger
-Messenger with node.js
-colyk and oleksandrkobzar
+Messenger with node.js.
+
