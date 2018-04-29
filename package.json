@@ -1,0 +1,22 @@
+{
+  "name": "messenger",
+  "version": "1.0.0",
+  "description": "Messenger with node.js.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/colyk/Messenger.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/colyk/Messenger/issues"
+  },
+  "homepage": "https://github.com/colyk/Messenger#readme",
+  "dependencies": {
+    "socket.io": "^2.1.0"
+  }
+}
