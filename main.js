@@ -7,6 +7,7 @@ var client = redis.createClient();
 
 app.use(express.static(__dirname + '/templates/'));
 
+console.log(__dirname + '/node_modules/')
 app.get('/', function(req, res, next) {
     res.sendFile(__dirname + '/index.html');
 });
