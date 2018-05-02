@@ -1,0 +1,51 @@
+body{
+	background-color: silver;
+}
+main{
+	max-width: 1366px;
+	margin: 0 auto;
+	background-color: #fff;
+}
+.search_input{
+	
+}
+.list_users{
+	margin-top: 20px;
+	display: flex;
+}
+.left_list{
+	/*border:1px solid #529DBD;*/
+}
+.right_list{}
+.header_panel{
+	padding: 5px 5px;
+	/*border:1px solid #529DBD;*/
+	display: flex;
+}
+.foto_user img{
+	height: 30px;
+	width: 30px;
+}
+.name_user{}
+.settings_admin{
+	position: relative;
+	right: 0;
+}
+.sent_input{
+	bottom: 0;
+}
+.messages{
+	min-height: 400px;
+	margin-bottom: 10px;
+	padding: 5px; 
+}
+.messages>p{
+	border-radius: 12px; 
+	padding: 3px;
+}
+.messages> p.text-left{
+	margin-right: 200px;
+}
+.messages> p.text-right{
+	margin-left: 200px;
+}

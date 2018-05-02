@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <title>Hidden | Messenger</title>
+</head>
+
+<body>
+    <main>
+        <header>
+        </header>
+        <div class="container">
+            <div class="row" style="padding:100px;">
+                <form id="addUser">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name">
+                    <button type="submit" class="btn btn-success">Отправить</button>
+                </form>
+                <div class="col-md-3  col-lg-3 left_list border border-success">
+                    <form class="form-inline my-2 my-lg-0 input-group search_input">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0 input-group-prepend" type="submit"><i class="fa fa-search"></i></button>
+                    </form>
+                    <div data-spy="scroll" data-target=".list-example" data-offset="0" class="scrollspy-example"></div>
+                    <ul class="list example list-group list-group-flush list_users ">
+                        <li class="list-group-item list-group-item-action list-group-item-primary d-flex flex-row">
+                            <div class="p-2 foto_user"><img class="rounded-circle" src="http://s1.iconbird.com/ico/2013/9/450/w256h2561380453931User256x25632.png">
+                            </div class="p-2"> User name</li>
+                    </ul>
+                </div>
+                <div class="col-md-9 col-lg-9 right_list">
+                    <div class="header_panel border border-primary">
+                        <div class="p-2">
+                            <div class=" foto_user"><img class="rounded-circle" src="http://s1.iconbird.com/ico/2013/9/450/w256h2561380453931User256x25632.png">
+                            </div>
+                        </div>
+                        <div class="p-2">
+                            <div class="foto_name">Mark</div>
+                        </div>
+                        <div class="ml-auto p-2">
+                            <div class="dropdown">
+                                <button class="btn btn-link dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Name User
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" href="#">List</a>
+                                    <a class="dropdown-item" href="#">List</a>
+                                    <a class="dropdown-item" href="#">List</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="messages border border-secondary">
+                        <!--MESSEGES-->
+                        <p class="text-left text-justify text-light bg-dark">Lorem ipsum dolor sit amet.</p>
+                        <p class="text-right text-justify text-light bg-dark">Lorem ipsum dolor sit amet.</p>
+                    </div>
+                    <div class="input-group mb-3 sent_input">
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button"><i class="fa fa-file"></i></button>
+                        </div>
+                        <textarea class="form-control" aria-label="With textarea"></textarea>
+                        <div class="input-group-append">
+                            <button class="btn btn-outline-secondary" type="button">Send</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </main>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="index.js"></script>
+</body>
+
+</html>
