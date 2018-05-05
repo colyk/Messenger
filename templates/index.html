@@ -94,7 +94,7 @@
                             <!--<input type="button" id="button_bar" name="">-->
                         </div>
                         <div class="p-2">
-                            <div class="user_photo"><div class="nick_photo"></div><i class="fa fa-circle text-success"></i>
+                            <div class="user_photo"><div class="nick_photo1">UN</div><i class="fa fa-circle text-success"></i>
                             </div>
                         </div>
                         <div class="user_name_panel">
@@ -113,6 +113,37 @@
                                     <a class="dropdown-item" href="#">Clear history</a>
                                     <a class="dropdown-item" href="#">Block user</a>
                                 </div>
+                            </div>
+                        </div>
+                        <div class="p-2">
+                            <div class="user_photo"><div class="nick_photo" data-toggle="modal" data-target="#modal_my_info"></div>
+                            </div>
+                            <div class="modal fade" id="modal_my_info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                     <div class="user_photo"><div class="nick_photo"></div></div>
+                                    <h5 class="modal-title active" id="exampleModalLabel">
+                                        Nickname<br>
+                                    mail@gmail.com</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <ul class="configuranion">
+                                      <li><i class="fas fa-address-book"></i> Contacts</li>
+                                      <li>Dapibus ac facilisis in</li>
+                                      <li>Morbi leo risus</li>
+                                      <li class=""><div class="">Night mode</div><div class="checkbox"><input type="checkbox"></div></li>
+                                      <li><i class="fa fa-cog"></i> Settings</li>
+                                    </ul>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-block btn-secondary" data-dismiss="modal">Close</button>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                         </div>
                     </div>
