@@ -34,7 +34,18 @@ main {
     align-items: center;
     border-bottom: 1px solid #dee2e6!important;
 }
-
+.user_photo{
+    border-radius: 50%;
+    color: white;
+    background-color: #444;
+    font-size: 26px;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    margin-left: 7px;
+    margin-right: 7px;
+    font-family: 'Gugi', cursive;
+}
 .foto_user img {
     height: 30px;
     width: 30px;
@@ -48,11 +59,12 @@ main {
     max-width: 200px;
 }
 
-.foto_user>i {
+.foto_user>i, .user_photo>i{
     font-size: 12px;
     display: flex;
     align-items: flex-end;
-    margin-left: 20px;
+    margin-left: 30px;
+    margin-top: -5px;
 }
 
 .user_info_lasttime {
@@ -69,7 +81,7 @@ main {
 }
 
 .messages {
-    background-image: url("https://static.pexels.com/photos/257360/pexels-photo-257360.jpeg");
+    /*background-image: url("https://static.pexels.com/photos/257360/pexels-photo-257360.jpeg");*/
     background-size: cover;
     margin: 10px 0 10px 0;
     padding: 5px 10px 5px 10px;

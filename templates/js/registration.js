@@ -24,8 +24,10 @@ $(function() {
 
     socket.on('render user page', (nickname, password) => {
         console.log('User accepted');
+
         localStorage.nickname = nickname;
         localStorage.password = password;
+        
         document.location.href = "index.html";
     });
 
