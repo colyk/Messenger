@@ -1,9 +1,5 @@
-html {
-    /*overflow:hidden;*/
-}
-
 body {
-    background: radial-gradient(40% 50%, #FAECD5, #CAE4D8);
+    background: #F5F5F5;
 }
 
 main {
@@ -13,7 +9,7 @@ main {
 }
 
 .search_input {
-    margin-left: 10px;
+    margin: 0 10px 0 10px;
 }
 
 .list_users>li {
@@ -27,8 +23,12 @@ main {
     border-right: 1px solid #dee2e6!important;
 }
 
-.right_list {}
-
+.center_list {}
+.button_bar{
+    color: blue;
+    font-size: 1.5em;
+    margin:5px;
+}
 .header_panel {
     display: flex;
     align-items: center;
@@ -72,7 +72,7 @@ main {
     background-image: url("https://static.pexels.com/photos/257360/pexels-photo-257360.jpeg");
     background-size: cover;
     margin: 10px 0 10px 0;
-    padding: 5px;
+    padding: 5px 10px 5px 10px;
 }
 
 .messages>p {
@@ -104,29 +104,21 @@ main {
 
 /*Bootstrap 4*/
 
+.col, .col-1, .col-10, .col-11, .col-12, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-auto, .col-lg, .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-lg-auto, .col-md, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-auto, .col-sm, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-sm-auto, .col-xl, .col-xl-1, .col-xl-10, .col-xl-11, .col-xl-12, .col-xl-2, .col-xl-3, .col-xl-4, .col-xl-5, .col-xl-6, .col-xl-7, .col-xl-8, .col-xl-9, .col-xl-auto{padding-right: 0;padding-left: 0;}
 .setting_menu {
     transform: translate3d(-120px, 0px, 0px);
 }
 
 @media (max-width: 1300px) {
-    .user_name>span {
-        max-width: 160px;
-    }
+
 }
 
 @media (max-width: 1200px) {
-    .user_name>span {
-        max-width: 125px;
-    }
+
 }
 
 @media (max-width: 992px) {
-    .search_input {
-        display: none;
-    }
-    .left_list>.scroll>ul>li>.user_name {
-        display: none;
-    }
+
 }
 
 @media (max-width: 768px) {
@@ -136,21 +128,9 @@ main {
         margin: 60px 0px 0px 0px;
         background: #fff;
     }
-    .search_input {
-        display: block;
-    }
-    .left_list>.scroll>ul>li>.user_name {
-        display: block;
-    }
 }
 
 @media (max-width: 576px) {}
-
-@media (min-width: 768px) {
-    #button_bar {
-        display: none;
-    }
-}
 
 .list-group-item {
     padding: 5px;
