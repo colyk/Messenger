@@ -1,58 +1,198 @@
-*
-{
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+html {
+    /*overflow:hidden;*/
 }
 
-body
-{
-    font: 13px Helvetica, Arial;
+body {
+    background: radial-gradient(40% 50%, #FAECD5, #CAE4D8);
 }
 
-form
-{
-    position: fixed;
+main {
+    max-width: 1366px;
+    margin: 0 auto;
+    background-color: #fff;
+}
+
+.search_input {
+    margin-left: 10px;
+}
+
+.list_users>li {
+    display: flex;
+    align-items: center;
+}
+
+.left_list {
+    padding-top: 5px;
+    z-index: 1000;
+    border-right: 1px solid #dee2e6!important;
+}
+
+.right_list {}
+
+.header_panel {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #dee2e6!important;
+}
+
+.foto_user img {
+    height: 30px;
+    width: 30px;
+}
+
+.user_name {
+    margin-right: 5px;
+}
+
+.user_name>span {
+    max-width: 200px;
+}
+
+.foto_user>i {
+    font-size: 12px;
+    display: flex;
+    align-items: flex-end;
+    margin-left: 20px;
+}
+
+.user_info_lasttime {
+    font-size: 0.8rem;
+}
+
+.settings_admin {
+    position: relative;
+    right: 0;
+}
+
+.send_input {
     bottom: 0;
+}
 
-    width: 100%;
+.messages {
+    background-image: url("https://static.pexels.com/photos/257360/pexels-photo-257360.jpeg");
+    background-size: cover;
+    margin: 10px 0 10px 0;
+    padding: 5px;
+}
+
+.messages>p {
+    border-radius: 8px;
     padding: 3px;
-
-    background: #000;
+    text-align: justify;
+    background-color: #CBC8CA;
 }
 
-form input
-{
-    width: 90%;
-    margin-right: .5%;
-    padding: 10px;
-
-    border: 0;
+.messages>p.text_left {
+    max-width: 80%;
+    margin-right: 20%;
 }
 
-form button
-{
-    width: 9%;
-    padding: 10px;
-
-    border: none;
-    background: rgb(130, 224, 255);
+.messages>p.text_right {
+    max-width: 80%;
+    margin-left: 20%;
 }
 
-#messages
-{
-    margin: 0;
-    padding: 0;
-
-    list-style-type: none;
+.scroll {
+    margin-top: 15px;
+    position: relative;
+    width: 100%;
+    height: 480px;
+    overflow: auto;
 }
 
-#messages li
-{
-    padding: 5px 10px;
+
+
+/*Bootstrap 4*/
+
+.setting_menu {
+    transform: translate3d(-120px, 0px, 0px);
 }
 
-#messages li:nth-child(odd)
-{
-    background: #eee;
+@media (max-width: 1300px) {
+    .user_name>span {
+        max-width: 160px;
+    }
 }
+
+@media (max-width: 1200px) {
+    .user_name>span {
+        max-width: 125px;
+    }
+}
+
+@media (max-width: 992px) {
+    .search_input {
+        display: none;
+    }
+    .left_list>.scroll>ul>li>.user_name {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .left_list {
+        display: none;
+        position: absolute;
+        margin: 60px 0px 0px 0px;
+        background: #fff;
+    }
+    .search_input {
+        display: block;
+    }
+    .left_list>.scroll>ul>li>.user_name {
+        display: block;
+    }
+}
+
+@media (max-width: 576px) {}
+
+@media (min-width: 768px) {
+    #button_bar {
+        display: none;
+    }
+}
+
+.list-group-item {
+    padding: 5px;
+}
+
+
+/*Полоса прокрутки*/
+
+
+/*стиль проктутки*/
+
+::-webkit-scrollbar {
+    width: 6px;
+    background: #0000;
+    border-radius: 7px;
+}
+
+::-webkit-scrollbar:hover {
+    background: #cacaca30;
+}
+
+
+/*слиль повзунка*/
+
+::-webkit-scrollbar-thumb {
+    width: 8px;
+    background: #0000;
+    border-radius: 7px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #e4d4e4a1;
+}
+
+
+/*::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+::-webkit-scrollbar-button {
+    background-color: #7c2929;
+}
+::-webkit-scrollbar-corner {
+    background-color: #b3b3b3;
+}*/

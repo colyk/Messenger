@@ -2,21 +2,23 @@ var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io')(server);
+var path = require('path');
 var redis = require('redis');
-var client = redis.createClient();
+var redisClient = redis.createClient({ host: 'localhost', port: 6379 });
 
-app.use(express.static(__dirname + '/templates/'));
+io.set('transports', ['websocket']);
+var port = process.env.PORT || 3000;
 
-console.log(__dirname + '/node_modules/')
-app.get('/', function(req, res, next) {
-    res.sendFile(__dirname + '/index.html');
-});
 
-io.on('connection', function(socket) {
-    socket.on('chat message', function(msg) {
-        io.emit('chat message', msg);
-        console.log('message: ' + msg);
+io.on('connection', (socket) => {
+    console.log('User with id ' + socket.id + ' conected');
+    socket.on('log in', (nickname, pass, email) => {
+        console.log(nickname, pass, email);
     });
+
+
 });
 
-server.listen(5000);
+server.listen(port, () => {
+    console.log('Server listening at port %d', port);
+});
