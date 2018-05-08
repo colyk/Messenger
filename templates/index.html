@@ -94,7 +94,31 @@
                             <!--<input type="button" id="button_bar" name="">-->
                         </div>
                         <div class="p-2">
-                            <div class="user_photo"><div class="nick_photo1">UN</div><i class="fa fa-circle text-success"></i>
+                            <div class="user_photo"><div class="nick_photo1" data-toggle="modal" data-target="#modal_user_info">UN</div><i class="fa fa-circle text-success"></i>
+                            </div>
+                            <div class="modal fade" id="modal_user_info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                     <div class="user_photo"><div class="nick_photo"></div></div>
+                                    <h5 class="modal-title active" id="exampleModalLabel">
+                                        Nickname<br>
+                                    mail@gmail.com</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                    </button>
+                                  </div>
+                                  <div class="modal-body">
+                                    <ul class="configuranion">
+                                      <li><i class="fas fa-bell"></i> Notifications<div class="checkbox"><input type="checkbox"></div></li>
+                                      <li><i class="fas fa-user-times"></i> Block user</li>
+                                    </ul>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-block btn-secondary" data-dismiss="modal">Close</button>
+                                  </div>
+                                </div>
+                              </div>
                             </div>
                         </div>
                         <div class="user_name_panel">
@@ -107,11 +131,9 @@
                                     <i class="fa fa-ellipsis-v"></i>
                                 </div>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" href="#">View profile</a>
-                                    <a class="dropdown-item" href="#">Disable notifications</a>
+                                    <a class="dropdown-item" data-toggle="modal" data-target="#modal_user_info" href="#">View profile</a>
                                     <a class="dropdown-item" href="#">Delete conversation</a>
                                     <a class="dropdown-item" href="#">Clear history</a>
-                                    <a class="dropdown-item" href="#">Block user</a>
                                 </div>
                             </div>
                         </div>
@@ -133,8 +155,6 @@
                                   <div class="modal-body">
                                     <ul class="configuranion">
                                       <li><i class="fas fa-address-book"></i> Contacts</li>
-                                      <li>Dapibus ac facilisis in</li>
-                                      <li>Morbi leo risus</li>
                                       <li class=""><div class="">Night mode</div><div class="checkbox"><input type="checkbox"></div></li>
                                       <li><i class="fa fa-cog"></i> Settings</li>
                                     </ul>
@@ -180,7 +200,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="./js/messenger.js" type="text/javascript"></script>
-    <div id="user_logo"></div>
 </body>
 
 </html>
