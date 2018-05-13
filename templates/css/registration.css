@@ -5,3 +5,8 @@
 img{
 width: 100%;
 }
+.but_succes_email , .but_succes_nickname,.but_succes_password{
+	display: none;
+	color:green;
+	position: relative;
+}
