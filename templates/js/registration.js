@@ -4,6 +4,8 @@ $(function() {
 
     $('#log_in').submit(send_login_form);
     $('#sign_up').submit(send_signup_form);
+    $('#show_signup_form').click(show_signup_form)
+    $('#show_login_form').click(show_login_form)
 
     // Если пользователь заходил, то войти автоматически
     // if(localStorage.nickname){document.location.href = "index.html";}
@@ -31,9 +33,22 @@ $(function() {
         document.location.href = "index.html";
     });
 
+    function show_signup_form()
+    {
+        $('#log_in').css('display', 'none');
+        $('#sign_up').css('display', 'block');
+    } 
+
+       function show_login_form()
+    {
+        $('#log_in').css('display', 'block');
+        $('#sign_up').css('display', 'none');
+    }
+
     socket.on('signup user existed', () => {
         console.log('User didnt accept');
     });
+
     socket.on('log in error', () => {
         console.log('Логин либо пароль не верен');
     });

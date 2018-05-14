@@ -1,7 +1,37 @@
-.log_in, .sign_up{
-	width: 100%;
-	margin:0 auto;
+.log_in,
+.sign_up {
+    width: 100%;
+    margin: 0 auto;
 }
-img{
-width: 100%;
+
+img {
+    width: 100%;
+}
+
+.but_succes_email,
+.but_succes_nickname,
+.but_succes_password {
+    display: none;
+    color: green;
+    position: relative;
+}
+
+button{
+	width:100%;
+}
+
+#show_form{
+	margin-top:20px;
+}
+
+#show_signup_form{
+	cursor: pointer;
+}
+
+#show_login_form{
+	cursor: pointer;
+}
+
+#sign_up{
+	display:none;
 }
