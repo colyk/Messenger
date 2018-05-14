@@ -29,28 +29,29 @@ $(function() {
 
         localStorage.nickname = nickname;
         localStorage.password = password;
-        
+
         document.location.href = "index.html";
     });
 
-    function show_signup_form()
-    {
+    function show_signup_form() {
         $('#log_in').css('display', 'none');
         $('#sign_up').css('display', 'block');
-    } 
+    }
 
-       function show_login_form()
-    {
+    function show_login_form() {
         $('#log_in').css('display', 'block');
         $('#sign_up').css('display', 'none');
     }
 
     socket.on('signup user existed', () => {
-        console.log('User didnt accept');
+        $('#signup_error').html('User <b>' + $('#nickname_s').val() + '</b> already exist.').css('display', 'block');
+        $('#nickname_s').val('');
     });
 
     socket.on('log in error', () => {
-        console.log('Логин либо пароль не верен');
+        $('#login_error').css('display', 'block');
+        $('#nickname').val('');
+        $('#password').val('');
     });
 
 

@@ -16,6 +16,7 @@
             <div class="col-12 col-sm-8 col-md-4 col-lg-4 col-xl-4 log_in">
                 <img src="./images/messeger.jpg">
                 <form id="log_in">
+                    <div class="alert alert-danger" role="alert" id="login_error">Username or password is incorrect. Check and try again.</div>
                     <div class="form-group">
                         <label for="nickname">nickname</label>
                         <input type="text" class="form-control" id="nickname" name="nickname" placeholder="nickname">
@@ -31,11 +32,11 @@
                 </form>
             </div>
         </div>
-        
         <div class="row">
             <div class="col-12 col-sm-8 col-md-4 col-lg-4 col-xl-4 sign_up">
                 <form id="sign_up">
                     <div class="form-group">
+                        <div class="alert alert-danger" role="alert" id="signup_error"></div>
                         <label for="nickname">nickname</label>
                         <i class="fa fa-check-circle but_succes_nickname"></i>
                         <input type="text" class="form-control" id="nickname_s" name="nickname" placeholder="nickname" required>
