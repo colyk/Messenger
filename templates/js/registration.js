@@ -1,6 +1,6 @@
 $(function() {
 
-    var socket = io.connect('http://127.0.0.1:3000/', { 'transports': ['websocket'] });
+    const socket = io.connect('http://127.0.0.1:3000/', { 'transports': ['websocket'] });
 
     $('#log_in').submit(send_login_form);
     $('#sign_up').submit(send_signup_form);

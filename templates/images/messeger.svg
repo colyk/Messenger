@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="141.1111mm"
+   height="66.019844mm"
+   viewBox="0 0 141.1111 66.019844"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.1 r15371"
+   sodipodi:docname="drawing.svg">
+  <defs
+     id="defs2" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.35"
+     inkscape:cx="288.09523"
+     inkscape:cy="419.95097"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="705"
+     inkscape:window-x="-8"
+     inkscape:window-y="-8"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-16.37897,-181.59127)">
+    <g
+       id="layer1-8"
+       inkscape:label="Layer 1"
+       transform="translate(15.891177,181.08511)">
+      <ellipse
+         ry="33.009922"
+         rx="70.55555"
+         cy="33.516083"
+         cx="71.043343"
+         id="path21"
+         style="fill:#00009e;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.26458332;stroke-opacity:0;paint-order:fill markers stroke" />
+      <text
+         id="text833"
+         y="39.802719"
+         x="29.796223"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:italic;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:29.98611069px;font-family:'Bell MT';-inkscape-font-specification:'Bell MT Italic';fill:#ffffff;stroke-width:0.26458332"
+           y="39.802719"
+           x="29.796223"
+           id="tspan831"
+           sodipodi:role="line">Hidden</tspan></text>
+      <flowRoot
+         style="font-style:normal;font-weight:normal;font-size:40px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none"
+         id="flowRoot835"
+         xml:space="preserve"><flowRegion
+           id="flowRegion837"><rect
+             y="699.66254"
+             x="185.71428"
+             height="94.285713"
+             width="368.57144"
+             id="rect839" /></flowRegion><flowPara
+           id="flowPara841" /></flowRoot>      <text
+         transform="rotate(-8.0035204)"
+         id="text845"
+         y="59.751102"
+         x="86.624619"
+         style="font-style:normal;font-weight:normal;font-size:10.58333302px;line-height:1.25;font-family:sans-serif;letter-spacing:0px;word-spacing:0px;fill:#ffffff;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+         xml:space="preserve"><tspan
+           style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:7.76111126px;font-family:'Bell MT';-inkscape-font-specification:'Bell MT';fill:#ffffff;stroke-width:0.26458332"
+           y="59.751102"
+           x="86.624619"
+           id="tspan843"
+           sodipodi:role="line">messager</tspan></text>
+    </g>
+  </g>
+</svg>

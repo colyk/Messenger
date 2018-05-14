@@ -22,6 +22,7 @@ io.on('connection', (socket) => {
                 redisClient.hget("users", nickname, function(err, reply) {
                     if (pass === reply.split(',')[0].split(':')[1]) {
                         socket.emit('render user page', nickname, pass);
+                        socket.nickname = nickname;
                     } else {
                         socket.emit('log in error');
                     }
@@ -46,6 +47,17 @@ io.on('connection', (socket) => {
             } else {
                 redisClient.hset("users", nickname, JSON.stringify(user_info));
                 socket.emit('render user page', nickname, pass);
+            }
+        });
+    });
+
+    socket.on('find user', (nickname) => {
+        redisClient.hexists('users', nickname, function(err, reply) {
+            if (reply) {
+                socket.emit('finded user', nickname);
+
+            } else {
+                socket.emit('user doesnt exist', nickname);
             }
         });
     });

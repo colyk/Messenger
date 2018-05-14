@@ -39,3 +39,11 @@ button {
 .alert {
     display: none;
 }
+
+#logo{
+	width: 80%;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
