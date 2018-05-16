@@ -59,3 +59,7 @@ $(function() {
         $(".nick_photo").text("UN");
     }
 });
+//переворот стрілки
+$( ".button_bar" ).click(function() {
+  this.classList.toggle('rotate');
+});

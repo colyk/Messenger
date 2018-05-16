@@ -11,11 +11,19 @@ main {
 .user_block:hover {
     background-color: #ddd;
 }
-
 .search_input {
+    max-height: 40px;
     margin: 0 10px 0 10px;
 }
-
+.button_search{
+    position: relative;
+    float: right;
+    top: -32px;
+    margin-right: 5px;
+    color: silver;
+    background-color: #fff;
+    border: none;
+}
 
 .list_users>li {
     display: flex;
@@ -31,9 +39,14 @@ main {
 .center_list {}
 
 .button_bar {
+    transition: transform 0.7s ease;
     color: blue;
     font-size: 1.5em;
     margin: 5px;
+}
+
+.rotate {
+  transform: rotate(-180deg);
 }
 
 .header_panel {
@@ -55,20 +68,10 @@ main {
     font-family: 'Gugi', cursive;
 }
 
-.foto_user img {
-    height: 30px;
-    width: 30px;
-}
-
-.user_name {
-    margin-right: 5px;
-}
-
-.user_name>span {
+#last_message {
     max-width: 200px;
 }
 
-.foto_user>i,
 .user_photo>i {
     font-size: 12px;
     display: flex;
