@@ -54,9 +54,9 @@ $(function() {
     }
     if (localStorage.nickname) {
         let nick = localStorage.nickname.toUpperCase();
-        $(".user_photo").text(nick.charAt(0) + nick.charAt(1));
+        $(".my_photo").text(nick.charAt(0) + nick.charAt(1));
     } else {
-        $(".user_photo").text("UN");
+        $(".my_photo").text("UN");
     }
 });
 //переворот стрілки

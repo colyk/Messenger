@@ -72,14 +72,6 @@ main {
     max-width: 200px;
 }
 
-.user_photo>i {
-    font-size: 12px;
-    display: flex;
-    align-items: flex-end;
-    margin-left: 30px;
-    margin-top: -5px;
-}
-
 .user_info_lasttime {
     font-size: 0.8rem;
 }
