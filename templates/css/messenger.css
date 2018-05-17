@@ -122,12 +122,24 @@ main {
     margin-left: 20%;
 }
 
+#textarea_message{
+    min-height:40px; 
+    max-height: 40px; 
+    margin: 0 -50px  0 -80px;
+    padding-left: 80px;
+    padding-right: 40px;
+    z-index: 0;
+}
+
 .scroll {
     margin-top: 15px;
     position: relative;
     width: 100%;
     height: 480px;
     overflow: auto;
+}
+.scroll_left{
+    height: 520px;
 }
 
 .configuranion>li {
@@ -180,7 +192,16 @@ input[type="checkbox"]::before {
 input:checked[type="checkbox"]::before {
     left: 20px;
 }
-
+#send_block>button{
+    position: relative;
+}
+#send_block > div.input-group-prepend > button, 
+#send_block > div.input-group-append > button{
+     background: none; 
+}
+#send_block > div.input-group-prepend > button> i{
+    color: #495057;
+}
 
 /*Bootstrap 4*/
 
