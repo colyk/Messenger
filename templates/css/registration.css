@@ -1,4 +1,4 @@
-body{
+body {
     background-image: url("https://image.freepik.com/free-photo/beautiful-roses-on-white-underground-with-space-in-the-center_24972-48.jpg");
     background-repeat: no-repeat;
     background-size: 100%;
@@ -46,10 +46,22 @@ button {
     display: none;
 }
 
-#logo{
-	width: 80%;
-	margin-left: 5%;
-	margin-right: 5%;
-	margin-top: 20px;
-	margin-bottom: 20px;
+#logo {
+    width: 80%;
+    margin-left: 5%;
+    margin-right: 5%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+footer {
+    margin-top: 30px;
+}
+
+footer a {
+    color: black;
+}
+
+footer i {
+    font-size: 45px;
 }
