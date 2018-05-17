@@ -12,9 +12,18 @@ main {
     cursor:pointer;
 }
 
+.clicked{
+    background-color: #D29C50FF;
+}
+
 .user_block:hover {
     background-color: #ddd;
 }
+.clicked:hover{
+    background-color: #D29C50FF;
+    cursor: default;
+}
+
 .search_input {
     max-height: 40px;
     margin: 0 10px 0 10px;

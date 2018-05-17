@@ -12,8 +12,6 @@ var port = process.env.PORT || 3000;
 
 
 io.on('connection', (socket) => {
-    console.log('User with id ' + socket.id + ' conected');
-
 
     socket.on('log in', (nickname, pass) => {
         console.log("Login data:", nickname, pass);
@@ -51,6 +49,11 @@ io.on('connection', (socket) => {
         });
     });
 
+    socket.on('room', (nickname) => {
+        console.log('Joined ' + nickname);
+        socket.join(nickname);
+    });
+
     socket.on('find user', (nickname) => {
         redisClient.hexists('users', nickname, function(err, reply) {
             if (reply) {
@@ -62,8 +65,9 @@ io.on('connection', (socket) => {
         });
     });
 
-
-
+    socket.on('send message to', (from, to, text) => {
+        io.to(to).emit('get message', text);
+    });
 });
 
 

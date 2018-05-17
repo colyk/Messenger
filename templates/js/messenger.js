@@ -1,6 +1,10 @@
 $(function() {
     const socket = io.connect('http://127.0.0.1:3000/', { 'transports': ['websocket'] });
 
+    socket.on('connect', function() {
+        socket.emit('room', localStorage.nickname);
+    });
+
     $('#find').keyup(find_user);
     $('.list_users').on("click", ".user_block", show_dialog);
 
@@ -41,10 +45,28 @@ $(function() {
     }
 
     function show_dialog() {
-        console.log('dsfdsf');
-        console.log($(this).find('#user_nickname').html());
+        $('.list_users').find('.user_block').removeClass('clicked');;
+        $(this).addClass('clicked');
+        show_user_info($(this).find('#user_nickname').html());
+        show_user_msg();
+        console.log();
     }
 
+    function show_user_info(nickname) {
+        // body...
+    }
+
+    function show_user_msg() {
+        // body...
+    }
+
+    function send_message(text) {
+        socket.emit('send message to', 'from', 'to', text);
+    }
+
+    socket.on('get message', (text) => {
+        console.log('Incoming message:', text);
+    });
 
     socket.on('finded user', (nickname) => {
         console.info('User ' + nickname + ' exist');
