@@ -20,7 +20,7 @@
                         <input id="find" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                         <button type="submit" class="button_search"><i class="fa fa-search"></i></button>
                     </form>
-                    <div class="scroll">
+                    <div class="scroll scroll_left">
                         <ul class="list example list-group list-group-flush list_users">
                             <li class="list-group-item d-flex flex-row user_block dialog">
                                 <div class="user_photo" data-toggle="modal" data-target="#modal_user_info">UN</div>
@@ -134,14 +134,14 @@
                         <p class="text-justify text-dark bg-light text_left">Lorem ipsum dolor sit amet.</p>
                         <p class="text-justify text-dark bg-light text_right">Lorem ipsum dolor sit amet.</p>
                     </div>
-                    <div class="input-group">
+                    <div class="input-group" id="send_block">
                         <div class="input-group-prepend">
-                            <button class="btn btn-outline-secondary" type="button"><i class="fa fa-file"></i></button>
-                            <button class="btn btn-outline-primary" type="button"><i class="fa fa-smile"></i></button>
+                            <button class="btn" type="button"><i class="fa fa-paperclip"></i></button>
+                            <button class="btn" type="button"><i class="fa fa-smile"></i></button>
                         </div>
-                        <textarea class="form-control" aria-label="With textarea" rows="1" required style="min-height:40px; height=auto" ;></textarea>
+                        <textarea class="form-control" rows="1" required id="textarea_message"></textarea>
                         <div class="input-group-append">
-                            <button class="btn btn-outline-secondary btn_send" type="button"><img src="https://www.brandeps.com/icon-download/S/Send-03.svg" width="25px" height="25px"></button>
+                            <button class="btn btn_send" type="button"><img src="images/send.png" width="25px" height="25px"></button>
                         </div>
                     </div>
                 </div>
