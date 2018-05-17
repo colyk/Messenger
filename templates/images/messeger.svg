@@ -15,7 +15,7 @@
    version="1.1"
    id="svg8"
    inkscape:version="0.92.1 r15371"
-   sodipodi:docname="drawing.svg">
+   sodipodi:docname="messeger.svg">
   <defs
      id="defs2" />
   <sodipodi:namedview
@@ -25,11 +25,11 @@
      borderopacity="1.0"
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
-     inkscape:zoom="0.35"
-     inkscape:cx="288.09523"
-     inkscape:cy="419.95097"
+     inkscape:zoom="1.4"
+     inkscape:cx="339.7097"
+     inkscape:cy="96.024643"
      inkscape:document-units="mm"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="layer1-8"
      showgrid="false"
      inkscape:window-width="1366"
      inkscape:window-height="705"
@@ -44,7 +44,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -63,7 +63,7 @@
          cy="33.516083"
          cx="71.043343"
          id="path21"
-         style="fill:#00009e;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.26458332;stroke-opacity:0;paint-order:fill markers stroke" />
+         style="fill:#0000ff;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:0.26458332;stroke-opacity:0;paint-order:fill markers stroke" />
       <text
          id="text833"
          y="39.802719"
