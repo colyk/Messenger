@@ -14,16 +14,26 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-12 col-sm-8 col-md-4 col-lg-4 col-xl-4 log_in">
-                <img id="logo" src="images/messeger.svg" >
+                <img id="logo" src="images/messeger.svg">
                 <form id="log_in">
                     <div class="alert alert-danger" role="alert" id="login_error">Username or password is incorrect. Check and try again.</div>
                     <div class="form-group">
                         <label for="nickname">nickname</label>
-                        <input type="text" class="form-control" id="nickname" name="nickname" placeholder="nickname">
+                        <input type="text" class="form-control" id="nickname" name="nickname" placeholder="nickname" required>
                     </div>
                     <div class="form-group">
                         <label for="password">password</label>
-                        <input type="password" class="form-control" id="password" name="password" placeholder="password">
+                        <div class="input-group">
+                            <input placeholder="********" id="password" type="password" class="form-control" name="password" required data-eye>
+                            <div class="input-group-append">
+                                <button id="toggle_pass"  type="button" class="btn btn-primary"><i id="eye" class="fa fa-eye"></i></button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input id="remember" type="checkbox"> Remember Me
+                        </label>
                     </div>
                     <button type="submit" class="btn btn-primary">Login</button>
                     <div class="text-center" id="show_form">
@@ -53,6 +63,11 @@
                         <i class="fa fa-check-circle but_succes_password"></i>
                         <input type="password" class="form-control" id="password_s" name="password" placeholder="password" required>
                         <div class="alert_password"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" name="aggree" value="1" required> I agree to the Terms and Conditions
+                        </label>
                     </div>
                     <button type="submit" id="sign_up_button" class="btn btn-primary">Send</button>
                     <div class="text-center" id="show_form">

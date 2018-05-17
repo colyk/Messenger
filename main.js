@@ -18,9 +18,8 @@ io.on('connection', (socket) => {
         redisClient.hexists('users', nickname, function(err, reply) {
             if (reply) {
                 redisClient.hget("users", nickname, function(err, reply) {
-                    if (pass === reply.split(',')[0].split(':')[1]) {
+                    if (pass === JSON.parse(reply)['pass']) {
                         socket.emit('render user page', nickname, pass);
-                        socket.nickname = nickname;
                     } else {
                         socket.emit('log in error');
                     }
