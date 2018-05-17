@@ -4,7 +4,7 @@ $(function() {
 
     var eleml = document.getElementsByClassName('left_list')[0];
     var elemc = document.getElementsByClassName('center_list')[0];
-    var flagl = 0;
+    var flagl = 1;
     document.getElementsByClassName('button_bar')[0].onclick = function() {
         if (flagl == 0) {
             eleml.style.display = 'block';
