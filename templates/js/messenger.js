@@ -6,12 +6,28 @@ $(function() {
     });
 
     // обрезка размера смс
-    // $('.msg').css('width', $('.msg').html().length * ($('body').css('font-size').slice(0, -2) / 2));
+    // $('#last_message').css('width', $('#last_message').html().length * ($('body').css('font-size').slice(0, -2) / 2));
+    
+    $(window).resize(function() {
+        $('#last_message').css('max-width', $('.list_users').width() / 1.4);
+    });
 
 
     $('#find').keyup(find_user);
     $('.list_users').on("click", ".user_block", show_dialog);
     $('#send_btn').click(send_message);
+    $('#msg_to_send').keypress(function(event) {
+        if (event.which == 13) {
+            send_message();
+            event.preventDefault();
+        }
+        if (event.ctrlKey) {
+            $("#msg_to_send").val(function(i, val) {
+                return val + "\n";
+            });
+        }
+    });
+
 
     function find_user() {
         if (!($('#find').val())) {
@@ -22,8 +38,8 @@ $(function() {
             hide_finded_users();
             socket.emit('find user', $('#find').val());
         }
-
     }
+
 
     function hide_user_blocks() {
         $('.list_users').find('.dialog').removeClass('d-flex flex-row').hide();
@@ -70,9 +86,9 @@ $(function() {
         let from = localStorage.nickname;
         let to = localStorage.to;
         let text = $('#msg_to_send').val().trim();
+        $('#msg_to_send').val('');
         socket.emit('send message to', from, to, text);
         $('.messages').append($('<p class="text-justify text-dark bg-light text_right msg"></p>').html(text))
-
     }
 
     socket.on('get message', (text) => {

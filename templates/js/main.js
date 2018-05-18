@@ -60,13 +60,14 @@ $(function() {
     }
 });
 //переворот стрілки
-$( ".button_bar" ).click(function() {
-  this.classList.toggle('rotate');
+$(".button_bar").click(function() {
+    this.classList.toggle('rotate');
 });
 //завантаження файла(клік по полю)
-function clickFindFile() { 
-    document.getElementById('uploadfile').click(); 
+function clickFindFile() {
+    document.getElementById('uploadfile').click();
 }
-function clickLoadFile() { 
-    document.getElementById('loadfile').click(); 
+
+function clickLoadFile() {
+    document.getElementById('loadfile').click();
 }
