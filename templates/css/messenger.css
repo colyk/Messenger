@@ -43,7 +43,7 @@ main {
     background-color: #fff;
     border: none;
 }
-#button_send{
+#send_btn{
     color: var(--main_color);
 }
 #button_settings{ 
