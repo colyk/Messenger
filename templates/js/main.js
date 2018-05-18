@@ -63,3 +63,10 @@ $(function() {
 $( ".button_bar" ).click(function() {
   this.classList.toggle('rotate');
 });
+//завантаження файла(клік по полю)
+function clickFindFile() { 
+    document.getElementById('uploadfile').click(); 
+}
+function clickLoadFile() { 
+    document.getElementById('loadfile').click(); 
+}
