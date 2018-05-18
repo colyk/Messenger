@@ -5,6 +5,7 @@ $(function() {
         socket.emit('room', localStorage.nickname);
     });
 
+    // обрезка размера смс
     // $('.msg').css('width', $('.msg').html().length * ($('body').css('font-size').slice(0, -2) / 2));
 
 
@@ -18,6 +19,7 @@ $(function() {
             hide_finded_users();
         } else {
             hide_user_blocks();
+            hide_finded_users();
             socket.emit('find user', $('#find').val());
         }
 
@@ -65,13 +67,16 @@ $(function() {
     }
 
     function send_message() {
-    	let from = localStorage.nickname;
-    	let to = localStorage.to;
-    	let text = $('#msg_to_send').val().trim();
+        let from = localStorage.nickname;
+        let to = localStorage.to;
+        let text = $('#msg_to_send').val().trim();
         socket.emit('send message to', from, to, text);
+        $('.messages').append($('<p class="text-justify text-dark bg-light text_right msg"></p>').html(text))
+
     }
 
     socket.on('get message', (text) => {
+        $('.messages').append($('<p class="text-justify text-dark bg-light text_left msg"></p>').html(text))
         console.log('Incoming message:', text);
     });
 
