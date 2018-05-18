@@ -65,6 +65,7 @@ io.on('connection', (socket) => {
     });
 
     socket.on('send message to', (from, to, text) => {
+        console.log('sms delivered');
         io.to(to).emit('get message', text);
     });
 });

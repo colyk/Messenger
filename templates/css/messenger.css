@@ -8,18 +8,19 @@ main {
     background-color: #fff;
 }
 
-.user_block{
-    cursor:pointer;
+.user_block {
+    cursor: pointer;
 }
 
-.clicked{
+.clicked {
     background-color: #D29C50FF;
 }
 
 .user_block:hover {
     background-color: #ddd;
 }
-.clicked:hover{
+
+.clicked:hover {
     background-color: #D29C50FF;
     cursor: default;
 }
@@ -28,7 +29,8 @@ main {
     max-height: 40px;
     margin: 0 10px 0 10px;
 }
-.button_search{
+
+.button_search {
     position: relative;
     float: right;
     top: -32px;
@@ -59,7 +61,7 @@ main {
 }
 
 .rotate {
-  transform: rotate(-180deg);
+    transform: rotate(-180deg);
 }
 
 .header_panel {
@@ -122,10 +124,10 @@ main {
     margin-left: 20%;
 }
 
-#textarea_message{
-    min-height:40px; 
-    max-height: 40px; 
-    margin: 0 -50px  0 -80px;
+#textarea_message {
+    min-height: 40px;
+    max-height: 40px;
+    margin: 0 -50px 0 -80px;
     padding-left: 80px;
     padding-right: 40px;
     z-index: 0;
@@ -138,7 +140,8 @@ main {
     height: 480px;
     overflow: auto;
 }
-.scroll_left{
+
+.scroll_left {
     height: 518px;
 }
 
@@ -192,16 +195,20 @@ input[type="checkbox"]::before {
 input:checked[type="checkbox"]::before {
     left: 20px;
 }
-#send_block>button{
+
+#send_block>button {
     position: relative;
 }
-#send_block > div.input-group-prepend > button, 
-#send_block > div.input-group-append > button{
-     background: none; 
+
+#send_block>div.input-group-prepend>button,
+#send_block>div.input-group-append>button {
+    background: none;
 }
-#send_block > div.input-group-prepend > button> i{
+
+#send_block>div.input-group-prepend>button>i {
     color: #495057;
 }
+
 
 /*Bootstrap 4*/
 
@@ -283,7 +290,18 @@ input:checked[type="checkbox"]::before {
     transform: translate3d(-120px, 0px, 0px);
 }
 
-@media (max-width: 1300px) {}
+@media (min-width: 1100px) {
+.messages>p.text_left {
+    max-width: 55%;
+    margin-right: 45%;
+}
+
+.messages>p.text_right {
+    max-width: 55%;
+    margin-left: 45%;
+}
+
+}
 
 @media (max-width: 1200px) {}
 
@@ -297,9 +315,9 @@ input:checked[type="checkbox"]::before {
         background: #fff;
         border-right: none;
     }
-    .scroll_left{
-    height: 468px;
-}
+    .scroll_left {
+        height: 468px;
+    }
 }
 
 @media (max-width: 576px) {}
@@ -307,6 +325,7 @@ input:checked[type="checkbox"]::before {
 .list-group-item {
     padding: 5px;
 }
+
 
 
 
@@ -327,6 +346,7 @@ input:checked[type="checkbox"]::before {
 
 
 
+
 /*слиль повзунка*/
 
 ::-webkit-scrollbar-thumb {
@@ -338,6 +358,7 @@ input:checked[type="checkbox"]::before {
 ::-webkit-scrollbar-thumb:hover {
     background-color: #e4d4e4a1;
 }
+
 
 
 

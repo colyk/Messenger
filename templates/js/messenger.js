@@ -5,8 +5,12 @@ $(function() {
         socket.emit('room', localStorage.nickname);
     });
 
+    // $('.msg').css('width', $('.msg').html().length * ($('body').css('font-size').slice(0, -2) / 2));
+
+
     $('#find').keyup(find_user);
     $('.list_users').on("click", ".user_block", show_dialog);
+    $('#send_btn').click(send_message);
 
     function find_user() {
         if (!($('#find').val())) {
@@ -49,7 +53,7 @@ $(function() {
         $(this).addClass('clicked');
         show_user_info($(this).find('#user_nickname').html());
         show_user_msg();
-        console.log();
+        localStorage.to = $(this).find('#user_nickname').html();
     }
 
     function show_user_info(nickname) {
@@ -60,8 +64,11 @@ $(function() {
         // body...
     }
 
-    function send_message(text) {
-        socket.emit('send message to', 'from', 'to', text);
+    function send_message() {
+    	let from = localStorage.nickname;
+    	let to = localStorage.to;
+    	let text = $('#msg_to_send').val().trim();
+        socket.emit('send message to', from, to, text);
     }
 
     socket.on('get message', (text) => {
