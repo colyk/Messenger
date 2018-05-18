@@ -7,7 +7,7 @@ $(function() {
 
     // обрезка размера смс
     // $('#last_message').css('width', $('#last_message').html().length * ($('body').css('font-size').slice(0, -2) / 2));
-    
+
     $(window).resize(function() {
         $('#last_message').css('max-width', $('.list_users').width() / 1.4);
     });
@@ -25,6 +25,8 @@ $(function() {
             $("#msg_to_send").val(function(i, val) {
                 return val + "\n";
             });
+
+            $("#msg_to_send").css('height', '+=20');
         }
     });
 
@@ -87,6 +89,7 @@ $(function() {
         let to = localStorage.to;
         let text = $('#msg_to_send').val().trim();
         $('#msg_to_send').val('');
+        $("#msg_to_send").css('height', '40');
         socket.emit('send message to', from, to, text);
         $('.messages').append($('<p class="text-justify text-dark bg-light text_right msg"></p>').html(text))
     }

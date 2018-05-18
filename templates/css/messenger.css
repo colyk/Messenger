@@ -142,7 +142,7 @@ main {
 
 #msg_to_send {
     min-height: 40px;
-    max-height: 40px;
+    max-height: 140px;
     margin: 0 -50px 0 -80px;
     padding-left: 80px;
     padding-right: 40px;
