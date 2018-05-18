@@ -1,3 +1,6 @@
+:root {
+  --main_color: #007BFFFF;
+}
 body {
     background: #F5F5F5;
 }
@@ -28,6 +31,7 @@ main {
 .search_input {
     max-height: 40px;
     margin: 0 10px 0 10px;
+    width: 100%;
 }
 
 .button_search {
@@ -38,6 +42,13 @@ main {
     color: silver;
     background-color: #fff;
     border: none;
+}
+#button_send{
+    color: var(--main_color);
+}
+#button_settings{ 
+    margin: auto 0;
+    padding: 0 5px 0 15px;
 }
 
 .list_users>li {
@@ -55,11 +66,16 @@ main {
 
 .button_bar {
     transition: transform 0.7s ease;
-    color: #007BFFFF;
-    font-size: 1.5em;
     margin: 5px;
 }
-
+#button_menu_dialogue{
+    padding: 5px;
+    margin-right: 5px; 
+}
+#button_menu_dialogue,.button_bar,#button_settings{
+    color: var(--main_color);
+    font-size: 1.4em;
+}
 .rotate {
     transform: rotate(-180deg);
 }
@@ -124,13 +140,17 @@ main {
     margin-left: 20%;
 }
 
-#textarea_message {
+#msg_to_send {
     min-height: 40px;
     max-height: 40px;
     margin: 0 -50px 0 -80px;
     padding-left: 80px;
     padding-right: 40px;
     z-index: 0;
+}
+
+#uploadfiles{
+    display: none;
 }
 
 .scroll {
@@ -145,21 +165,26 @@ main {
     height: 518px;
 }
 
-.configuranion>li {
+.config>li {
     list-style: none;
     font-size: 1.1em;
-    padding: 5px 5px 5px 5px;
+    padding: 5px;
 }
 
-.configuranion>li:hover {
+.config>li:hover {
     background-color: #F1F1F1;
 }
 
-.configuranion>li>i {
-    color: red;
+.config>li>i {
+    color: var(--main_color);
+    padding:5px;
 }
 
-.checkbox {}
+.checkbox {
+    position: absolute;
+    left: 85%;
+    padding-top:4px;
+}
 
 input[type="checkbox"] {
     width: 40px;
@@ -175,7 +200,7 @@ input[type="checkbox"] {
 }
 
 input:checked[type="checkbox"] {
-    background: #02a9f4;
+    background: var(--main_color);
 }
 
 input[type="checkbox"]::before {
@@ -326,7 +351,9 @@ input:checked[type="checkbox"]::before {
     padding: 5px;
 }
 
-
+#menu_dialogue.dropdown-toggle::after{
+    content: none;
+}
 
 
 /*Полоса прокрутки*/

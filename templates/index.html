@@ -16,32 +16,19 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-12 col-sm-8 col-md-4 col-lg-4 col-xl-3 left_list" style="display: block;">
+                    <div class="d-flex">
+                        <i class="fa fa-bars" data-toggle="modal" data-target="#modal_my_info" id="button_settings"></i>
                     <form class=" my-2 search_input" id="search_input">
                         <input id="find" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                         <button type="submit" class="button_search"><i class="fa fa-search"></i></button>
                     </form>
+                    </div>
                     <div class="scroll scroll_left">
                         <ul class="list example list-group list-group-flush list_users">
                             <li class="list-group-item d-flex flex-row user_block dialog">
-                                <div class="user_photo" data-toggle="modal" data-target="#modal_user_info">FI</div>
+                                <div class="user_photo">UN</div>
                                 <div>
                                     <div id="user_nickname">fil</div>
-                                    <div class="d-inline-block text-truncate" id="last_message">Last message message messagemess agemes sagemessage message message</div>
-                                </div>
-                                <div class="ml-auto p-2 badge badge-primary badge-pill ">14</div>
-                            </li>
-                            <li class="list-group-item d-flex flex-row user_block dialog">
-                                <div class="user_photo" data-toggle="modal" data-target="#modal_user_info">UN</div>
-                                <div>
-                                    <div id="user_nickname">Nickname</div>
-                                    <div class="d-inline-block text-truncate" id="last_message">Last message message messagemess agemes sagemessage message message</div>
-                                </div>
-                                <div class="ml-auto p-2 badge badge-primary badge-pill ">14</div>
-                            </li>
-                            <li class="list-group-item d-flex flex-row user_block dialog">
-                                <div class="user_photo" data-toggle="modal" data-target="#modal_user_info">UN</div>
-                                <div>
-                                    <div id="user_nickname">Nickname</div>
                                     <div class="d-inline-block text-truncate" id="last_message">Last message message messagemess agemes sagemessage message message</div>
                                 </div>
                                 <div class="ml-auto p-2 badge badge-primary badge-pill ">14</div>
@@ -60,31 +47,31 @@
                         </div>
                         <div class="ml-auto p-2 d-flex">
                             <div class="dropdown">
-                                <div class="dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <i class="fa fa-ellipsis-v"></i>
+                                <div class="dropdown-toggle" id="menu_dialogue" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <i class="fa fa-ellipsis-v" id="button_menu_dialogue"></i>
                                 </div>
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
-                                    <a class="dropdown-item" data-toggle="modal" data-target="#modal_user_info" href="#">View profile</a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="menu_dialogue">
                                     <a class="dropdown-item" href="#">Delete conversation</a>
                                     <a class="dropdown-item" href="#">Clear history</a>
                                 </div>
                             </div>
                         </div>
-                        <div class="modal fade" id="modal_user_info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal fade" id="modal_user_info" tabindex="-1" role="dialog"  aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <div class="user_photo">UN</div>
                                         <h5 class="modal-title active" id="modalUserInfo">
-                                            <div id="modalUserNickname">Nickname</div>
+                                            <div id="modal_user_nickname">Nickname</div>
                                         </h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                             <span aria-hidden="true">&times;</span>
                                         </button>
                                     </div>
                                     <div class="modal-body">
-                                        <ul class="configuranion">
-                                            <li><i class="fas fa-bell"></i> Notifications
+                                        <ul class="config">
+                                            <li class="d-flex">
+                                                <i class="fas fa-bell"></i> Notifications
                                                 <div class="checkbox">
                                                     <input type="checkbox">
                                                 </div>
@@ -98,37 +85,36 @@
                                 </div>
                             </div>
                         </div>
-                        <!--<div class="modal fade" id="modal_my_info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <div class="my_photo"></div>
-                                            <h5 class="modal-title active" id="modalAdminInfo">
-                                                <div id="modalAdminNickname">Nickname</div>
-                                                <div id="modalAdminMail">mail@gmail.com</div>
-                                            </h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body">
-                                            <ul class="configuranion">
-                                                <li><i class="fas fa-address-book"></i> Contacts</li>
-                                                <li class="">
-                                                    <div class="">Night mode</div>
-                                                    <div class="checkbox">
-                                                        <input type="checkbox">
-                                                    </div>
-                                                </li>
-                                                <li><i class="fa fa-cog"></i> Settings</li>
-                                            </ul>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-block btn-secondary" data-dismiss="modal">Close</button>
-                                        </div>
+                        <div class="modal fade" id="modal_my_info" tabindex="-1" role="dialog" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <div class="my_photo user_photo"></div>
+                                        <h5 class="modal-title active" id="modalAdminInfo">
+                                            <div id="modal_my_nickname"> My Nickname</div>
+                                            <div id="modal_my_mail">mail@gmail.com</div>
+                                        </h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <ul class="config">
+                                            <li class="d-flex">
+                                                <div class="">Night mode</div>
+                                                <div class="checkbox">
+                                                    <input id="night_mode" type="checkbox">
+                                                </div>
+                                            </li>
+                                            <li id="sing_out"><i class="fa fa-sign-out-alt"></i> Sing out</li>                                          
+                                        </ul>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-block btn-secondary" data-dismiss="modal">Close</button>
                                     </div>
                                 </div>
-                            </div>-->
+                            </div>
+                        </div>
                     </div>
                     <div class="scroll messages">
                         <!--MESSEGES-->
@@ -139,14 +125,18 @@
                     </div>
                     <div class="input-group" id="send_block">
                         <div class="input-group-prepend">
-                            <button class="btn" type="button"><i class="fa fa-paperclip"></i></button>
+                            <button class="btn" type="button" id="upload" onclick="clickFindFile();"><i class="fa fa-paperclip"></i></button>
                             <button class="btn" type="button"><i class="fa fa-smile"></i></button>
                         </div>
-                        <textarea id="msg_to_send" class="form-control" rows="1" required id="textarea_message"></textarea>
+                        <textarea class="form-control" rows="1" required id="msg_to_send"></textarea>
                         <div class="input-group-append">
-                            <button id="send_btn" class="btn btn_send" type="button"><i class="fa fa-paper-plane"></i></button>
+                            <button class="btn btn_send" type="button"><i class="fa fa-paper-plane" id="button_send"></i></button>
                         </div>
                     </div>
+                    <form id="uploadfiles" enctype="multipart/form-data" method="post" action="#">
+                       <input id="uploadfile" name="myfile" type="file" onchange="clickLoadFile();"/>
+                       <input type="submit" value="submit" id="loadfile" />
+                    </form>
                 </div>
             </div>
     </main>
