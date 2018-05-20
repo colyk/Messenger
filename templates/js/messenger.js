@@ -10,12 +10,16 @@ $(function() {
     $('#find').keyup(find_user);
     $('.list_users').on("click", ".user_block", show_dialog);
     $('#send_btn').click(send_message);
+    $('#sing_out').click(exit);
     $('#find').focus(() => $('#button_settings').hide());
     $('#find').blur(() => $('#button_settings').show());
-    $('#msg_to_send').keypress((event) => {
+    $('#msg_to_send').keyup((event) => {
         if (event.which == 13) {
-            send_message();
             event.preventDefault();
+            if ($('#msg_to_send').val().length > 1) {
+                send_message();
+                $('#msg_to_send').val('');
+            }
         }
         if (event.ctrlKey) {
             $("#msg_to_send").val(function(i, val) {
@@ -70,8 +74,8 @@ $(function() {
         show_user_info($(this).find('.user_nickname').html());
         $('.list_users').find('.user_block').removeClass('clicked');;
         $(this).addClass('clicked');
-        show_user_msg();
         localStorage.to = $(this).find('.user_nickname').html();
+        show_user_msg();
     }
 
 
@@ -81,7 +85,7 @@ $(function() {
 
 
     function show_user_msg() {
-        // body...
+        socket.emit('get user messages', localStorage.nickname, localStorage.to);
     }
 
 
@@ -91,8 +95,12 @@ $(function() {
         let text = $('#msg_to_send').val().trim();
         $('#msg_to_send').val('');
         $("#msg_to_send").css('height', '40');
-        socket.emit('send message to', from, to, text);
-        $('.messages').append($('<p class="text-justify text-dark bg-light text_right msg"></p>').html(text))
+        if (from !== to) {
+            socket.emit('send message to', from, to, text);
+            $('.messages').append($('<p class="text-justify text-dark bg-light text_right msg"></p>').html(text))
+        } else {
+            $('.messages').append($('<p class="text-justify text-dark bg-light text_right msg"></p>').html(text))
+        }
     }
 
 
@@ -110,6 +118,14 @@ $(function() {
     }
 
 
+    function msg_time_converter(UNIX_timestamp) {
+        var a = new Date(UNIX_timestamp);
+        var hour = a.getHours();
+        var min = a.getMinutes();
+        return hour + ':' + min;
+    }
+
+
     function create_user_profile(argument) {
         socket.emit('get my info');
         if (localStorage.nickname) {
@@ -119,6 +135,12 @@ $(function() {
         }
     }
 
+    function exit() {
+        localStorage.remember = false;
+        localStorage.nickname = '';
+        localStorage.password = '';
+        document.location.href = "registration.html";
+    }
 
     socket.on('get message', (text) => {
         $('.messages').append($('<p class="text-justify text-dark bg-light text_left msg"></p>').html(text))
@@ -138,7 +160,7 @@ $(function() {
 
 
     socket.on('put user info', (nickname, online, time) => {
-        console.log(nickname + '\n' + online + '\n' + time);
+        // console.log(nickname + '\n' + online + '\n' + time);
         if (online) {
             $('.user_info_lasttime').html('online');
         } else {
@@ -152,5 +174,11 @@ $(function() {
         $('#modal_my_mail').html(email);
     });
 
+
+    socket.on('put user messages', (messages) => {
+        console.log("апвапвап");
+        console.log(messages);
+        
+    });
 
 });

@@ -1,6 +1,7 @@
 :root {
-  --main_color: #007BFFFF;
+    --main_color: #007BFFFF;
 }
+
 body {
     background: #F5F5F5;
 }
@@ -9,6 +10,10 @@ main {
     max-width: 1366px;
     margin: 0 auto;
     background-color: #fff;
+}
+
+#sing_out {
+    cursor: pointer;
 }
 
 .user_block {
@@ -43,10 +48,13 @@ main {
     background-color: #fff;
     border: none;
 }
-#send_btn{
+
+#send_btn {
     color: var(--main_color);
 }
-#button_settings{ 
+
+#button_settings {
+    cursor: pointer;
     margin: auto 0;
     padding: 0 5px 0 15px;
 }
@@ -65,17 +73,24 @@ main {
 .center_list {}
 
 .button_bar {
+    cursor: pointer;
     transition: transform 0.7s ease;
     margin: 5px;
 }
-#button_menu_dialogue{
+
+#button_menu_dialogue {
+    cursor: pointer;
     padding: 5px;
-    margin-right: 5px; 
+    margin-right: 5px;
 }
-#button_menu_dialogue,.button_bar,#button_settings{
+
+#button_menu_dialogue,
+.button_bar,
+#button_settings {
     color: var(--main_color);
     font-size: 1.4em;
 }
+
 .rotate {
     transform: rotate(-180deg);
 }
@@ -99,7 +114,7 @@ main {
     font-family: 'Gugi', cursive;
 }
 
-.my_photo{
+.my_photo {
     margin-top: 15px;
     margin-right: 10px;
 }
@@ -154,7 +169,7 @@ main {
     z-index: 0;
 }
 
-#uploadfiles{
+#uploadfiles {
     display: none;
 }
 
@@ -182,13 +197,13 @@ main {
 
 .config>li>i {
     color: var(--main_color);
-    padding:5px;
+    padding: 5px;
 }
 
 .checkbox {
     position: absolute;
     left: 85%;
-    padding-top:4px;
+    padding-top: 4px;
 }
 
 input[type="checkbox"] {
@@ -238,6 +253,9 @@ input:checked[type="checkbox"]::before {
 #send_block>div.input-group-prepend>button>i {
     color: #495057;
 }
+
+
+
 
 
 /*Bootstrap 4*/
@@ -321,16 +339,15 @@ input:checked[type="checkbox"]::before {
 }
 
 @media (min-width: 1100px) {
-.messages>p.text_left {
-    max-width: 55%;
-    margin-right: 45%;
-}
+    .messages>p.text_left {
+        max-width: 55%;
+        margin-right: 45%;
+    }
 
-.messages>p.text_right {
-    max-width: 55%;
-    margin-left: 45%;
-}
-
+    .messages>p.text_right {
+        max-width: 55%;
+        margin-left: 45%;
+    }
 }
 
 @media (max-width: 1200px) {}
@@ -356,9 +373,12 @@ input:checked[type="checkbox"]::before {
     padding: 5px;
 }
 
-#menu_dialogue.dropdown-toggle::after{
+#menu_dialogue.dropdown-toggle::after {
     content: none;
 }
+
+
+
 
 
 /*Полоса прокрутки*/
@@ -379,6 +399,9 @@ input:checked[type="checkbox"]::before {
 
 
 
+
+
+
 /*слиль повзунка*/
 
 ::-webkit-scrollbar-thumb {
@@ -390,6 +413,9 @@ input:checked[type="checkbox"]::before {
 ::-webkit-scrollbar-thumb:hover {
     background-color: #e4d4e4a1;
 }
+
+
+
 
 
 
