@@ -11,8 +11,8 @@ $(function() {
     $('.list_users').on("click", ".user_block", show_dialog);
     $('#send_btn').click(send_message);
     $('#sing_out').click(exit);
-    $('#find').focus(() => $('#button_settings').hide());
-    $('#find').blur(() => $('#button_settings').show());
+    $('#find').focus(() => $('#button_settings').toggle(150));
+    $('#find').blur(() => $('#button_settings').toggle(150));
     $('#msg_to_send').keyup((event) => {
         if (event.which == 13) {
             event.preventDefault();
