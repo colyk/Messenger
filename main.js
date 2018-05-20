@@ -13,6 +13,7 @@ var port = process.env.PORT || 3000;
 
 io.on('connection', (socket) => {
 
+
     socket.on('log in', (nickname, pass) => {
         console.log("Login data:", nickname, pass);
         redisClient.hexists('users', nickname, function(err, reply) {
@@ -33,14 +34,13 @@ io.on('connection', (socket) => {
 
     socket.on('sign up', (nickname, pass, email) => {
         console.log("Signup data: ", nickname, pass, email);
-        user_info = {
+        let user_info = {
             'pass': pass,
             'email': email
         };
         redisClient.hexists('users', nickname, function(err, reply) {
             if (reply) {
                 socket.emit('signup user existed', nickname, pass);
-
             } else {
                 redisClient.hset("users", nickname, JSON.stringify(user_info));
                 socket.emit('render user page', nickname, pass);
@@ -48,10 +48,17 @@ io.on('connection', (socket) => {
         });
     });
 
+
     socket.on('room', (nickname) => {
         console.log('Joined ' + nickname);
         socket.join(nickname);
+        let user_info = {
+            'online': true,
+            'time': Date.now()
+        };
+        redisClient.hset("last_seen", nickname, JSON.stringify(user_info));
     });
+
 
     socket.on('find user', (nickname) => {
         redisClient.hexists('users', nickname, function(err, reply) {
@@ -64,10 +71,53 @@ io.on('connection', (socket) => {
         });
     });
 
+
+    // Отправка смс в чате: socket.broadcast.to(‘roomName’).emit()
     socket.on('send message to', (from, to, text) => {
-        console.log('sms delivered');
         io.to(to).emit('get message', text);
     });
+
+
+    socket.on('get user info', (nickname) => {
+        redisClient.hexists('last_seen', nickname, function(err, reply) {
+            if (reply) {
+                redisClient.hget("last_seen", nickname, function(err, reply) {
+                    let online = JSON.parse(reply)['online'];
+                    let time = JSON.parse(reply)['time'];
+                    socket.emit('put user info', nickname, online, time);
+                });
+            } else {
+                console.log('get user info error');
+            }
+        });
+    });
+
+
+    socket.on('get my info', () => {
+        let nickname = Object.keys(socket.rooms)[1];
+        redisClient.hexists('users', nickname, function(err, reply) {
+            if (reply) {
+                redisClient.hget("users", nickname, function(err, reply) {
+                    socket.emit('put my info', JSON.parse(reply)['email']);
+                });
+            }
+            else{
+                console.log('get my info error.');
+            }
+        });
+    });
+
+
+    socket.on('disconnecting', (reason) => {
+        let nickname = Object.keys(socket.rooms)[1];
+        let user_info = {
+            'online': false,
+            'time': Date.now()
+        };
+        redisClient.hset("last_seen", nickname, JSON.stringify(user_info));
+    });
+
+
 });
 
 
