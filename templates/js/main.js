@@ -52,12 +52,7 @@ $(function() {
             flagl = 0;
         }
     }
-    if (localStorage.nickname) {
-        let nick = localStorage.nickname.toUpperCase();
-        $(".my_photo").text(nick.charAt(0) + nick.charAt(1));
-    } else {
-        $(".my_photo").text("UN");
-    }
+
 });
 //переворот стрілки
 $(".button_bar").click(function() {

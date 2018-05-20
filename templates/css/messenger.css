@@ -99,7 +99,12 @@ main {
     font-family: 'Gugi', cursive;
 }
 
-#last_message {
+.my_photo{
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+.last_message {
     max-width: 200px;
 }
 
