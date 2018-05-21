@@ -1,9 +1,13 @@
 $(function() {
     const socket = io.connect('http://127.0.0.1:3000/', { 'transports': ['websocket'] });
 
-    socket.on('connect', function() {
+    socket.on('connect', () => {
         socket.emit('room', localStorage.nickname);
         socket.emit('get dialog list');
+    });
+
+    socket.on("connect_error", () => {
+        swal("Server is not responding!", "It is not your fault. We are working on it...", "error");
     });
 
     create_user_profile();
@@ -102,6 +106,20 @@ $(function() {
     }
 
 
+    function add_msg(msg) {
+        let $messages = $('.messages');
+        console.log(msg);
+        let text = msg['text'];
+        let time = msg_time_converter(msg['time']);
+        if (msg['author'] == localStorage.nickname) {
+            $messages.append($('<p class="text-justify text-dark bg-light text_right msg"></p>').html(text + '<hr>time: ' + time));
+        } else {
+            $messages.append($('<p class="text-justify text-dark bg-light text_left msg"></p>').html(text + '<hr>time: ' + time));
+        }
+
+    }
+
+
     function send_message() {
         let from = localStorage.nickname;
         let to = localStorage.to;
@@ -115,23 +133,24 @@ $(function() {
 
 
     function time_converter(UNIX_timestamp) {
-        var a = new Date(UNIX_timestamp);
-        var months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        var year = a.getFullYear();
-        var month = months[a.getMonth()];
-        var date = a.getDate();
-        var hour = a.getHours();
-        var min = a.getMinutes();
-        var sec = a.getSeconds();
-        var time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min + ':' + sec;
+        let a = new Date(UNIX_timestamp);
+        let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        let year = a.getFullYear();
+        let month = months[a.getMonth()];
+        let date = a.getDate();
+        let hour = a.getHours();
+        let min = a.getMinutes();
+        let time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
         return time;
     }
 
 
     function msg_time_converter(UNIX_timestamp) {
-        var a = new Date(UNIX_timestamp);
-        var hour = a.getHours();
-        var min = a.getMinutes();
+        let a = new Date(UNIX_timestamp);
+        let hour = a.getHours().toString();
+        if (hour.length == 1) { hour = '0' + hour; }
+        let min = a.getMinutes().toString();
+        if (min.length == 1) { min = '0' + min; }
         return hour + ':' + min;
     }
 
@@ -145,12 +164,19 @@ $(function() {
         }
     }
 
+
     function exit() {
         localStorage.remember = false;
         localStorage.nickname = '';
         localStorage.password = '';
         document.location.href = "registration.html";
     }
+
+
+    function clean_msg() {
+        $('.messages').empty();
+    }
+
 
     socket.on('get message', (text, from) => {
         if (from !== localStorage.nickname) {
@@ -188,7 +214,10 @@ $(function() {
 
 
     socket.on('put user messages', (messages) => {
-        console.log(messages);
+        clean_msg();
+        messages.forEach((msg) => {
+            add_msg(msg);
+        });
     });
 
     socket.on('put dialog list', (dialog_list) => {

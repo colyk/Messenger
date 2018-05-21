@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link rel="stylesheet" href="css/messenger.css">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <title>Hidden | Messenger</title>
 </head>
 
@@ -25,7 +26,6 @@
                     </div>
                     <div class="scroll scroll_left">
                         <ul class="list example list-group list-group-flush list_users">
-                            
                         </ul>
                     </div>
                 </div>
@@ -49,6 +49,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!--USER MODAL INFO-->
                         <div class="modal fade" id="modal_user_info" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -78,6 +79,7 @@
                                 </div>
                             </div>
                         </div>
+                        <!--MY MODAL INFO-->
                         <div class="modal fade" id="modal_my_info" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -109,8 +111,8 @@
                             </div>
                         </div>
                     </div>
+                    <!--MESSEGES-->
                     <div class="scroll messages">
-                        <!--MESSEGES-->
                     </div>
                     <div class="input-group" id="send_block">
                         <div class="input-group-prepend">
@@ -128,6 +130,7 @@
                     </form>
                 </div>
             </div>
+        </div>
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
