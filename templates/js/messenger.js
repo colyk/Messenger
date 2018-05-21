@@ -3,6 +3,7 @@ $(function() {
 
     socket.on('connect', function() {
         socket.emit('room', localStorage.nickname);
+        socket.emit('get dialog list');
     });
 
     create_user_profile();
@@ -58,7 +59,7 @@ $(function() {
     }
 
 
-    function add_user_block(nick, last_msg, msg_count) {
+    function add_finded_user(nick, last_msg, msg_count) {
         let logo = nick.charAt(0).toUpperCase() + nick.charAt(1).toUpperCase();
         $('<li class="list-group-item d-flex flex-row user_block finded" ></li>')
             .append($('<div class="user_photo"></div>').html(logo))
@@ -66,6 +67,18 @@ $(function() {
                 .append($('<div class="user_nickname"></div>').html(nick),
                     $('<div class="d-inline-block text-truncate" class="last_message"></div>').html(last_msg)))
             .append($('<div class="ml-auto p-2 badge badge-primary badge-pill "></div>').html(msg_count))
+            .appendTo('.list_users');
+    }
+
+
+    function add_dialog(nick) {
+        let logo = nick.charAt(0).toUpperCase() + nick.charAt(1).toUpperCase();
+        $('<li class="list-group-item d-flex flex-row user_block dialog" ></li>')
+            .append($('<div class="user_photo"></div>').html(logo))
+            .append($('<div></div>')
+                .append($('<div class="user_nickname"></div>').html(nick),
+                    $('<div class="d-inline-block text-truncate" class="last_message"></div>').html('last_msg')))
+            .append($('<div class="ml-auto p-2 badge badge-primary badge-pill "></div>').html(1))
             .appendTo('.list_users');
     }
 
@@ -149,7 +162,7 @@ $(function() {
 
     socket.on('finded user', (nickname) => {
         console.info('User ' + nickname + ' exist');
-        add_user_block(nickname, 'last_msg', '11');
+        add_finded_user(nickname, 'last_msg', '11');
     });
 
 
@@ -176,7 +189,12 @@ $(function() {
 
     socket.on('put user messages', (messages) => {
         console.log(messages);
+    });
 
+    socket.on('put dialog list', (dialog_list) => {
+        dialog_list.forEach((nickname) => {
+            add_dialog(nickname);
+        });
     });
 
 });

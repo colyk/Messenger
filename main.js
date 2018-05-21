@@ -84,12 +84,12 @@ io.on('connection', (socket) => {
             'time': Date.now()
         };
 
-        redisClient.hget("messages", dialog, function(err, reply) {
-
+        redisClient.hget("messages", dialog, (err, reply) => {
             if (reply) {
                 messages['messages'] = JSON.parse(reply)['messages'];
                 messages['messages'].push(message);
             } else {
+            	redisClient.sadd(from, to);
                 messages['messages'].push(message);
             }
             redisClient.hset("messages", dialog, JSON.stringify(messages));
@@ -105,21 +105,20 @@ io.on('connection', (socket) => {
         tmp.sort();
         let dialog = tmp[0] + '_' + tmp[1];
 
-        redisClient.hget("messages", dialog, function(err, reply) {
+        redisClient.hget("messages", dialog, (err, reply) =>{
             if (reply) {
                 io.to(from).emit('put user messages', JSON.parse(reply)['messages']);
             } else {
                 io.to(from).emit('put user messages', []);
             }
         });
-
-
     });
 
+
     socket.on('get user info', (nickname) => {
-        redisClient.hexists('last_seen', nickname, function(err, reply) {
+        redisClient.hexists('last_seen', nickname, (err, reply) => {
             if (reply) {
-                redisClient.hget("last_seen", nickname, function(err, reply) {
+                redisClient.hget("last_seen", nickname, (err, reply) => {
                     let online = JSON.parse(reply)['online'];
                     let time = JSON.parse(reply)['time'];
                     socket.emit('put user info', nickname, online, time);
@@ -142,6 +141,18 @@ io.on('connection', (socket) => {
                 console.log('get my info error.');
             }
         });
+    });
+
+
+    socket.on('get dialog list', () => {
+        let nickname = Object.keys(socket.rooms)[1];
+        redisClient.smembers(nickname, (err, replies) => {
+            if (!err) {
+                socket.emit('put dialog list', replies);
+            } else {
+                socket.emit('put dialog list', []);
+            }
+        })
     });
 
 

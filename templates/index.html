@@ -18,21 +18,14 @@
                 <div class="col-12 col-sm-8 col-md-4 col-lg-4 col-xl-3 left_list" style="display: block;">
                     <div class="d-flex">
                         <i class="fa fa-bars" data-toggle="modal" data-target="#modal_my_info" id="button_settings"></i>
-                    <form class=" my-2 search_input" id="search_input">
-                        <input id="find" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                        <button type="submit" class="button_search"><i class="fa fa-search"></i></button>
-                    </form>
+                        <form class=" my-2 search_input" id="search_input">
+                            <input id="find" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                            <button type="submit" class="button_search"><i class="fa fa-search"></i></button>
+                        </form>
                     </div>
                     <div class="scroll scroll_left">
                         <ul class="list example list-group list-group-flush list_users">
-                            <li class="list-group-item d-flex flex-row user_block dialog">
-                                <div class="user_photo">UN</div>
-                                <div>
-                                    <div class="user_nickname">fil</div>
-                                    <div class="d-inline-block text-truncate last_message">Last message message messagemess agemes sagemessage message message</div>
-                                </div>
-                                <div class="ml-auto p-2 badge badge-primary badge-pill ">14</div>
-                            </li>
+                            
                         </ul>
                     </div>
                 </div>
@@ -56,8 +49,7 @@
                                 </div>
                             </div>
                         </div>
-
-                        <div class="modal fade" id="modal_user_info" tabindex="-1" role="dialog"  aria-hidden="true">
+                        <div class="modal fade" id="modal_user_info" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
@@ -86,7 +78,6 @@
                                 </div>
                             </div>
                         </div>
-                        
                         <div class="modal fade" id="modal_my_info" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -108,7 +99,7 @@
                                                     <input id="night_mode" type="checkbox">
                                                 </div>
                                             </li>
-                                            <li id="sing_out"><i class="fa fa-sign-out-alt"></i> Sing out</li>                                          
+                                            <li id="sing_out"><i class="fa fa-sign-out-alt"></i> Sing out</li>
                                         </ul>
                                     </div>
                                     <div class="modal-footer">
@@ -120,7 +111,6 @@
                     </div>
                     <div class="scroll messages">
                         <!--MESSEGES-->
-                       
                     </div>
                     <div class="input-group" id="send_block">
                         <div class="input-group-prepend">
@@ -133,8 +123,8 @@
                         </div>
                     </div>
                     <form id="uploadfiles" enctype="multipart/form-data" method="post" action="#">
-                       <input id="uploadfile" name="myfile" type="file" onchange="clickLoadFile();"/>
-                       <input type="submit" value="submit" id="loadfile" />
+                        <input id="uploadfile" name="myfile" type="file" onchange="clickLoadFile();" />
+                        <input type="submit" value="submit" id="loadfile" />
                     </form>
                 </div>
             </div>

@@ -9,7 +9,8 @@ $(function() {
     $('#toggle_pass').click(togglePassword);
 
 
-    if (localStorage.nickname && localStorage.remember) {
+    if (localStorage.nickname ) {
+        console.log(localStorage.remember);
         document.location.href = "index.html";
     }
 
