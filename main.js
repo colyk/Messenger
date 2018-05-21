@@ -77,7 +77,7 @@ io.on('connection', (socket) => {
         tmp.push(to, from);
         tmp.sort();
         let dialog = tmp[0] + '_' + tmp[1];
-
+        const messages = { 'messages': [] };
         const message = {
             'author': from,
             'text': text,
@@ -95,7 +95,7 @@ io.on('connection', (socket) => {
             redisClient.hset("messages", dialog, JSON.stringify(messages));
         });
 
-        io.to(to).emit('get message', text);
+        io.to(to).emit('get message', text, from);
     });
 
 
@@ -113,7 +113,7 @@ io.on('connection', (socket) => {
             }
         });
 
-        
+
     });
 
     socket.on('get user info', (nickname) => {

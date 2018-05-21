@@ -95,12 +95,9 @@ $(function() {
         let text = $('#msg_to_send').val().trim();
         $('#msg_to_send').val('');
         $("#msg_to_send").css('height', '40');
-        if (from !== to) {
-            socket.emit('send message to', from, to, text);
-            $('.messages').append($('<p class="text-justify text-dark bg-light text_right msg"></p>').html(text))
-        } else {
-            $('.messages').append($('<p class="text-justify text-dark bg-light text_right msg"></p>').html(text))
-        }
+        socket.emit('send message to', from, to, text);
+        $('.messages').append($('<p class="text-justify text-dark bg-light text_right msg"></p>').html(text))
+
     }
 
 
@@ -142,9 +139,11 @@ $(function() {
         document.location.href = "registration.html";
     }
 
-    socket.on('get message', (text) => {
-        $('.messages').append($('<p class="text-justify text-dark bg-light text_left msg"></p>').html(text))
-        console.log('Incoming message:', text);
+    socket.on('get message', (text, from) => {
+        if (from !== localStorage.nickname) {
+            $('.messages').append($('<p class="text-justify text-dark bg-light text_left msg"></p>').html(text))
+            console.log('Incoming message:', text);
+        }
     });
 
 
@@ -176,9 +175,8 @@ $(function() {
 
 
     socket.on('put user messages', (messages) => {
-        console.log("апвапвап");
         console.log(messages);
-        
+
     });
 
 });
