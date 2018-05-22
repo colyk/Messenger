@@ -9,10 +9,15 @@ $(function() {
     socket.on("connect_error", () => {
         swal("Server is not responding!", "It is not your fault. We are working on it...", "error");
     });
-$("body").niceScroll();
+
     find_btn_animation();
     create_user_profile();
     $(window).resize(() => $('.last_message').css('max-width', $('.list_users').width() / 1.3));
+    // if(!$('.clicked').length){
+    //     $('.header_panel').hide();
+    //     $('#msg_to_send').hide();
+    // } 
+
     $('#find').keyup(find_user);
     $('.list_users').on("click", ".user_block", show_dialog);
     $('#send_btn').click(send_message);
@@ -33,7 +38,6 @@ $("body").niceScroll();
                 "\n" +
                 $('#msg_to_send').val().substring(caretEnd));
             $("#msg_to_send").css('height', '+=20');
-            console.log($("#msg_to_send").css('height'));
             if ($("#msg_to_send").css('height') != '140px') $("#msg_to_send").css('margin-top', '-=20');
         }
     });
@@ -115,11 +119,14 @@ $("body").niceScroll();
         let text = msg['text'];
         let time = msg_time_converter(msg['time']);
         if (msg['author'] == localStorage.nickname) {
-            $messages.append($('<p class="text-justify text-dark bg-light text_right msg"></p>').html(text + '<hr>time: ' + time));
+            $messages.append($('<div class="answer right"></div>')
+                .append($('<div class="text"></div>').html(text))
+                .append($('<div class="time"></div>').html(time)));
         } else {
-            $messages.append($('<p class="text-justify text-dark bg-light text_left msg"></p>').html(text + '<hr>time: ' + time));
+            $messages.append($('<div class="answer left"></div>')
+                .append($('<div class="text"></div>').html(text))
+                .append($('<div class="time"></div>').html(time)));
         }
-
     }
 
 
@@ -130,8 +137,11 @@ $("body").niceScroll();
         $('#msg_to_send').val('');
         $("#msg_to_send").css('height', '40');
         socket.emit('send message to', from, to, text);
-        $('.messages').append($('<p class="text-justify text-dark bg-light text_right msg"></p>').html(text))
-
+        let time = msg_time_converter(Date.now());
+        $('.messages')
+            .append($('<div class="answer right"></div>')
+                .append($('<div class="text"></div>').html(text))
+                .append($('<div class="time"></div>').html(time)));
     }
 
 
@@ -184,10 +194,12 @@ $("body").niceScroll();
     }
 
 
-    socket.on('get message', (text, from) => {
+    socket.on('get message', (text, from, timestamp) => {
+        let time = msg_time_converter(timestamp);
         if (from !== localStorage.nickname) {
-            $('.messages').append($('<p class="text-justify text-dark bg-light text_left msg"></p>').html(text))
-            console.log('Incoming message:', text);
+            $('.messages').append($('<div class="answer left"></div>')
+                .append($('<div class="text"></div>').html(text))
+                .append($('<div class="time"></div>').html(time)));
         }
     });
 

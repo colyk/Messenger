@@ -96,7 +96,7 @@ io.on('connection', (socket) => {
             redisClient.hset("messages", dialog, JSON.stringify(messages));
         });
 
-        io.to(to).emit('get message', text, from);
+        io.to(to).emit('get message', text, from, Date.now());
     });
 
 
