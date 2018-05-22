@@ -15,13 +15,17 @@
     <main>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-12 col-sm-8 col-md-4 col-lg-4 col-xl-3 left_list" style="display: block;">
-                    <div class="d-flex">
-                        <i class="fa fa-bars" data-toggle="modal" data-target="#modal_my_info" id="button_settings"></i>
+                <div class="col-12 col-sm-12 col-md-4 col-lg-4 col-xl-3 left_list" style="display: block;">
+                    <div class="header_panel_left">
+                        <i class="fa fa-bars first_but_set" data-toggle="modal" data-target="#modal_my_info" id="button_settings"></i>
+                        <div class="p-2 but_set_menu">
+                            <i class="fa fa-angle-double-left active_but_bar button_bar" id="active_but_bar1"></i>
+                        </div>
                     <form class=" my-2 search_input" id="search_input">
                         <input id="find" class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                         <button type="submit" class="button_search"><i class="fa fa-search"></i></button>
                     </form>
+                    <i class="fa fa-bars second_but_set" data-toggle="modal" data-target="#modal_my_info" id="button_settings"></i>
                     </div>
                     <div class="scroll scroll_left">
                         <ul class="list example list-group list-group-flush list_users">
@@ -39,7 +43,7 @@
                 <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-9 center_list">
                     <div class="header_panel">
                         <div class="p-2">
-                            <i class="fa fa-angle-double-left button_bar"></i>
+                            <i class="fa fa-angle-double-left button_bar" id="active_but_bar2"></i>
                         </div>
                         <div class="user_name_panel">
                             <div data-toggle="modal" data-target="#modal_user_info" id="user_nickname">Nick Name </div>
@@ -136,6 +140,7 @@
                     </form>
                 </div>
             </div>
+        </div>
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

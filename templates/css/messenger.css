@@ -30,8 +30,8 @@ main {
 
 .search_input {
     max-height: 40px;
-    margin: 0 10px 0 10px;
     width: 100%;
+    margin-right: 10px; 
 }
 
 .button_search {
@@ -48,31 +48,40 @@ main {
 }
 #button_settings{ 
     margin: auto 0;
-    padding: 0 5px 0 15px;
+    padding: 0 15px;
 }
-
+.first_but_set{
+    display: block;
+}
+.second_but_set{
+    display:none;
+}
 .list_users>li {
     display: flex;
     align-items: center;
 }
 
 .left_list {
-    padding-top: 5px;
+    height: 100%;
     z-index: 1000;
     border-right: 1px solid #dee2e6!important;
 }
 
-.center_list {}
+.center_list {height: 100%;}
 
 .button_bar {
     transition: transform 0.7s ease;
+    margin: auto 0;
     margin: 5px;
+}
+.but_set_menu{
+    display: none;
 }
 #button_menu_dialogue{
     padding: 5px;
     margin-right: 5px; 
 }
-#button_menu_dialogue,.button_bar,#button_settings{
+#button_menu_dialogue, .button_bar, #button_settings{
     color: var(--main_color);
     font-size: 1.4em;
 }
@@ -80,10 +89,13 @@ main {
     transform: rotate(-180deg);
 }
 
-.header_panel {
+.header_panel{
     display: flex;
     align-items: center;
     border-bottom: 1px solid #dee2e6!important;
+}
+.header_panel_left{
+    display: flex;
 }
 
 .user_photo {
@@ -157,12 +169,14 @@ main {
     margin-top: 15px;
     position: relative;
     width: 100%;
-    height: 480px;
+    /*height: 480px;*/
+    height: 100%;
     overflow: auto;
 }
 
 .scroll_left {
-    height: 518px;
+    /*height: 518px;*/
+    height: 100%;
 }
 
 .config>li {
@@ -336,12 +350,26 @@ input:checked[type="checkbox"]::before {
     .left_list {
         display: none;
         position: absolute;
-        margin: 51px 0px 0px 0px;
         background: #fff;
-        border-right: none;
+        border: none;
     }
     .scroll_left {
         height: 468px;
+    }
+    .first_but_set{
+        display:none;
+    }
+    .second_but_set{
+        display:block;
+    }
+    .search_input{
+        margin-right: 0; 
+    }
+    .but_set_menu{
+        display: block;
+    }
+    .header_panel_left{
+        border-bottom: 1px solid #dee2e6!important;
     }
 }
 
