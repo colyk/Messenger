@@ -167,20 +167,20 @@ $(function() {
     function find_btn_animation() {
             if($(window).width()>=768){
                 $find.bind('focus', function(){
-                    $('.first_but_set').toggle(150);
+                    $('#button_settings').toggle(150);
                     $('.search_input').css({
                         'margin-left':'10px'
                     });
                 });
                 $find.bind('blur', function(){
-                    $('.first_but_set').toggle(150);
+                    $('#button_settings').toggle(150);
                     $('.search_input').css({
                         'margin-left':'0px'
                     });
                 });           
             }else {
                 $find.bind('focus', function(){
-                    $('.second_but_set').toggle(150);
+                    $('#button_settings').toggle(150);
                     $('.but_set_menu').toggle(150);
                     $('.search_input').css({
                         "margin-left":"10px",
@@ -189,7 +189,7 @@ $(function() {
                 });
                 $find.bind('blur', function(){
                     $('.but_set_menu').toggle(150);
-                    $('.second_but_set').toggle(150);
+                    $('#button_settings').toggle(150);
                     $('.search_input').css({
                         "margin-left":"0px",
                         "margin-right":"0px"
