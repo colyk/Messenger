@@ -158,6 +158,7 @@ $(function() {
         $("#msg_to_send").css('height', '40');
         socket.emit('send message to', from, to, text);
         let time = msg_time_converter(Date.now());
+        // $("div.scroll.messages").scrollTop(2200);
         $messages
             .append($('<div class="answer right"></div>')
                 .append($('<div class="text"></div>').html(text))
@@ -218,14 +219,14 @@ $(function() {
     }
 
     function clean_msg() {
-        $('.messages').empty();
+        $messages.empty();
     }
 
 
     socket.on('get message', (text, from, timestamp) => {
         let time = msg_time_converter(timestamp);
         if (from !== localStorage.nickname) {
-            $('.messages').append($('<div class="answer left"></div>')
+            $messages.append($('<div class="answer left"></div>')
                 .append($('<div class="text"></div>').html(text))
                 .append($('<div class="time"></div>').html(time)));
         }

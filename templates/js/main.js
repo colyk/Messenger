@@ -1,29 +1,30 @@
 $(function() {
+    $('[data-wanker]').wanker({delay: 0, duration: 2000});
+
     ///height screen
-    $("html").css({'height':$(window).height()});
-    $(".left_list").css({'height':$(window).height()});
-    $(".center_list").css({'height':$(window).height()});
-    $(".scroll").css({'height':$(".center_list").height()-120});
+    $("html").css({ 'height': $(window).height() });
+    $(".left_list").css({ 'height': $(window).height() });
+    $(".center_list").css({ 'height': $(window).height() });
+    $(".scroll").css({ 'height': $(".center_list").height() - 120 });
     $(window).resize(function() {
-        $("html").css({'height':$(window).height()});
-        $(".left_list").css({'height':$(window).height()});
-        $(".center_list").css({'height':$(window).height()});
-        $(".scroll").css({'height':$(".center_list").height()-$(".header_panel").height()-$("#send_block").height()-30});
-        if($(window).height()>=768){
-        $('#active_but_bar2').addClass('active_but_bar');
-        }
-        else{
+        $("html").css({ 'height': $(window).height() });
+        $(".left_list").css({ 'height': $(window).height() });
+        $(".center_list").css({ 'height': $(window).height() });
+        $(".scroll").css({ 'height': $(".center_list").height() - $(".header_panel").height() - $("#send_block").height() - 30 });
+        if ($(window).height() >= 768) {
+            $('#active_but_bar2').addClass('active_but_bar');
+        } else {
             $('#active_but_bar2').addClass('active_but_bar');
         }
     })
-    if($(window).height()>=768)
+    if ($(window).height() >= 768)
         $('#active_but_bar2').addClass('active_but_bar');
     else
         $('#active_but_bar2').addClass('active_but_bar');
     //scroll messages
     $("div.scroll.messages").scrollTop(300);
 
-    var 
+    var
         $leftList = $('.left_list'),
         $centerList = $('.center_list'),
         $activeBut = $('.active_but_bar'),
@@ -32,10 +33,10 @@ $(function() {
     $activeBut.on('click', function() {
         if (flagScreen == 0) {
             $leftList.css({
-                'display':'block',
-                'background':'#fff'
+                'display': 'block',
+                'background': '#fff'
             });
-            if($leftList.hasClass('col-xl-0')){
+            if ($leftList.hasClass('col-xl-0')) {
                 $leftList
                     .removeClass('col-xl-0')
                     .addClass('col-xl-3');
@@ -43,7 +44,7 @@ $(function() {
                     .removeClass('col-xl-12')
                     .addClass('col-xl-9');
             }
-            if($leftList.hasClass('col-lg-0')){
+            if ($leftList.hasClass('col-lg-0')) {
                 $leftList
                     .removeClass('col-lg-0')
                     .addClass('col-lg-4');
@@ -51,7 +52,7 @@ $(function() {
                     .removeClass('col-lg-12')
                     .addClass('col-lg-8');
             }
-            if($leftList.hasClass('col-md-0')){
+            if ($leftList.hasClass('col-md-0')) {
                 $leftList
                     .removeClass('col-md-0')
                     .addClass('col-md-4');
@@ -63,8 +64,8 @@ $(function() {
             $('#active_but_bar1').addClass('active_but_bar');
             flagScreen = 1;
         } else {
-            $leftList.css({'display':'none'});
-            if($leftList.hasClass('col-xl-3')){
+            $leftList.css({ 'display': 'none' });
+            if ($leftList.hasClass('col-xl-3')) {
                 $leftList
                     .removeClass('col-xl-3')
                     .addClass('col-xl-0');
@@ -72,7 +73,7 @@ $(function() {
                     .removeClass('col-xl-9')
                     .addClass('col-xl-12');
             }
-            if($leftList.hasClass('col-lg-4')){
+            if ($leftList.hasClass('col-lg-4')) {
                 $leftList
                     .removeClass('col-lg-4')
                     .addClass('col-lg-0');
@@ -80,7 +81,7 @@ $(function() {
                     .removeClass('col-lg-8')
                     .addClass('col-lg-12');
             }
-            if($leftList.hasClass('col-md-4')){
+            if ($leftList.hasClass('col-md-4')) {
                 $leftList
                     .removeClass('col-md-4')
                     .addClass('col-md-0');
