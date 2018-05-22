@@ -9,28 +9,32 @@ $(function() {
     socket.on("connect_error", () => {
         swal("Server is not responding!", "It is not your fault. We are working on it...", "error");
     });
-
+$("body").niceScroll();
+    find_btn_animation();
     create_user_profile();
     $(window).resize(() => $('.last_message').css('max-width', $('.list_users').width() / 1.3));
     $('#find').keyup(find_user);
     $('.list_users').on("click", ".user_block", show_dialog);
     $('#send_btn').click(send_message);
     $('#sing_out').click(exit);
-    $('#find').focus(() => $('#button_settings').toggle(150));
-    $('#find').blur(() => $('#button_settings').toggle(150));
     $('#msg_to_send').keyup((event) => {
-        if (event.which == 13) {
+        if (!event.ctrlKey && event.which == 13) {
             event.preventDefault();
             if ($('#msg_to_send').val().length > 1) {
                 send_message();
                 $('#msg_to_send').val('');
             }
+            return;
         }
         if (event.ctrlKey) {
-            $("#msg_to_send").val(function(i, val) {
-                return val + "\n";
-            });
+            caretStart = $('#msg_to_send')[0].selectionStart;
+            caretEnd = $('#msg_to_send')[0].selectionEnd;
+            $('#msg_to_send').val($('#msg_to_send').val().substring(0, caretStart) +
+                "\n" +
+                $('#msg_to_send').val().substring(caretEnd));
             $("#msg_to_send").css('height', '+=20');
+            console.log($("#msg_to_send").css('height'));
+            if ($("#msg_to_send").css('height') != '140px') $("#msg_to_send").css('margin-top', '-=20');
         }
     });
 
@@ -108,7 +112,6 @@ $(function() {
 
     function add_msg(msg) {
         let $messages = $('.messages');
-        console.log(msg);
         let text = msg['text'];
         let time = msg_time_converter(msg['time']);
         if (msg['author'] == localStorage.nickname) {
@@ -138,8 +141,8 @@ $(function() {
         let year = a.getFullYear();
         let month = months[a.getMonth()];
         let date = a.getDate();
-        let hour = a.getHours();
-        let min = a.getMinutes();
+        let hour = format_time(a.getHours().toString());
+        let min = format_time(a.getMinutes().toString());
         let time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
         return time;
     }
@@ -147,15 +150,13 @@ $(function() {
 
     function msg_time_converter(UNIX_timestamp) {
         let a = new Date(UNIX_timestamp);
-        let hour = a.getHours().toString();
-        if (hour.length == 1) { hour = '0' + hour; }
-        let min = a.getMinutes().toString();
-        if (min.length == 1) { min = '0' + min; }
+        let hour = format_time(a.getHours().toString());
+        let min = format_time(a.getMinutes().toString());
         return hour + ':' + min;
     }
 
 
-    function create_user_profile(argument) {
+    function create_user_profile() {
         socket.emit('get my info');
         if (localStorage.nickname) {
             let nick = localStorage.nickname.toUpperCase();
@@ -172,6 +173,11 @@ $(function() {
         document.location.href = "registration.html";
     }
 
+
+    function find_btn_animation() {
+        $('#find').focus(() => $('#button_settings').toggle(150));
+        $('#find').blur(() => $('#button_settings').toggle(150));
+    }
 
     function clean_msg() {
         $('.messages').empty();
@@ -198,7 +204,6 @@ $(function() {
 
 
     socket.on('put user info', (nickname, online, time) => {
-        // console.log(nickname + '\n' + online + '\n' + time);
         if (online) {
             $('.user_info_lasttime').html('online');
         } else {
@@ -227,3 +232,9 @@ $(function() {
     });
 
 });
+
+
+function format_time(time) {
+    if (time.length == 1) return time = '0' + time;
+    return time;
+}

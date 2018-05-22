@@ -89,7 +89,8 @@ io.on('connection', (socket) => {
                 messages['messages'] = JSON.parse(reply)['messages'];
                 messages['messages'].push(message);
             } else {
-            	redisClient.sadd(from, to);
+                redisClient.sadd(from, to);
+            	redisClient.sadd(to, from);
                 messages['messages'].push(message);
             }
             redisClient.hset("messages", dialog, JSON.stringify(messages));
