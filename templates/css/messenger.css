@@ -1,6 +1,112 @@
 :root {
-  --main_color: #007BFFFF;
+    --main_color: #007BFFFF;
 }
+
+/****************CHAT BODY *******************/
+.chat-body h6 {
+    font-size: 20px;
+    margin: 0 0 20px;
+}
+.chat-body .answer.left {
+    padding: 0 0 0 58px;
+    text-align: left;
+    float: left;
+}
+.chat-body .answer {
+    position: relative;
+    max-width: 600px;
+    overflow: hidden;
+    clear: both;
+}
+.chat-body .answer.left .avatar {
+    left: 0;
+}
+.chat-body .answer .avatar {
+    bottom: 36px;
+}
+.chat .avatar {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+}
+.chat .avatar img {
+    display: block;
+    border-radius: 20px;
+    height: 100%;
+}
+.chat-body .answer .name {
+    font-size: 14px;
+    line-height: 36px;
+}
+.chat-body .answer.left .avatar .status {
+    right: 4px;
+}
+.chat-body .answer .avatar .status {
+    bottom: 0;
+}
+.chat-body .answer.left .text {
+    background: #ebebeb;
+    color: #333333;
+    border-radius: 8px 8px 8px 0;
+}
+.chat-body .answer .text {
+    padding: 12px;
+    font-size: 16px;
+    line-height: 26px;
+    position: relative;
+}
+.chat-body .answer.left .text:before {
+    left: -30px;
+    border-right-color: #ebebeb;
+    border-right-width: 12px;
+}
+.chat-body .answer .text:before {
+    content: '';
+    display: block;
+    position: absolute;
+    bottom: 0;
+    border: 18px solid transparent;
+    border-bottom-width: 0;
+}
+.chat-body .answer.left .time {
+    padding-left: 12px;
+    color: #333333;
+}
+.chat-body .answer .time {
+    font-size: 16px;
+    line-height: 36px;
+    position: relative;
+    padding-bottom: 1px;
+}
+/*RIGHT*/
+.chat-body .answer.right {
+    padding: 0 58px 0 0;
+    text-align: left;
+    float: right;
+}
+
+.chat-body .answer.right .avatar {
+    right: 0;
+}
+.chat-body .answer.right .avatar .status {
+    left: 4px;
+}
+.chat-body .answer.right .text {
+    background: #007BFF;
+    color: #ffffff;
+    border-radius: 8px 8px 0 8px;
+}
+.chat-body .answer.right .text:before {
+    right: -30px;
+    border-left-color: #007BFF;
+    border-left-width: 12px;
+}
+.chat-body .answer.right .time {
+    padding-right: 12px;
+    color: #333333;
+}
+
+
 body {
     background: #F5F5F5;
 }
@@ -9,6 +115,10 @@ main {
     max-width: 1366px;
     margin: 0 auto;
     background-color: #fff;
+}
+
+#sing_out {
+    cursor: pointer;
 }
 
 .user_block {
@@ -43,10 +153,13 @@ main {
     background-color: #fff;
     border: none;
 }
-#send_btn{
+
+#send_btn {
     color: var(--main_color);
 }
-#button_settings{ 
+
+#button_settings {
+    cursor: pointer;
     margin: auto 0;
     padding: 0 15px;
 }
@@ -70,6 +183,7 @@ main {
 .center_list {height: 100%;}
 
 .button_bar {
+    cursor: pointer;
     transition: transform 0.7s ease;
     margin: auto 0;
     margin: 5px;
@@ -78,13 +192,17 @@ main {
     display: none;
 }
 #button_menu_dialogue{
+    cursor: pointer;
     padding: 5px;
-    margin-right: 5px; 
+    margin-right: 5px;
 }
-#button_menu_dialogue, .button_bar, #button_settings{
+#button_menu_dialogue,
+.button_bar,
+#button_settings {
     color: var(--main_color);
     font-size: 1.4em;
 }
+
 .rotate {
     transform: rotate(-180deg);
 }
@@ -111,7 +229,12 @@ main {
     font-family: 'Gugi', cursive;
 }
 
-#last_message {
+.my_photo {
+    margin-top: 15px;
+    margin-right: 10px;
+}
+
+.last_message {
     max-width: 200px;
 }
 
@@ -161,7 +284,7 @@ main {
     z-index: 0;
 }
 
-#uploadfiles{
+#uploadfiles {
     display: none;
 }
 
@@ -191,13 +314,13 @@ main {
 
 .config>li>i {
     color: var(--main_color);
-    padding:5px;
+    padding: 5px;
 }
 
 .checkbox {
     position: absolute;
     left: 85%;
-    padding-top:4px;
+    padding-top: 4px;
 }
 
 input[type="checkbox"] {
@@ -247,6 +370,9 @@ input:checked[type="checkbox"]::before {
 #send_block>div.input-group-prepend>button>i {
     color: #495057;
 }
+
+
+
 
 
 /*Bootstrap 4*/
@@ -330,16 +456,15 @@ input:checked[type="checkbox"]::before {
 }
 
 @media (min-width: 1100px) {
-.messages>p.text_left {
-    max-width: 55%;
-    margin-right: 45%;
-}
+    .messages>p.text_left {
+        max-width: 55%;
+        margin-right: 45%;
+    }
 
-.messages>p.text_right {
-    max-width: 55%;
-    margin-left: 45%;
-}
-
+    .messages>p.text_right {
+        max-width: 55%;
+        margin-left: 45%;
+    }
 }
 
 @media (max-width: 1200px) {}
@@ -379,9 +504,12 @@ input:checked[type="checkbox"]::before {
     padding: 5px;
 }
 
-#menu_dialogue.dropdown-toggle::after{
+#menu_dialogue.dropdown-toggle::after {
     content: none;
 }
+
+
+
 
 
 /*Полоса прокрутки*/
@@ -402,6 +530,9 @@ input:checked[type="checkbox"]::before {
 
 
 
+
+
+
 /*слиль повзунка*/
 
 ::-webkit-scrollbar-thumb {
@@ -413,6 +544,9 @@ input:checked[type="checkbox"]::before {
 ::-webkit-scrollbar-thumb:hover {
     background-color: #e4d4e4a1;
 }
+
+
+
 
 
 
