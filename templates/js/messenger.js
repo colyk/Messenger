@@ -6,19 +6,21 @@ $(function() {
         socket.emit('get dialog list');
     });
 
+
     socket.on("connect_error", () => {
-        swal("Server is not responding!", "It is not your fault. We are working on it...", "error");
+        // Show alert
+        swal("Server is not responding!", "It is not your fault. We are working on it...", "info");
     });
+
+
+    const $messages = $('.messages');
+    const $find = $('#find');
+
 
     find_btn_animation();
     create_user_profile();
     $(window).resize(() => $('.last_message').css('max-width', $('.list_users').width() / 1.3));
-    // if(!$('.clicked').length){
-    //     $('.header_panel').hide();
-    //     $('#msg_to_send').hide();
-    // } 
-
-    $('#find').keyup(find_user);
+    $find.keyup(find_user);
     $('.list_users').on("click", ".user_block", show_dialog);
     $('#send_btn').click(send_message);
     $('#sing_out').click(exit);
@@ -44,13 +46,13 @@ $(function() {
 
 
     function find_user() {
-        if (!($('#find').val())) {
+        if (!($find.val())) {
             show_user_blocks();
             hide_finded_users();
         } else {
             hide_user_blocks();
             hide_finded_users();
-            socket.emit('find user', $('#find').val());
+            socket.emit('find user', $find.val());
         }
     }
 
@@ -114,8 +116,7 @@ $(function() {
     }
 
 
-    function add_msg(msg) {
-        let $messages = $('.messages');
+    function add_msg_from_db(msg) {
         let text = msg['text'];
         let time = msg_time_converter(msg['time']);
         if (msg['author'] == localStorage.nickname) {
@@ -138,31 +139,10 @@ $(function() {
         $("#msg_to_send").css('height', '40');
         socket.emit('send message to', from, to, text);
         let time = msg_time_converter(Date.now());
-        $('.messages')
+        $messages
             .append($('<div class="answer right"></div>')
                 .append($('<div class="text"></div>').html(text))
                 .append($('<div class="time"></div>').html(time)));
-    }
-
-
-    function time_converter(UNIX_timestamp) {
-        let a = new Date(UNIX_timestamp);
-        let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-        let year = a.getFullYear();
-        let month = months[a.getMonth()];
-        let date = a.getDate();
-        let hour = format_time(a.getHours().toString());
-        let min = format_time(a.getMinutes().toString());
-        let time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
-        return time;
-    }
-
-
-    function msg_time_converter(UNIX_timestamp) {
-        let a = new Date(UNIX_timestamp);
-        let hour = format_time(a.getHours().toString());
-        let min = format_time(a.getMinutes().toString());
-        return hour + ':' + min;
     }
 
 
@@ -185,9 +165,10 @@ $(function() {
 
 
     function find_btn_animation() {
-        $('#find').focus(() => $('#button_settings').toggle(150));
-        $('#find').blur(() => $('#button_settings').toggle(150));
+        $find.focus(() => $('#button_settings').toggle(150));
+        $find.blur(() => $('#button_settings').toggle(150));
     }
+
 
     function clean_msg() {
         $('.messages').empty();
@@ -233,7 +214,7 @@ $(function() {
     socket.on('put user messages', (messages) => {
         clean_msg();
         messages.forEach((msg) => {
-            add_msg(msg);
+            add_msg_from_db(msg);
         });
     });
 
@@ -249,4 +230,25 @@ $(function() {
 function format_time(time) {
     if (time.length == 1) return time = '0' + time;
     return time;
+}
+
+
+function time_converter(UNIX_timestamp) {
+    let a = new Date(UNIX_timestamp);
+    let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    let year = a.getFullYear();
+    let month = months[a.getMonth()];
+    let date = a.getDate();
+    let hour = format_time(a.getHours().toString());
+    let min = format_time(a.getMinutes().toString());
+    let time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
+    return time;
+}
+
+
+function msg_time_converter(UNIX_timestamp) {
+    let a = new Date(UNIX_timestamp);
+    let hour = format_time(a.getHours().toString());
+    let min = format_time(a.getMinutes().toString());
+    return hour + ':' + min;
 }
