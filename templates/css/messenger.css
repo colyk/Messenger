@@ -3,6 +3,9 @@
     --lovely_gray: #A8A8A8FF;
 }
 
+
+/*Resizer*/
+
 .wanker {
     background: #000;
     color: #F50;
@@ -26,6 +29,12 @@
     color: white;
 }
 
+
+/*CHAT*/
+
+
+/*LEFT*/
+
 .chat-body .answer.left {
     padding: 0 0 0 25px;
     text-align: left;
@@ -39,47 +48,14 @@
     clear: both;
 }
 
-.user_nickname{
+.user_nickname {
     font-size: 1.1em;
 }
 
-#user_nickname{
+#user_nickname {
     margin-top: 2px;
     margin-bottom: -3px;
     font-size: 1.1em;
-}
-
-.chat-body .answer.left .avatar {
-    left: 0;
-}
-
-.chat-body .answer .avatar {
-    bottom: 36px;
-}
-
-.chat .avatar {
-    width: 40px;
-    height: 40px;
-    position: absolute;
-}
-
-.chat .avatar img {
-    display: block;
-    border-radius: 20px;
-    height: 100%;
-}
-
-.chat-body .answer .name {
-    font-size: 14px;
-    line-height: 36px;
-}
-
-.chat-body .answer.left .avatar .status {
-    right: 4px;
-}
-
-.chat-body .answer .avatar .status {
-    bottom: 0;
 }
 
 .chat-body .answer.left .text {
@@ -112,7 +88,7 @@
 
 .chat-body .answer.left .time {
     padding-left: 12px;
-        font-size: 0.9em;
+    font-size: 0.9em;
     margin-top: -5px;
     margin-bottom: 4px;
     color: #333333;
@@ -127,9 +103,6 @@
 
 
 
-
-
-
 /*RIGHT*/
 
 .chat-body .answer.right {
@@ -138,13 +111,6 @@
     float: right;
 }
 
-.chat-body .answer.right .avatar {
-    right: 0;
-}
-
-.chat-body .answer.right .avatar .status {
-    left: 4px;
-}
 
 .chat-body .answer.right .text {
     background: #007BFF;
@@ -253,12 +219,17 @@ main {
     font-size: 1.4em;
 }
 
-.d-inline-block{
+#button_menu_dialogue:hover,
+#button_settings:hover {
+    color: #979797FF;
+}
+
+.d-inline-block {
     font-size: 0.9em;
     color: #666;
 }
 
-.button_bar{
+.button_bar {
     color: var(--main_color);
     font-size: 1.4em;
 }
@@ -459,6 +430,8 @@ input:checked[type="checkbox"]::before {
 
 
 
+
+
 /*Bootstrap 4*/
 
 .col,
@@ -590,6 +563,8 @@ input:checked[type="checkbox"]::before {
 
 
 
+
+
 /*Полоса прокрутки*/
 
 
@@ -607,6 +582,8 @@ input:checked[type="checkbox"]::before {
 }
 
 
+
+
 /*слиль повзунка*/
 
 ::-webkit-scrollbar-thumb {
@@ -619,6 +596,8 @@ input:checked[type="checkbox"]::before {
 ::-webkit-scrollbar-thumb:hover {
     /*background-color: #e4d4e4a1;*/
 }
+
+
 
 
 /*::-webkit-scrollbar-track {

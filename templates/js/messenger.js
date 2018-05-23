@@ -31,7 +31,6 @@ $(function() {
         }
     });
 
-
     const $messages = $('.messages');
     const $find = $('#find');
 
@@ -258,7 +257,7 @@ $(function() {
         if (online) {
             $('.user_info_lasttime').html('online');
         } else {
-            $('.user_info_lasttime').timeago('update',new Date(time));
+            $('.user_info_lasttime').timeago('update', new Date(time));
         }
     });
 
@@ -282,7 +281,7 @@ $(function() {
     });
 
 });
-
+jQuery.timeago.settings.cutoff = 1000 * 60 * 60 * 24;
 
 function format_time(time) {
     if (time.length == 1) return time = '0' + time;
