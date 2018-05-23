@@ -14,6 +14,12 @@
 </head>
 
 <body>
+    <div class="wanker" data-wanker>
+        <div class="wanker-content">
+            <h1>The web was meant to be read, not squished.</h1>
+            <p>Don't resize, just relax ;)</p>
+        </div>
+    </div>
     <main>
         <div class="container-fluid">
             <div class="row">
@@ -27,7 +33,6 @@
                         <div class="p-2 but_set_menu">
                             <i class="fa fa-angle-double-left active_but_bar button_bar" id="active_but_bar1"></i>
                         </div>
-                        
                     </div>
                     <!--USERS LIST-->
                     <div class="scroll scroll_left">
@@ -55,7 +60,8 @@
                                 </div>
                             </div>
                         </div>
-                        <!--USER MODAL INFO-->
+                    </div>
+                    <!--USER MODAL INFO-->
                         <div class="modal fade" id="modal_user_info" tabindex="-1" role="dialog" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -116,7 +122,6 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
                     <!--MESSEGES-->
                     <div class="scroll messages chat-body">
                         <div class="answer left">
@@ -132,6 +137,7 @@
                             <div class="time">5 min ago</div>
                         </div>
                     </div>
+                    <button class="btn btn-primary rounded-circle scroll_but"><i class="fa fa-angle-down"></i></button>
                     <div class="input-group" id="send_block">
                         <div class="input-group-prepend">
                             <button class="btn" type="button" id="upload" onclick="clickFindFile();"><i class="fa fa-paperclip"></i></button>
@@ -151,6 +157,7 @@
         </div>
     </main>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/jquery.wanker.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.0/socket.io.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>

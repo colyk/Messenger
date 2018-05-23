@@ -6,10 +6,29 @@ $(function() {
         socket.emit('get dialog list');
     });
 
-
+    let show_alert = true;
     socket.on("connect_error", () => {
-        // Show alert
-        swal("Server is not responding!", "It is not your fault. We are working on it...", "info");
+        if (show_alert) {
+            swal("Server is not responding!", "It is not your fault. We are working on it...", "error", {
+                    buttons: {
+                        stop: {
+                            text: "Don't show it again",
+                            value: "stop",
+                        },
+                        ok: true,
+                    },
+                })
+                .then((value) => {
+                    switch (value) {
+                        case "stop":
+                            show_alert = false;
+                            swal.close();
+                            break;
+                        default:
+                            swal.close();
+                    }
+                });
+        }
     });
 
 
@@ -98,6 +117,8 @@ $(function() {
 
 
     function show_dialog() {
+        $('.header_panel').show();
+        $('#send_block').show();
         show_user_info($(this).find('.user_nickname').html());
         $('.list_users').find('.user_block').removeClass('clicked');;
         $(this).addClass('clicked');
@@ -139,6 +160,7 @@ $(function() {
         $("#msg_to_send").css('height', '40');
         socket.emit('send message to', from, to, text);
         let time = msg_time_converter(Date.now());
+        // $("div.scroll.messages").scrollTop(2200);
         $messages
             .append($('<div class="answer right"></div>')
                 .append($('<div class="text"></div>').html(text))
@@ -163,50 +185,50 @@ $(function() {
         document.location.href = "registration.html";
     }
 
-    
+
     function find_btn_animation() {
-            if($(window).width()>=768){
-                $find.bind('focus', function(){
-                    $('#button_settings').toggle(150);
-                    $('.search_input').css({
-                        'margin-left':'10px'
-                    });
+        if ($(window).width() >= 768) {
+            $find.bind('focus', function() {
+                $('#button_settings').toggle(150);
+                $('.search_input').css({
+                    'margin-left': '10px'
                 });
-                $find.bind('blur', function(){
-                    $('#button_settings').toggle(150);
-                    $('.search_input').css({
-                        'margin-left':'0px'
-                    });
-                });           
-            }else {
-                $find.bind('focus', function(){
-                    $('#button_settings').toggle(150);
-                    $('.but_set_menu').toggle(150);
-                    $('.search_input').css({
-                        "margin-left":"10px",
-                        "margin-right":"10px"
-                    });
+            });
+            $find.bind('blur', function() {
+                $('#button_settings').toggle(150);
+                $('.search_input').css({
+                    'margin-left': '0px'
                 });
-                $find.bind('blur', function(){
-                    $('.but_set_menu').toggle(150);
-                    $('#button_settings').toggle(150);
-                    $('.search_input').css({
-                        "margin-left":"0px",
-                        "margin-right":"0px"
-                    });
-                });    
-            }
+            });
+        } else {
+            $find.bind('focus', function() {
+                $('#button_settings').toggle(150);
+                $('.but_set_menu').toggle(150);
+                $('.search_input').css({
+                    "margin-left": "10px",
+                    "margin-right": "10px"
+                });
+            });
+            $find.bind('blur', function() {
+                $('.but_set_menu').toggle(150);
+                $('#button_settings').toggle(150);
+                $('.search_input').css({
+                    "margin-left": "0px",
+                    "margin-right": "0px"
+                });
+            });
         }
+    }
 
     function clean_msg() {
-        $('.messages').empty();
+        $messages.empty();
     }
 
 
     socket.on('get message', (text, from, timestamp) => {
         let time = msg_time_converter(timestamp);
         if (from !== localStorage.nickname) {
-            $('.messages').append($('<div class="answer left"></div>')
+            $messages.append($('<div class="answer left"></div>')
                 .append($('<div class="text"></div>').html(text))
                 .append($('<div class="time"></div>').html(time)));
         }
