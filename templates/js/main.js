@@ -9,14 +9,14 @@ $(function() {
         $(".left_list").css({'height':$(window).height()});
         $(".center_list").css({'height':$(window).height()});
         $(".scroll").css({'height':$(".center_list").height()-$(".header_panel").height()-$("#send_block").height()-30});
-        if($(window).height()>=768){
+        if($(window).width()>=768){
         $('#active_but_bar2').addClass('active_but_bar');
         }
         else{
             $('#active_but_bar2').addClass('active_but_bar');
         }
     })
-    if($(window).height()>=768)
+    if($(window).width()>=768)
         $('#active_but_bar2').addClass('active_but_bar');
     else
         $('#active_but_bar2').addClass('active_but_bar');
@@ -105,6 +105,14 @@ $(function() {
         $('#active_but_bar2').toggleClass('rotate');
         $('#active_but_bar1').toggleClass('rotate');
     });
+
+    $('.header_panel').hide();
+    $('#send_block').hide();
+
+    if(!$('.clicked').length){
+        $('.header_panel').show();
+        $('#send_block').show();
+    }
 });
 
 //завантаження файла(клік по полю)
