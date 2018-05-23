@@ -1,5 +1,9 @@
 $(function() {
-    $('[data-wanker]').wanker({delay: 1000, duration: 2000});
+
+    $('[data-wanker]').wanker({ delay: 3000, duration: 2000 });
+
+    $('.header_panel').hide();
+    $('#send_block').hide();
 
     ///height screen
     $("html").css({ 'height': $(window).height() });
@@ -11,25 +15,31 @@ $(function() {
         $(".left_list").css({ 'height': $(window).height() });
         $(".center_list").css({ 'height': $(window).height() });
         $(".scroll").css({ 'height': $(".center_list").height() - $(".header_panel").height() - $("#send_block").height() - 30 });
-        if ($(window).height() >= 768) {
-            $('#active_but_bar2').addClass('active_but_bar');
-        } else {
-            $('#active_but_bar2').addClass('active_but_bar');
-        }
-    })
-    if ($(window).height() >= 768)
-        $('#active_but_bar2').addClass('active_but_bar');
-    else
-        $('#active_but_bar2').addClass('active_but_bar');
-    //scroll messages
-    $("div.scroll.messages").scrollTop(300);
+    });
 
+
+    //scroll messages
+    $('::-webkit-scrollbar').css({ 'display': 'none' });
+    $('::-webkit-scrollbar-thumb').css({ 'display': 'none' });
+    $('.messages').scroll(function() {
+        if ($(this).scrollTop() == 0) { //змінити 0
+            $('.scroll_but').fadeOut();
+        } else {
+            $('.scroll_but').fadeIn();
+        }
+    });
+    $('.scroll_but').click(function() {
+        $('.messages').animate({ scrollTop: 9999999 }, 800); //$('.messages').height() не правильно
+    })
+
+
+    $('#active_but_bar1').addClass('active_but_bar');
+    $('#active_but_bar2').addClass('active_but_bar');
     var
         $leftList = $('.left_list'),
         $centerList = $('.center_list'),
         $activeBut = $('.active_but_bar'),
         flagScreen = 1;
-
     $activeBut.on('click', function() {
         if (flagScreen == 0) {
             $leftList.css({
@@ -60,8 +70,6 @@ $(function() {
                     .removeClass('col-md-12')
                     .addClass('col-md-8');
             }
-            $('#active_but_bar2').removeClass('active_but_bar');
-            $('#active_but_bar1').addClass('active_but_bar');
             flagScreen = 1;
         } else {
             $leftList.css({ 'display': 'none' });
@@ -89,17 +97,18 @@ $(function() {
                     .removeClass('col-md-8')
                     .addClass('col-md-12');
             }
-            $('#active_but_bar2').addClass('active_but_bar');
-            $('#active_but_bar1').removeClass('active_but_bar');
             flagScreen = 0;
         }
     });
+
+
     if (localStorage.nickname) {
         let nick = localStorage.nickname.toUpperCase();
         $(".my_photo").text(nick.charAt(0) + nick.charAt(1));
     } else {
         $(".my_photo").text("UN");
     }
+
 
     //переворот стрілки
     $activeBut.on('click', function() {

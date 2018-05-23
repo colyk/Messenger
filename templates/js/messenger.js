@@ -117,6 +117,14 @@ $(function() {
 
 
     function show_dialog() {
+        $('.d-inline-block').css('color', '#666');
+        $('.user_nickname').css('color', '#000');
+        $(this).find('.p-2.badge').hide();
+        $(this).find('.d-inline-block').css('color', '#fff');
+        $(this).find('.user_nickname').css('color', '#fff');
+
+        $('.header_panel').show();
+        $('#send_block').show();
         show_user_info($(this).find('.user_nickname').html());
         $('.list_users').find('.user_block').removeClass('clicked');;
         $(this).addClass('clicked');
