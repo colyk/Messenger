@@ -253,12 +253,13 @@ $(function() {
 
 
     socket.on('put user info', (nickname, online, time) => {
+        $('#user_nickname').html(nickname);
+
         if (online) {
             $('.user_info_lasttime').html('online');
         } else {
-            $('.user_info_lasttime').html('last seen: ' + time_converter(time));
+            $('.user_info_lasttime').timeago('update',new Date(time));
         }
-        $('#user_nickname').html(nickname);
     });
 
 
