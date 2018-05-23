@@ -1,5 +1,5 @@
 $(function() {
-    $('[data-wanker]').wanker({delay: 0, duration: 2000});
+    $('[data-wanker]').wanker({delay: 1000, duration: 2000});
 
     ///height screen
     $("html").css({ 'height': $(window).height() });
