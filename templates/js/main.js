@@ -1,5 +1,5 @@
 $(function() {
-    $('[data-wanker]').wanker({ delay: 3000, duration: 2000 });
+    $('[data-wanker]').wanker({ delay: 93000, duration: 2000 });
 
     $('.header_panel').hide();
     $('#send_block').hide();
@@ -8,11 +8,11 @@ $(function() {
     $("html").css({ 'height': $(window).height() });
     $(".left_list").css({ 'height': $(window).height() });
     $(".center_list").css({ 'height': $(window).height() });
-    $(".scroll").css({ 'height': $(".center_list").height() - 120 });
+    $(".scroll").css({ 'maxHeight': $(".center_list").height() - 120 });
     $(window).resize(function() {
-        $("html").css({ 'height': $(window).height() });
-        $(".left_list").css({ 'height': $(window).height() });
-        $(".center_list").css({ 'height': $(window).height() });
+        $("html").css({ 'height': $(window).height()});
+        $(".left_list").css({ 'height': $(window).height()});
+        $(".center_list").css({ 'height': $(window).height()});
         $(".scroll").css({ 'height': $(".center_list").height() - $(".header_panel").height() - $("#send_block").height() - 30 });
     });
 
@@ -20,15 +20,15 @@ $(function() {
     //scroll messages
     $('::-webkit-scrollbar').css({ 'display': 'none' });
     $('::-webkit-scrollbar-thumb').css({ 'display': 'none' });
-    $('.messages').scroll(function() {
-        if ($(this).scrollTop() == 0) { //змінити 0
+    $('.scroll').scroll(function() {
+        if ($(this).scrollTop() == $('.messages').height()) { //змінити 0
             $('.scroll_but').fadeOut();
         } else {
             $('.scroll_but').fadeIn();
         }
     });
     $('.scroll_but').click(function() {
-        $('.messages').animate({ scrollTop: 9999999 }, 800); //$('.messages').height() не правильно
+        $('.scroll').animate({ scrollTop: $('.messages').height()}, 800); //$('.messages').height() не правильно
     })
 
 

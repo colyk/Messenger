@@ -61,80 +61,12 @@
                             </div>
                         </div>
                     </div>
-                    <!--USER MODAL INFO-->
-                        <div class="modal fade" id="modal_user_info" tabindex="-1" role="dialog" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <div class="user_photo">UN</div>
-                                        <h5 class="modal-title active" id="modalUserInfo">
-                                            <div id="modal_user_nickname">Nickname</div>
-                                        </h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <ul class="config">
-                                            <li class="d-flex">
-                                                <i class="fas fa-bell"></i> Notifications
-                                                <div class="checkbox">
-                                                    <input type="checkbox">
-                                                </div>
-                                            </li>
-                                            <li><i class="fas fa-user-times"></i> Block user</li>
-                                        </ul>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-block btn-secondary" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--MY MODAL INFO-->
-                        <div class="modal fade" id="modal_my_info" tabindex="-1" role="dialog" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <div class="my_photo user_photo"></div>
-                                        <h5 class="modal-title active" id="modalAdminInfo">
-                                            <div id="modal_my_nickname"> My Nickname</div>
-                                            <div id="modal_my_mail">mail@gmail.com</div>
-                                        </h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                            <span aria-hidden="true">&times;</span>
-                                        </button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <ul class="config">
-                                            <li class="d-flex">
-                                                <div class="">Night mode</div>
-                                                <div class="checkbox">
-                                                    <input id="night_mode" type="checkbox">
-                                                </div>
-                                            </li>
-                                            <li id="sing_out"><i class="fa fa-sign-out-alt"></i> Sing out</li>
-                                        </ul>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-block btn-secondary" data-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     <!--MESSEGES-->
-                    <div class="scroll messages chat-body">
-                        <div class="answer left">
-                            <div class="text">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi commodi vero impedit, blanditiis ducimus iusto ab dignissimos ut tenetur, odit repellendus delectus consequuntur. Velit, error possimus quis dicta sed neque!
+                    <div class="scroll">
+                        <div class="messages chat-body">
+                            <div class="alert alert-success" id="alert_text" role="alert">
+                                Please select a chat to start messaging
                             </div>
-                            <div class="time">5 min ago</div>
-                        </div>
-                        <div class="answer right">
-                            <div class="text">
-                                Lorem ipsum dolor sit amet.
-                            </div>
-                            <div class="time">5 min ago</div>
                         </div>
                     </div>
                     <button class="btn btn-primary rounded-circle scroll_but"><i class="fa fa-angle-down"></i></button>
@@ -156,6 +88,67 @@
             </div>
         </div>
     </main>
+    <!--USER MODAL INFO-->
+    <div class="modal fade" id="modal_user_info" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="user_photo">UN</div>
+                    <h5 class="modal-title active" id="modalUserInfo">
+                                            <div id="modal_user_nickname">Nickname</div>
+                                        </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="config">
+                        <li class="d-flex">
+                            <i class="fas fa-bell"></i> Notifications
+                            <div class="checkbox">
+                                <input type="checkbox">
+                            </div>
+                        </li>
+                        <li><i class="fas fa-user-times"></i> Block user</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-block btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--MY MODAL INFO-->
+    <div class="modal fade" id="modal_my_info" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="my_photo user_photo"></div>
+                    <h5 class="modal-title active" id="modalAdminInfo">
+                                            <div id="modal_my_nickname"> My Nickname</div>
+                                            <div id="modal_my_mail">mail@gmail.com</div>
+                                        </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <ul class="config">
+                        <li class="d-flex">
+                            <div class="">Night mode</div>
+                            <div class="checkbox">
+                                <input id="night_mode" type="checkbox">
+                            </div>
+                        </li>
+                        <li id="sing_out"><i class="fa fa-sign-out-alt"></i> Sing out</li>
+                    </ul>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-block btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/jquery.wanker.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

@@ -317,7 +317,11 @@ main {
     max-width: 80%;
     margin-left: 20%;
 }
-
+#alert_text{
+    max-width: 320px;
+    position: relative;
+    margin: 50% auto;
+}
 #msg_to_send {
     min-height: 40px;
     max-height: 140px;
