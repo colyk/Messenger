@@ -59,8 +59,8 @@
 }
 
 .chat-body .answer.left .text {
-    background: #ebebeb;
-    color: #333333;
+    background: #FFFFFFFF;
+    color: #000;
     border-radius: 8px 8px 8px 0;
 }
 
@@ -73,7 +73,7 @@
 
 .chat-body .answer.left .text:before {
     left: -30px;
-    border-right-color: #ebebeb;
+    border-right-color: #FFFFFFFF;
     border-right-width: 12px;
 }
 
@@ -295,9 +295,16 @@ main {
 }
 
 .messages {
-    /*background-image: url("https://static.pexels.com/photos/257360/pexels-photo-257360.jpeg");*/
-    background-size: cover;
-    margin: 10px 0px 10px 0px;
+    /*background-image: url("https://webfon.top/wp-content/uploads/2018/04/tic-tac-toe.png");*/
+    /*background-image: url("https://webfon.top/wp-content/uploads/2017/10/tools.png");*/
+    /*background-image: url("https://webfon.top/wp-content/uploads/2016/11/restaurant-1.png");*/
+    /*background-image: url("https://webfon.top/wp-content/uploads/2016/10/tetrad-v-kletku.jpg");*/
+    /*background-image: url("https://webfon.top/wp-content/uploads/2016/10/osennij-ornament.png");*/
+    /*background-image: url("https://webfon.top/wp-content/uploads/2016/10/krasny_kirpich.png");*/
+    background-image: url("https://webfon.top/wp-content/uploads/2016/10/4.jpg"); 
+    background-size: auto;
+  
+    margin: 0px 0px 0px 0px;
     padding: 5px 10px 5px 10px;
 }
 
@@ -332,7 +339,7 @@ main {
 }
 
 .scroll {
-    margin-top: 15px;
+    margin-top: 0px;
     position: relative;
     width: 100%;
     /*height: 480px;*/

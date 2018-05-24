@@ -116,6 +116,7 @@ $(function() {
 
 
     function show_dialog() {
+        $('.center_list').css({'background-image': ''});
         $('.d-inline-block').css('color', '#666');
         $('.user_nickname').css('color', '#000');
         $(this).find('.p-2.badge').hide();
@@ -184,9 +185,7 @@ $(function() {
 
 
     function exit() {
-        localStorage.remember = false;
-        localStorage.nickname = '';
-        localStorage.password = '';
+        localStorage.clear();
         document.location.href = "registration.html";
     }
 
