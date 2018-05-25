@@ -31,7 +31,6 @@ $(function() {
         }
     });
 
-
     const $messages = $('.messages');
     const $find = $('#find');
 
@@ -117,6 +116,13 @@ $(function() {
 
 
     function show_dialog() {
+        $('.center_list').css({'background-image': ''});
+        $('.d-inline-block').css('color', '#666');
+        $('.user_nickname').css('color', '#000');
+        $(this).find('.p-2.badge').hide();
+        $(this).find('.d-inline-block').css('color', '#fff');
+        $(this).find('.user_nickname').css('color', '#fff');
+
         $('.header_panel').show();
         $('#send_block').show();
         show_user_info($(this).find('.user_nickname').html());
@@ -179,9 +185,7 @@ $(function() {
 
 
     function exit() {
-        localStorage.remember = false;
-        localStorage.nickname = '';
-        localStorage.password = '';
+        localStorage.clear();
         document.location.href = "registration.html";
     }
 
@@ -247,12 +251,13 @@ $(function() {
 
 
     socket.on('put user info', (nickname, online, time) => {
+        $('#user_nickname').html(nickname);
+
         if (online) {
             $('.user_info_lasttime').html('online');
         } else {
-            $('.user_info_lasttime').html('last seen: ' + time_converter(time));
+            $('.user_info_lasttime').timeago('update', new Date(time));
         }
-        $('#user_nickname').html(nickname);
     });
 
 
@@ -275,7 +280,7 @@ $(function() {
     });
 
 });
-
+jQuery.timeago.settings.cutoff = 1000 * 60 * 60 * 24;
 
 function format_time(time) {
     if (time.length == 1) return time = '0' + time;
