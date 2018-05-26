@@ -31,6 +31,7 @@ $(function() {
         }
     });
 
+
     const $messages = $('.messages');
     const $find = $('#find');
 
@@ -42,7 +43,11 @@ $(function() {
     $('.list_users').on("click", ".user_block", show_dialog);
     $('#send_btn').click(send_message);
     $('#sing_out').click(exit);
-    $('#msg_to_send').keyup((event) => {
+    $(document).keyup((e) => hide_messages_body(e));
+    $('#msg_to_send').keyup((e) => send_message_enter(e));
+
+
+    function send_message_enter(event) {
         if (!event.ctrlKey && event.which == 13) {
             event.preventDefault();
             if ($('#msg_to_send').val().length > 1) {
@@ -60,7 +65,18 @@ $(function() {
             $("#msg_to_send").css('height', '+=20');
             if ($("#msg_to_send").css('height') != '140px') $("#msg_to_send").css('margin-top', '-=20');
         }
-    });
+    }
+
+
+    function hide_messages_body(event) {
+        if (event.keyCode == 27) {
+            $('.center_list').css({ 'background-image': 'url("https://webfon.top/wp-content/uploads/2016/10/4.jpg"', 'background-size': 'auto' });
+            $('.header_panel').hide();
+            $('#send_block').hide();
+            clean_msg();
+            $('.greeting').show();
+        }
+    }
 
 
     function find_user() {
@@ -91,14 +107,17 @@ $(function() {
     }
 
 
-    function add_finded_user(nick, last_msg, msg_count) {
+    function add_finded_user(nick, last_msg, msg_count, time) {
         let logo = nick.charAt(0).toUpperCase() + nick.charAt(1).toUpperCase();
         $('<li class="list-group-item d-flex flex-row user_block finded" ></li>')
-            .append($('<div class="user_photo"></div>').html(logo))
+            .append($('<div class="user_photo"></div>').text(logo))
             .append($('<div></div>')
-                .append($('<div class="user_nickname"></div>').html(nick),
-                    $('<div class="d-inline-block text-truncate" class="last_message"></div>').html(last_msg)))
-            .append($('<div class="ml-auto p-2 badge badge-primary badge-pill "></div>').html(msg_count))
+                .append($('<div class="user_nickname"></div>').text(nick),
+                    $('<div class="d-inline-block text-truncate" class="last_message"></div>').text(last_msg)))
+
+            .append($('<div class="p-2 ml-auto text-center" />')
+                .append($('<div class="last_msg_time" />').text(time),
+                    $('<div class="msg_count badge badge-primary badge-pill" />').text(msg_count)))
             .appendTo('.list_users');
     }
 
@@ -108,26 +127,42 @@ $(function() {
         socket.emit('get messages count', nick);
         let logo = nick.charAt(0).toUpperCase() + nick.charAt(1).toUpperCase();
         $('<li class="list-group-item d-flex flex-row user_block dialog" />').attr('id', nick + '_nick')
-            .append($('<div class="user_photo" />').html(logo))
+            .append($('<div class="user_photo" />').text(logo))
             .append($('<div />')
-                .append($('<div class="user_nickname" />').html(nick),
-                    $('<div class="d-inline-block text-truncate last_message" />').html('last_msg')))
+                .append($('<div class="user_nickname" />').text(nick),
+                    $('<div class="d-inline-block text-truncate last_message" />').text('default_last_msg')))
 
             .append($('<div class="p-2 ml-auto text-center" />')
-                .append($('<div class="last_msg_time" />').html('10:15'),
-                    $('<div class="msg_count badge badge-primary badge-pill" />').html('10')))
+                .append($('<div class="last_msg_time" />').text('10:15'),
+                    $('<div class="msg_count badge badge-primary badge-pill" />').text(0)))
             .appendTo('.list_users');
     }
 
 
     function show_dialog() {
-
         $('.center_list').css({ 'background-image': '' });
         $('.d-inline-block').css('color', '#666');
         $('.user_nickname').css('color', '#000');
         $('.last_msg_time').css('color', '#333');
+        //clickActiveBut();//треба функцію тут визвати
         $(this).find('.msg_count').hide();
 
+        $(this).find('.d-inline-block').css('color', '#fff');
+        $(this).find('.user_nickname').css('color', '#fff');
+        $(this).find('.last_msg_time').css('color', '#fff');
+
+        $('.header_panel').show();
+        $('#send_block').show();
+        show_user_info($(this).find('.user_nickname').html());
+        $('.list_users').find('.user_block').removeClass('clicked');;
+        $(this).addClass('clicked');
+        localStorage.to = $(this).find('.user_nickname').html();
+        show_user_msg();
+        search_input_style();
+    }
+
+
+    function search_input_style() {
         if ($(window).width() < 768) {
             $('.but_set_menu').css({ 'display': 'block' });
             $('.search_input').css({ 'margin-right': '0px' });
@@ -142,21 +177,6 @@ $(function() {
                 $('.search_input').css({ 'margin-right': '0px' });
             }
         });
-
-        //clickActiveBut();//треба функцію тут визвати
-        $(this).find('.p-2.badge').hide();
-
-        $(this).find('.d-inline-block').css('color', '#fff');
-        $(this).find('.user_nickname').css('color', '#fff');
-        $(this).find('.last_msg_time').css('color', '#fff');
-
-        $('.header_panel').show();
-        $('#send_block').show();
-        show_user_info($(this).find('.user_nickname').html());
-        $('.list_users').find('.user_block').removeClass('clicked');;
-        $(this).addClass('clicked');
-        localStorage.to = $(this).find('.user_nickname').html();
-        show_user_msg();
     }
 
 
@@ -167,6 +187,7 @@ $(function() {
 
     function show_user_msg() {
         socket.emit('get user messages', localStorage.nickname, localStorage.to);
+        $('.greeting').hide();
     }
 
 
@@ -175,12 +196,12 @@ $(function() {
         let time = msg_time_converter(msg['time']);
         if (msg['author'] == localStorage.nickname) {
             $messages.append($('<div class="answer right" />')
-                .append($('<div class="text" />').html(text))
-                .append($('<div class="time" />').html(time)));
+                .append($('<div class="text" />').text(text))
+                .append($('<div class="time" />').text(time)));
         } else {
             $messages.append($('<div class="answer left" />')
-                .append($('<div class="text" />').html(text))
-                .append($('<div class="time" />').html(time)));
+                .append($('<div class="text" />').text(text))
+                .append($('<div class="time" />').text(time)));
         }
     }
 
@@ -196,8 +217,8 @@ $(function() {
         //$(".scroll").scrollTop($('.scroll').prop('scrollHeight')+ $('.scroll').height());
         $messages
             .append($('<div class="answer right"></div>')
-                .append($('<div class="text"></div>').html(text))
-                .append($('<div class="time"></div>').html(time)));
+                .append($('<div class="text"></div>').text(text))
+                .append($('<div class="time"></div>').text(time)));
     }
 
 
@@ -206,7 +227,7 @@ $(function() {
         if (localStorage.nickname) {
             let nick = localStorage.nickname.toUpperCase();
             $(".my_photo").text(nick.charAt(0) + nick.charAt(1));
-            $('#modal_my_nickname').html(localStorage.nickname);
+            $('#modal_my_nickname').text(localStorage.nickname);
         }
     }
 
@@ -276,15 +297,15 @@ $(function() {
         let time = msg_time_converter(timestamp);
         if (from !== localStorage.nickname) {
             $messages.append($('<div class="answer left" />')
-                .append($('<div class="text" />').html(text))
-                .append($('<div class="time" />').html(time)));
+                .append($('<div class="text" />').text(text))
+                .append($('<div class="time" />').text(time)));
         }
     });
 
 
     socket.on('finded user', (nickname) => {
         console.info('User ' + nickname + ' exist');
-        add_finded_user(nickname, 'last_msg', '11');
+        add_finded_user(nickname, 'last_msg', '11', 'time');
     });
 
 
@@ -294,10 +315,10 @@ $(function() {
 
 
     socket.on('put user info', (nickname, online, time) => {
-        $('#user_nickname').html(nickname);
+        $('#user_nickname').text(nickname);
 
         if (online) {
-            $('.user_info_lasttime').html('online');
+            $('.user_info_lasttime').text('online');
         } else {
             $('.user_info_lasttime').timeago('update', new Date(time));
         }
@@ -305,16 +326,14 @@ $(function() {
 
 
     socket.on('put my info', (email) => {
-        $('#modal_my_mail').html(email);
+        $('#modal_my_mail').text(email);
     });
 
 
     socket.on('put user messages', (messages) => {
         clean_msg();
-        messages.forEach((msg) => {
-            add_msg_from_db(msg);
-        });
-         $(".scroll").scrollTop($('.scroll').prop('scrollHeight') + $('.scroll').height());
+        messages.forEach((msg) => add_msg_from_db(msg));
+        $(".scroll").scrollTop($('.scroll').prop('scrollHeight') + $('.scroll').height());
     });
 
 
@@ -327,12 +346,12 @@ $(function() {
 
     socket.on('put last message', (to, author, text, time) => {
         let dialog = $('#' + to + '_nick');
-        dialog.find('.last_msg_time').html(last_msg_time_converter(time));
+        dialog.find('.last_msg_time').text(last_msg_time_converter(time));
         if (localStorage.nickname == author) {
-            dialog.find('.last_message').html('You: ' + text);
+            dialog.find('.last_message').text('You: ' + text);
 
         } else {
-            dialog.find('.last_message').html(text);
+            dialog.find('.last_message').text(text);
         }
 
     });
