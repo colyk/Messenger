@@ -116,7 +116,7 @@ $(function() {
 
 
     function show_dialog() {
-        $('.center_list').css({'background-image': ''});
+        $('.center_list').css({ 'background-image': '' });
         $('.d-inline-block').css('color', '#666');
         $('.user_nickname').css('color', '#000');
         $(this).find('.p-2.badge').hide();
@@ -147,13 +147,13 @@ $(function() {
         let text = msg['text'];
         let time = msg_time_converter(msg['time']);
         if (msg['author'] == localStorage.nickname) {
-            $messages.append($('<div class="answer right"></div>')
-                .append($('<div class="text"></div>').html(text))
-                .append($('<div class="time"></div>').html(time)));
+            $messages.append($('<div class="answer right" />')
+                .append($('<div class="text" />').html(text))
+                .append($('<div class="time" />').html(time)));
         } else {
-            $messages.append($('<div class="answer left"></div>')
-                .append($('<div class="text"></div>').html(text))
-                .append($('<div class="time"></div>').html(time)));
+            $messages.append($('<div class="answer left" />')
+                .append($('<div class="text" />').html(text))
+                .append($('<div class="time" />').html(time)));
         }
     }
 
@@ -232,9 +232,9 @@ $(function() {
     socket.on('get message', (text, from, timestamp) => {
         let time = msg_time_converter(timestamp);
         if (from !== localStorage.nickname) {
-            $messages.append($('<div class="answer left"></div>')
-                .append($('<div class="text"></div>').html(text))
-                .append($('<div class="time"></div>').html(time)));
+            $messages.append($('<div class="answer left" />')
+                .append($('<div class="text" />').html(text))
+                .append($('<div class="time" />').html(time)));
         }
     });
 
@@ -273,6 +273,7 @@ $(function() {
         });
     });
 
+
     socket.on('put dialog list', (dialog_list) => {
         dialog_list.forEach((nickname) => {
             add_dialog(nickname);
@@ -280,26 +281,12 @@ $(function() {
     });
 
 });
-jQuery.timeago.settings.cutoff = 1000 * 60 * 60 * 24;
+
 
 function format_time(time) {
     if (time.length == 1) return time = '0' + time;
     return time;
 }
-
-
-function time_converter(UNIX_timestamp) {
-    let a = new Date(UNIX_timestamp);
-    let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-    let year = a.getFullYear();
-    let month = months[a.getMonth()];
-    let date = a.getDate();
-    let hour = format_time(a.getHours().toString());
-    let min = format_time(a.getMinutes().toString());
-    let time = date + ' ' + month + ' ' + year + ' ' + hour + ':' + min;
-    return time;
-}
-
 
 function msg_time_converter(UNIX_timestamp) {
     let a = new Date(UNIX_timestamp);
