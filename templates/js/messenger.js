@@ -1,3 +1,4 @@
+// TODO: random colors for user logo
 $(function() {
     const socket = io.connect('http://127.0.0.1:3000/', { 'transports': ['websocket'] });
 
@@ -6,31 +7,7 @@ $(function() {
         socket.emit('get dialog list');
     });
 
-    let show_alert = true;
-    socket.on("connect_error", () => {
-        if (show_alert) {
-            swal("Server is not responding!", "It is not your fault. We are working on it...", "error", {
-                    buttons: {
-                        stop: {
-                            text: "Don't show it again",
-                            value: "stop",
-                        },
-                        ok: true,
-                    },
-                })
-                .then((value) => {
-                    switch (value) {
-                        case "stop":
-                            show_alert = false;
-                            swal.close();
-                            break;
-                        default:
-                            swal.close();
-                    }
-                });
-        }
-    });
-
+    socket.on("connect_error", () => connect_error_alert());
 
     const $messages = $('.messages');
     const $find = $('#find');
@@ -44,15 +21,14 @@ $(function() {
     $('#send_btn').click(send_message);
     $('#sing_out').click(exit);
     $(document).keyup((e) => hide_messages_body(e));
-    $('#msg_to_send').keyup((e) => send_message_enter(e));
+    $('#msg_to_send').keypress((e) => send_message_enter(e));
 
 
     function send_message_enter(event) {
         if (!event.ctrlKey && event.which == 13) {
             event.preventDefault();
-            if ($('#msg_to_send').val().length > 1) {
+            if ($('#msg_to_send').val().length > 0) {
                 send_message();
-                $('#msg_to_send').val('');
             }
             return;
         }
@@ -210,15 +186,17 @@ $(function() {
         let from = localStorage.nickname;
         let to = localStorage.to;
         let text = $('#msg_to_send').val().trim();
+        socket.emit('send message to', from, to, text);
+        
         $('#msg_to_send').val('');
         $("#msg_to_send").css('height', '40');
-        socket.emit('send message to', from, to, text);
         let time = msg_time_converter(Date.now());
-        //$(".scroll").scrollTop($('.scroll').prop('scrollHeight')+ $('.scroll').height());
         $messages
             .append($('<div class="answer right"></div>')
                 .append($('<div class="text"></div>').text(text))
                 .append($('<div class="time"></div>').text(time)));
+
+        $(".scroll").scrollTop($('.scroll').prop('scrollHeight') + $('.scroll').height());
     }
 
 
@@ -333,7 +311,7 @@ $(function() {
     socket.on('put user messages', (messages) => {
         clean_msg();
         messages.forEach((msg) => add_msg_from_db(msg));
-        $(".scroll").scrollTop($('.scroll').prop('scrollHeight') + $('.scroll').height());
+        $(".scroll").scrollTop($('.scroll').prop('scrollHeight') - $('.scroll').height());
     });
 
 
@@ -358,11 +336,14 @@ $(function() {
 
 });
 
+let show_alert = true;
+
 
 function format_time(time) {
     if (time.length == 1) return time = '0' + time;
     return time;
 }
+
 
 function msg_time_converter(UNIX_timestamp) {
     let a = new Date(UNIX_timestamp);
@@ -370,6 +351,7 @@ function msg_time_converter(UNIX_timestamp) {
     let min = format_time(a.getMinutes().toString());
     return hour + ':' + min;
 }
+
 
 function last_msg_time_converter(UNIX_timestamp) {
     let msg_time = new Date(UNIX_timestamp);
@@ -388,5 +370,30 @@ function last_msg_time_converter(UNIX_timestamp) {
         return hour + ':' + min + '';
     } else {
         return msg_date + '.' + format_time((msg_month + 1).toString()) + '.' + msg_year.toString().slice(-2);
+    }
+}
+
+
+function connect_error_alert() {
+    if (show_alert) {
+        swal("Server is not responding!", "It is not your fault. We are working on it...", "error", {
+                buttons: {
+                    stop: {
+                        text: "Don't show it again",
+                        value: "stop",
+                    },
+                    ok: true,
+                },
+            })
+            .then((value) => {
+                switch (value) {
+                    case "stop":
+                        show_alert = false;
+                        swal.close();
+                        break;
+                    default:
+                        swal.close();
+                }
+            });
     }
 }

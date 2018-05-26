@@ -4,12 +4,6 @@
 }
 
 
-
-
-
-
-
-
 /*Resizer*/
 
 .wanker {
@@ -36,16 +30,7 @@
 }
 
 
-
-
-
-
-
-
-/*CHAT*/
-
-
-/*LEFT*/
+/*CHAT LEFT*/
 
 .chat-body .answer.left {
     padding: 0 0 0 25px;
@@ -115,13 +100,7 @@
 
 
 
-
-
-
-
-
-
-/*RIGHT*/
+/*CHAT RIGHT*/
 
 .chat-body .answer.right {
     padding: 0 25px 0 0;
@@ -285,7 +264,7 @@ main {
 .user_photo {
     border-radius: 50%;
     color: white;
-    background-color: #444;
+    background-color: #555;
     font-size: 26px;
     width: 40px;
     height: 40px;
@@ -463,15 +442,6 @@ input:checked[type="checkbox"]::before {
 }
 
 
-
-
-
-
-
-
-
-
-
 /*Image picker*/
 
 #modal_cur_img {
@@ -510,6 +480,8 @@ input:checked[type="checkbox"]::before {
     height: 100px;
     margin: 10px;
 }
+
+
 
 
 
@@ -640,15 +612,6 @@ input:checked[type="checkbox"]::before {
 
 
 
-
-
-
-
-
-
-
-
-
 /*Полоса прокрутки*/
 
 
@@ -664,14 +627,6 @@ input:checked[type="checkbox"]::before {
 ::-webkit-scrollbar:hover {
     /*background: #cacaca30;*/
 }
-
-
-
-
-
-
-
-
 
 
 /*слиль повзунка*/
@@ -690,12 +645,6 @@ input:checked[type="checkbox"]::before {
 
 
 
-
-
-
-
-
-
 /*::-webkit-scrollbar-track {
     -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
     background-color: #F5F5F5;
@@ -706,3 +655,8 @@ input:checked[type="checkbox"]::before {
 ::-webkit-scrollbar-corner {
     background-color: #b3b3b3;
 }*/
+
+::selection {
+    color: black;
+    background-color: #9EC8E9D0;
+}
