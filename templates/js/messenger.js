@@ -121,12 +121,32 @@ $(function() {
 
 
     function show_dialog() {
+
         $('.center_list').css({ 'background-image': '' });
         $('.d-inline-block').css('color', '#666');
         $('.user_nickname').css('color', '#000');
         $('.last_msg_time').css('color', '#333');
-        
+
         $(this).find('.msg_count').hide();
+
+        if ($(window).width() < 768) {
+            $('.but_set_menu').css({ 'display': 'block' });
+            $('.search_input').css({ 'margin-right': '0px' });
+        }
+        $(window).resize(() => {
+            if ($(window).width() >= 768) {
+                $('.but_set_menu').css({ 'display': 'none' });
+                $('.search_input').css({ 'margin-right': '10px' });
+            }
+            if ($(window).width() < 768) {
+                $('.but_set_menu').css({ 'display': 'block' });
+                $('.search_input').css({ 'margin-right': '0px' });
+            }
+        });
+
+        //clickActiveBut();//треба функцію тут визвати
+        $(this).find('.p-2.badge').hide();
+
         $(this).find('.d-inline-block').css('color', '#fff');
         $(this).find('.user_nickname').css('color', '#fff');
         $(this).find('.last_msg_time').css('color', '#fff');
@@ -174,7 +194,7 @@ $(function() {
         $("#msg_to_send").css('height', '40');
         socket.emit('send message to', from, to, text);
         let time = msg_time_converter(Date.now());
-        // $("div.scroll.messages").scrollTop(2200);
+        //$(".scroll").scrollTop($('.scroll').prop('scrollHeight')+ $('.scroll').height());
         $messages
             .append($('<div class="answer right"></div>')
                 .append($('<div class="text"></div>').html(text))
@@ -201,33 +221,49 @@ $(function() {
     function find_btn_animation() {
         if ($(window).width() >= 768) {
             $find.bind('focus', function() {
+                if ($('.but_set_menu').css('display') == 'block') $('.but_set_menu').toggle(150);
                 $('#button_settings').toggle(150);
                 $('.search_input').css({
-                    'margin-left': '10px'
+                    'margin-left': '10px',
+                    'margin-right': '10px'
                 });
             });
             $find.bind('blur', function() {
+                if ($('.but_set_menu').css('display') == 'none' && $(".clicked").length != 0 && $(window).width() < 768) {
+                    $('.but_set_menu').toggle(150);
+                    $('.search_input').css({
+                        "margin-left": "0px",
+                        "margin-right": "0px"
+                    });
+                } else
+                    $('.search_input').css({
+                        "margin-left": "0px",
+                        "margin-right": "10px"
+                    });
                 $('#button_settings').toggle(150);
-                $('.search_input').css({
-                    'margin-left': '0px'
-                });
             });
         } else {
             $find.bind('focus', function() {
+                if ($('.but_set_menu').css('display') == 'block') $('.but_set_menu').toggle(150);
                 $('#button_settings').toggle(150);
-                $('.but_set_menu').toggle(150);
                 $('.search_input').css({
                     "margin-left": "10px",
                     "margin-right": "10px"
                 });
             });
             $find.bind('blur', function() {
-                $('.but_set_menu').toggle(150);
+                if ($('.but_set_menu').css('display') == 'none' && $(".clicked").length != 0 && $(window).width() < 768) {
+                    $('.but_set_menu').toggle(150);
+                    $('.search_input').css({
+                        "margin-left": "0px",
+                        "margin-right": "0px"
+                    });
+                } else
+                    $('.search_input').css({
+                        "margin-left": "0px",
+                        "margin-right": "10px"
+                    });
                 $('#button_settings').toggle(150);
-                $('.search_input').css({
-                    "margin-left": "0px",
-                    "margin-right": "0px"
-                });
             });
         }
     }
@@ -279,6 +315,7 @@ $(function() {
         messages.forEach((msg) => {
             add_msg_from_db(msg);
         });
+         $(".scroll").scrollTop($('.scroll').prop('scrollHeight') + $('.scroll').height());
     });
 
 
@@ -332,6 +369,6 @@ function last_msg_time_converter(UNIX_timestamp) {
         let min = format_time(msg_time.getMinutes().toString());
         return hour + ':' + min + '';
     } else {
-        return msg_date + '.' + format_time((msg_month+1).toString())+'.'+msg_year.toString().slice(-2);
+        return msg_date + '.' + format_time((msg_month + 1).toString()) + '.' + msg_year.toString().slice(-2);
     }
 }

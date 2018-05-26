@@ -9,6 +9,7 @@
 
 
 
+
 /*Resizer*/
 
 .wanker {
@@ -33,6 +34,7 @@
 .wanker-content>p {
     color: white;
 }
+
 
 
 
@@ -118,6 +120,7 @@
 
 
 
+
 /*RIGHT*/
 
 .chat-body .answer.right {
@@ -182,7 +185,6 @@ main {
 .search_input {
     max-height: 40px;
     width: 100%;
-    margin-right: 10px;
 }
 
 .button_search {
@@ -226,6 +228,7 @@ main {
 
 .but_set_menu {
     display: none;
+    margin: auto;
 }
 
 #button_menu_dialogue {
@@ -315,16 +318,6 @@ main {
 }
 
 .messages {
-    /*background-image: url("https://webfon.top/wp-content/uploads/2018/04/tic-tac-toe.png");*/
-    /*background-image: url("https://webfon.top/wp-content/uploads/2017/10/tools.png");*/
-    /*background-image: url("https://webfon.top/wp-content/uploads/2016/11/restaurant-1.png");*/
-    /*background-image: url("https://webfon.top/wp-content/uploads/2016/10/tetrad-v-kletku.jpg");*/
-    /*background-image: url("https://webfon.top/wp-content/uploads/2016/10/osennij-ornament.png");*/
-    /*background-image: url("https://webfon.top/wp-content/uploads/2016/10/krasny_kirpich.png");*/
-    background-image: url("https://webfon.top/wp-content/uploads/2016/10/4.jpg");
-    background-size: auto;
-
-    margin: 0px 0px 0px 0px;
     padding: 5px 10px 5px 10px;
 }
 
@@ -345,10 +338,17 @@ main {
     margin-left: 20%;
 }
 
+#alert_text {
+    border-radius: 30px;
+    max-width: 320px;
+    position: relative;
+    margin: 50% auto 0;
+}
+
 #msg_to_send {
     min-height: 40px;
     max-height: 140px;
-    margin: 0 -50px 0 -80px;
+    margin: 0 -40px 0 -80px;
     padding-left: 80px;
     padding-right: 40px;
     z-index: 0;
@@ -359,6 +359,15 @@ main {
 }
 
 .scroll {
+    /*background-image: url("https://webfon.top/wp-content/uploads/2018/04/tic-tac-toe.png");*/
+    /*background-image: url("https://webfon.top/wp-content/uploads/2017/10/tools.png");*/
+    /*background-image: url("https://webfon.top/wp-content/uploads/2016/11/restaurant-1.png");*/
+    /*background-image: url("https://webfon.top/wp-content/uploads/2016/10/tetrad-v-kletku.jpg");*/
+    /*background-image: url("https://webfon.top/wp-content/uploads/2016/10/osennij-ornament.png");*/
+    /*background-image: url("https://webfon.top/wp-content/uploads/2016/10/krasny_kirpich.png");*/
+    background-image: url("https://webfon.top/wp-content/uploads/2016/10/4.jpg");
+    background-size: auto;
+
     margin-top: 0px;
     position: relative;
     width: 100%;
@@ -369,7 +378,6 @@ main {
 
 .scroll_left {
     /*height: 518px;*/
-    height: 100%;
 }
 
 .config {
@@ -463,6 +471,7 @@ input:checked[type="checkbox"]::before {
 
 
 
+
 /*Image picker*/
 
 #modal_cur_img {
@@ -501,6 +510,7 @@ input:checked[type="checkbox"]::before {
     height: 100px;
     margin: 10px;
 }
+
 
 
 
@@ -613,13 +623,6 @@ input:checked[type="checkbox"]::before {
     .scroll_left {
         height: 468px;
     }
-    .search_input {
-        margin-right: 0;
-    }
-    .but_set_menu {
-        display: block;
-        margin: auto;
-    }
     .header_panel_left {
         border-bottom: 1px solid #dee2e6!important;
     }
@@ -634,6 +637,7 @@ input:checked[type="checkbox"]::before {
 #menu_dialogue.dropdown-toggle::after {
     content: none;
 }
+
 
 
 
@@ -669,6 +673,7 @@ input:checked[type="checkbox"]::before {
 
 
 
+
 /*слиль повзунка*/
 
 ::-webkit-scrollbar-thumb {
@@ -681,6 +686,7 @@ input:checked[type="checkbox"]::before {
 ::-webkit-scrollbar-thumb:hover {
     /*background-color: #e4d4e4a1;*/
 }
+
 
 
 
