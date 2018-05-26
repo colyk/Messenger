@@ -4,14 +4,14 @@ $(function() {
         $leftList = $('.left_list'),
         $centerList = $('.center_list'),
         $activeBut = $('.active_but_bar');
-        $activeButLeft = $('#active_but_bar1');
-        $activeButCenter = $('#active_but_bar2');
-    var 
+    $activeButLeft = $('#active_but_bar1');
+    $activeButCenter = $('#active_but_bar2');
+    var
         flagScreen = 1;
 
     $('[data-wanker]').wanker({ delay: 93000, duration: 2000 });
 
-    $('.center_list').css({'background-image': 'url("https://webfon.top/wp-content/uploads/2016/10/4.jpg"', 'background-size': 'auto'});
+    $('.center_list').css({ 'background-image': 'url("https://webfon.top/wp-content/uploads/2016/10/4.jpg"', 'background-size': 'auto' });
     $('.header_panel').hide();
     $('#send_block').hide();
 
@@ -20,16 +20,16 @@ $(function() {
     $("html").css({ 'height': $(window).height() });
     $(".left_list").css({ 'height': $(window).height() });
     $(".center_list").css({ 'height': $(window).height() });
-    $(".scroll").css({ 'height': $(window).height() - 89});
-    $(".scroll_left").css({ 'height': $(window).height() - $(".header_panel_left")});
-    $('.search_input').css({"margin-right": "10px"});
+    $(".scroll").css({ 'height': $(window).height() - 89 });
+    $(".scroll_left").css({ 'height': $(window).height() - $(".header_panel_left") });
+    $('.search_input').css({ "margin-right": "10px" });
 
     $(window).resize(function() {
-        $("html").css({ 'height': $(window).height()});
-        $(".left_list").css({ 'height': $(window).height()});
-        $(".center_list").css({ 'height': $(window).height()});
-        $(".scroll").css({ 'height': $(window).height() - 89});
-        $(".scroll_left").css({ 'height': $(window).height() - $(".header_panel_left")});
+        $("html").css({ 'height': $(window).height() });
+        $(".left_list").css({ 'height': $(window).height() });
+        $(".center_list").css({ 'height': $(window).height() });
+        $(".scroll").css({ 'height': $(window).height() - 89 });
+        $(".scroll_left").css({ 'height': $(window).height() - $(".header_panel_left") });
     });
 
     //scroll messages
@@ -41,12 +41,12 @@ $(function() {
         }
     });
     $('.scroll_but').click(function() {
-        $('.scroll').animate({ scrollTop: $('.scroll').prop('scrollHeight')- $('.scroll').height()}, 800); //$('.messages').height() не правильно
+        $('.scroll').animate({ scrollTop: $('.scroll').prop('scrollHeight') - $('.scroll').height() }, 800); //$('.messages').height() не правильно
     })
 
     $activeButLeft.addClass('active_but_bar');
     $activeButCenter.addClass('active_but_bar');
-    
+
     $activeButLeft.on('click', clickActiveBut);
     $activeButCenter.on('click', clickActiveBut);
 
