@@ -126,7 +126,6 @@ $(function() {
         $('.d-inline-block').css('color', '#666');
         $('.user_nickname').css('color', '#000');
         $('.last_msg_time').css('color', '#333');
-
         $(this).find('.msg_count').hide();
 
         if ($(window).width() < 768) {

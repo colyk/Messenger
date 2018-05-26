@@ -35,12 +35,14 @@ $(function() {
     //scroll messages
     $('.scroll').scroll(function() {
         if ($(this).scrollTop() > $('.scroll').prop('scrollHeight') - $('.scroll').height() - 100) {
+
             $('.scroll_but').fadeOut();
         } else {
             $('.scroll_but').fadeIn();
         }
     });
     $('.scroll_but').click(function() {
+
         $('.scroll').animate({ scrollTop: $('.scroll').prop('scrollHeight') - $('.scroll').height() }, 800); //$('.messages').height() не правильно
     })
 
