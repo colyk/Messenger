@@ -119,6 +119,16 @@ $(function() {
         $('.center_list').css({'background-image': ''});
         $('.d-inline-block').css('color', '#666');
         $('.user_nickname').css('color', '#000');
+        if($(window).width() < 768){
+            $('.but_set_menu').css({'display' : 'block'});
+            $('.search_input').css({'margin-right' : '0px'});
+            $(window).resize(
+                () =>{  $('.but_set_menu').css({'display' : 'none'});
+                        $('.search_input').css({'margin-right' : '10px'});
+                });
+        }
+        
+        //clickActiveBut();//треба функцію тут визвати
         $(this).find('.p-2.badge').hide();
         $(this).find('.d-inline-block').css('color', '#fff');
         $(this).find('.user_nickname').css('color', '#fff');
@@ -195,31 +205,39 @@ $(function() {
             $find.bind('focus', function() {
                 $('#button_settings').toggle(150);
                 $('.search_input').css({
-                    'margin-left': '10px'
+                    'margin-left': '10px',
+                    'margin-right': '10px'
                 });
             });
             $find.bind('blur', function() {
                 $('#button_settings').toggle(150);
                 $('.search_input').css({
-                    'margin-left': '0px'
+                    'margin-left': '0px',
+                    'margin-right': '10px'
                 });
             });
         } else {
             $find.bind('focus', function() {
+                if($('.but_set_menu').css('display') == 'block') $('.but_set_menu').toggle(150);
                 $('#button_settings').toggle(150);
-                $('.but_set_menu').toggle(150);
                 $('.search_input').css({
                     "margin-left": "10px",
                     "margin-right": "10px"
                 });
             });
             $find.bind('blur', function() {
-                $('.but_set_menu').toggle(150);
+                if($('.but_set_menu').css('display') == 'none' && $(".clicked").length != 0){
+                    $('.but_set_menu').toggle(150);
+                    $('.search_input').css({
+                        "margin-left": "0px",
+                        "margin-right": "0px"
+                    });
+                }else 
+                    $('.search_input').css({
+                        "margin-left": "0px",
+                        "margin-right": "10px"
+                    });
                 $('#button_settings').toggle(150);
-                $('.search_input').css({
-                    "margin-left": "0px",
-                    "margin-right": "0px"
-                });
             });
         }
     }
