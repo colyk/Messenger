@@ -1,47 +1,67 @@
 $(function() {
 
-    $('[data-wanker]').wanker({ delay: 6000, duration: 2000 });
+    const
+        $leftList = $('.left_list'),
+        $centerList = $('.center_list'),
+        $activeBut = $('.active_but_bar');
+        $activeButLeft = $('#active_but_bar1');
+        $activeButCenter = $('#active_but_bar2');
+    var 
+        flagScreen = 1;
+
+    $('[data-wanker]').wanker({ delay: 93000, duration: 2000 });
 
     $('.center_list').css({'background-image': 'url("https://webfon.top/wp-content/uploads/2016/10/4.jpg"', 'background-size': 'auto'});
     $('.header_panel').hide();
     $('#send_block').hide();
 
+
     ///height screen
     $("html").css({ 'height': $(window).height() });
     $(".left_list").css({ 'height': $(window).height() });
     $(".center_list").css({ 'height': $(window).height() });
-    $(".scroll").css({ 'height': $(".center_list").height() - 120 });
+    $(".scroll").css({ 'height': $(window).height() - 89});
+    $(".scroll_left").css({ 'height': $(window).height() - $(".header_panel_left")});
+    $('.search_input').css({"margin-right": "10px"});
+
     $(window).resize(function() {
-        $("html").css({ 'height': $(window).height() });
-        $(".left_list").css({ 'height': $(window).height() });
-        $(".center_list").css({ 'height': $(window).height() });
-        $(".scroll").css({ 'height': $(".center_list").height() - $(".header_panel").height() - $("#send_block").height() - 30 });
+        $("html").css({ 'height': $(window).height()});
+        $(".left_list").css({ 'height': $(window).height()});
+        $(".center_list").css({ 'height': $(window).height()});
+        $(".scroll").css({ 'height': $(window).height() - 89});
+        $(".scroll_left").css({ 'height': $(window).height() - $(".header_panel_left")});
     });
 
-
     //scroll messages
-    $('::-webkit-scrollbar').css({ 'display': 'none' });
-    $('::-webkit-scrollbar-thumb').css({ 'display': 'none' });
-    $('.messages').scroll(function() {
-        if ($(this).scrollTop() == 0) { //змінити 0
+    $('.scroll').scroll(function() {
+        console.log('Pop: ', $('.scroll').prop('scrollHeight') - $('.scroll').height());
+        console.log($(this).scrollTop());
+        if ($(this).scrollTop() < $('.scroll').prop('scrollHeight') - $('.scroll').height() - 100) {
             $('.scroll_but').fadeOut();
         } else {
             $('.scroll_but').fadeIn();
         }
     });
     $('.scroll_but').click(function() {
-        $('.messages').animate({ scrollTop: 9999999 }, 800); //$('.messages').height() не правильно
+        $('.scroll').animate({ scrollTop: $('.scroll').prop('scrollHeight')}, 800); //$('.messages').height() не правильно
     })
 
+    $activeButLeft.addClass('active_but_bar');
+    $activeButCenter.addClass('active_but_bar');
+    
+    $activeButLeft.on('click', clickActiveBut);
+    $activeButCenter.on('click', clickActiveBut);
 
-    $('#active_but_bar1').addClass('active_but_bar');
-    $('#active_but_bar2').addClass('active_but_bar');
-    var
-        $leftList = $('.left_list'),
-        $centerList = $('.center_list'),
-        $activeBut = $('.active_but_bar'),
-        flagScreen = 1;
-    $activeBut.on('click', function() {
+    if (localStorage.nickname) {
+        let nick = localStorage.nickname.toUpperCase();
+        $(".my_photo").text(nick.charAt(0) + nick.charAt(1));
+    } else {
+        $(".my_photo").text("UN");
+    }
+
+    function clickActiveBut() {
+        $activeButLeft.toggleClass('rotate');
+        $activeButCenter.toggleClass('rotate');
         if (flagScreen == 0) {
             $leftList.css({
                 'display': 'block',
@@ -71,6 +91,8 @@ $(function() {
                     .removeClass('col-md-12')
                     .addClass('col-md-8');
             }
+            // $('#active_but_bar1').removeClass('active_but_bar');
+            // $('#active_but_bar2').addClass('active_but_bar');
             flagScreen = 1;
         } else {
             $leftList.css({ 'display': 'none' });
@@ -98,24 +120,11 @@ $(function() {
                     .removeClass('col-md-8')
                     .addClass('col-md-12');
             }
+            // $('#active_but_bar2').removeClass('active_but_bar');
+            // $('#active_but_bar1').addClass('active_but_bar');      
             flagScreen = 0;
         }
-    });
-
-
-    if (localStorage.nickname) {
-        let nick = localStorage.nickname.toUpperCase();
-        $(".my_photo").text(nick.charAt(0) + nick.charAt(1));
-    } else {
-        $(".my_photo").text("UN");
     }
-
-
-    //переворот стрілки
-    $activeBut.on('click', function() {
-        $('#active_but_bar2').toggleClass('rotate');
-        $('#active_but_bar1').toggleClass('rotate');
-    });
 });
 
 //завантаження файла(клік по полю)

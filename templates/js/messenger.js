@@ -127,6 +127,25 @@ $(function() {
         $('.last_msg_time').css('color', '#333');
         
         $(this).find('.msg_count').hide();
+
+        if($(window).width() < 768){
+            $('.but_set_menu').css({'display' : 'block'});
+            $('.search_input').css({'margin-right' : '0px'});
+        }
+        $(window).resize(() =>  {
+            if($(window).width() >= 768){
+                $('.but_set_menu').css({'display' : 'none'});
+                $('.search_input').css({'margin-right' : '10px'});
+            }
+            if($(window).width() < 768){
+                $('.but_set_menu').css({'display' : 'block'});
+                $('.search_input').css({'margin-right' : '0px'});   
+            }   
+        });
+        
+        //clickActiveBut();//треба функцію тут визвати
+        $(this).find('.p-2.badge').hide();
+
         $(this).find('.d-inline-block').css('color', '#fff');
         $(this).find('.user_nickname').css('color', '#fff');
         $(this).find('.last_msg_time').css('color', '#fff');
@@ -201,33 +220,49 @@ $(function() {
     function find_btn_animation() {
         if ($(window).width() >= 768) {
             $find.bind('focus', function() {
+                if($('.but_set_menu').css('display') == 'block') $('.but_set_menu').toggle(150);
                 $('#button_settings').toggle(150);
                 $('.search_input').css({
-                    'margin-left': '10px'
+                    'margin-left': '10px',
+                    'margin-right': '11px'
                 });
             });
             $find.bind('blur', function() {
+                if($('.but_set_menu').css('display') == 'none' && $(".clicked").length != 0 && $(window).width() < 768){
+                    $('.but_set_menu').toggle(150);
+                    $('.search_input').css({
+                        "margin-left": "0px",
+                        "margin-right": "0px"
+                    });
+                }else 
+                    $('.search_input').css({
+                        "margin-left": "0px",
+                        "margin-right": "10px"
+                    });
                 $('#button_settings').toggle(150);
-                $('.search_input').css({
-                    'margin-left': '0px'
-                });
             });
         } else {
             $find.bind('focus', function() {
+                if($('.but_set_menu').css('display') == 'block') $('.but_set_menu').toggle(150);
                 $('#button_settings').toggle(150);
-                $('.but_set_menu').toggle(150);
                 $('.search_input').css({
                     "margin-left": "10px",
                     "margin-right": "10px"
                 });
             });
             $find.bind('blur', function() {
-                $('.but_set_menu').toggle(150);
+                if($('.but_set_menu').css('display') == 'none' && $(".clicked").length != 0 && $(window).width() < 768){
+                    $('.but_set_menu').toggle(150);
+                    $('.search_input').css({
+                        "margin-left": "0px",
+                        "margin-right": "0px"
+                    });
+                }else 
+                    $('.search_input').css({
+                        "margin-left": "0px",
+                        "margin-right": "10px"
+                    });
                 $('#button_settings').toggle(150);
-                $('.search_input').css({
-                    "margin-left": "0px",
-                    "margin-right": "0px"
-                });
             });
         }
     }
