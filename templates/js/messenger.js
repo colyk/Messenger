@@ -104,13 +104,18 @@ $(function() {
 
 
     function add_dialog(nick) {
+        socket.emit('get last message', nick);
+        socket.emit('get messages count', nick);
         let logo = nick.charAt(0).toUpperCase() + nick.charAt(1).toUpperCase();
-        $('<li class="list-group-item d-flex flex-row user_block dialog" ></li>')
-            .append($('<div class="user_photo"></div>').html(logo))
-            .append($('<div></div>')
-                .append($('<div class="user_nickname"></div>').html(nick),
-                    $('<div class="d-inline-block text-truncate" class="last_message"></div>').html('last_msg')))
-            .append($('<div class="ml-auto p-2 badge badge-primary badge-pill "></div>').html(1))
+        $('<li class="list-group-item d-flex flex-row user_block dialog" />').attr('id', nick + '_nick')
+            .append($('<div class="user_photo" />').html(logo))
+            .append($('<div />')
+                .append($('<div class="user_nickname" />').html(nick),
+                    $('<div class="d-inline-block text-truncate last_message" />').html('last_msg')))
+
+            .append($('<div class="p-2 ml-auto text-center" />')
+                .append($('<div class="last_msg_time" />').html('10:15'),
+                    $('<div class="msg_count badge badge-primary badge-pill" />').html('10')))
             .appendTo('.list_users');
     }
 
@@ -119,9 +124,12 @@ $(function() {
         $('.center_list').css({ 'background-image': '' });
         $('.d-inline-block').css('color', '#666');
         $('.user_nickname').css('color', '#000');
-        $(this).find('.p-2.badge').hide();
+        $('.last_msg_time').css('color', '#333');
+        
+        $(this).find('.msg_count').hide();
         $(this).find('.d-inline-block').css('color', '#fff');
         $(this).find('.user_nickname').css('color', '#fff');
+        $(this).find('.last_msg_time').css('color', '#fff');
 
         $('.header_panel').show();
         $('#send_block').show();
@@ -280,6 +288,19 @@ $(function() {
         });
     });
 
+
+    socket.on('put last message', (to, author, text, time) => {
+        let dialog = $('#' + to + '_nick');
+        dialog.find('.last_msg_time').html(last_msg_time_converter(time));
+        if (localStorage.nickname == author) {
+            dialog.find('.last_message').html('You: ' + text);
+
+        } else {
+            dialog.find('.last_message').html(text);
+        }
+
+    });
+
 });
 
 
@@ -293,4 +314,24 @@ function msg_time_converter(UNIX_timestamp) {
     let hour = format_time(a.getHours().toString());
     let min = format_time(a.getMinutes().toString());
     return hour + ':' + min;
+}
+
+function last_msg_time_converter(UNIX_timestamp) {
+    let msg_time = new Date(UNIX_timestamp);
+    let now = new Date();
+
+    let msg_year = msg_time.getFullYear();
+    let msg_month = msg_time.getMonth();
+    let msg_date = msg_time.getDate();
+
+    let now_month = now.getMonth();
+    let now_date = now.getDate();
+
+    if (now_date == msg_date && now_month == msg_month) {
+        let hour = format_time(msg_time.getHours().toString());
+        let min = format_time(msg_time.getMinutes().toString());
+        return hour + ':' + min + '';
+    } else {
+        return msg_date + '.' + format_time((msg_month+1).toString())+'.'+msg_year.toString().slice(-2);
+    }
 }

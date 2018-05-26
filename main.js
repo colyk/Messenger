@@ -90,7 +90,7 @@ io.on('connection', (socket) => {
                 messages['messages'].push(message);
             } else {
                 redisClient.sadd(from, to);
-            	redisClient.sadd(to, from);
+                redisClient.sadd(to, from);
                 messages['messages'].push(message);
             }
             redisClient.hset("messages", dialog, JSON.stringify(messages));
@@ -106,7 +106,7 @@ io.on('connection', (socket) => {
         tmp.sort();
         let dialog = tmp[0] + '_' + tmp[1];
 
-        redisClient.hget("messages", dialog, (err, reply) =>{
+        redisClient.hget("messages", dialog, (err, reply) => {
             if (reply) {
                 io.to(from).emit('put user messages', JSON.parse(reply)['messages']);
             } else {
@@ -154,6 +154,33 @@ io.on('connection', (socket) => {
                 socket.emit('put dialog list', []);
             }
         })
+    });
+
+
+    socket.on('get last message', (to) => {
+        let from = Object.keys(socket.rooms)[1];
+
+        let tmp = [];
+        tmp.push(to, from);
+        tmp.sort();
+        let dialog = tmp[0] + '_' + tmp[1];
+
+        redisClient.hget("messages", dialog, (err, reply) => {
+            if (reply) {
+                let r = JSON.parse(reply)['messages'];
+                let last_msg = r[r.length - 1];
+
+                let text = last_msg['text'];
+                let time = last_msg['time'];
+                let author = last_msg['author'];
+
+                io.to(from).emit('put last message', to, author, text, time);
+            } else {
+                io.to(from).emit('put last message', '');
+            }
+        });
+
+
     });
 
 

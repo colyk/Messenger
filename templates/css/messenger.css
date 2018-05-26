@@ -8,6 +8,7 @@
 
 
 
+
 /*Resizer*/
 
 .wanker {
@@ -32,6 +33,7 @@
 .wanker-content>p {
     color: white;
 }
+
 
 
 
@@ -115,6 +117,7 @@
 
 
 
+
 /*RIGHT*/
 
 .chat-body .answer.right {
@@ -145,7 +148,12 @@
 }
 
 .badge-pill {
-    border-radius: 50%;
+    margin-left: 3px;
+}
+
+.last_msg_time {
+    font-size: 0.9em;
+    color: #333;
 }
 
 body {
@@ -454,6 +462,7 @@ input:checked[type="checkbox"]::before {
 
 
 
+
 /*Image picker*/
 
 #modal_cur_img {
@@ -480,7 +489,7 @@ input:checked[type="checkbox"]::before {
 
 .modal_img {
     width: auto;
-    height:auto;
+    height: auto;
 }
 
 .modal_img:hover {
@@ -492,6 +501,7 @@ input:checked[type="checkbox"]::before {
     height: 100px;
     margin: 10px;
 }
+
 
 
 
@@ -634,6 +644,7 @@ input:checked[type="checkbox"]::before {
 
 
 
+
 /*Полоса прокрутки*/
 
 
@@ -657,6 +668,7 @@ input:checked[type="checkbox"]::before {
 
 
 
+
 /*слиль повзунка*/
 
 ::-webkit-scrollbar-thumb {
@@ -669,6 +681,7 @@ input:checked[type="checkbox"]::before {
 ::-webkit-scrollbar-thumb:hover {
     /*background-color: #e4d4e4a1;*/
 }
+
 
 
 
