@@ -4,6 +4,10 @@
 }
 
 
+
+
+
+
 /*Resizer*/
 
 .wanker {
@@ -28,6 +32,10 @@
 .wanker-content>p {
     color: white;
 }
+
+
+
+
 
 
 /*CHAT*/
@@ -100,6 +108,10 @@
     position: relative;
     padding-bottom: 1px;
 }
+
+
+
+
 
 
 
@@ -356,7 +368,12 @@ main {
     /*height: 518px;*/
 }
 
+.config {
+    margin: 0px;
+}
+
 .config>li {
+    clear: both;
     list-style: none;
     font-size: 1.1em;
     padding: 5px;
@@ -438,6 +455,47 @@ input:checked[type="checkbox"]::before {
 
 
 
+
+
+
+/*Image picker*/
+
+#modal_cur_img {
+    width: 70%;
+    height: 35%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#modal_img_picker {
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+}
+
+.choose_img {
+    color: var(--success);
+    font-size: 1.2em;
+    position: relative;
+    left: 10%;
+    top: 40%;
+}
+
+.modal_img {
+    width: auto;
+    height:auto;
+}
+
+.modal_img:hover {
+    background-color: #007BFF77;
+}
+
+.img_picker {
+    width: 100px;
+    height: 100px;
+    margin: 10px;
+}
 
 
 
@@ -569,6 +627,10 @@ input:checked[type="checkbox"]::before {
 
 
 
+
+
+
+
 /*Полоса прокрутки*/
 
 
@@ -588,6 +650,10 @@ input:checked[type="checkbox"]::before {
 
 
 
+
+
+
+
 /*слиль повзунка*/
 
 ::-webkit-scrollbar-thumb {
@@ -600,6 +666,10 @@ input:checked[type="checkbox"]::before {
 ::-webkit-scrollbar-thumb:hover {
     /*background-color: #e4d4e4a1;*/
 }
+
+
+
+
 
 
 
