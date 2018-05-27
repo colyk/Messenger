@@ -7,7 +7,7 @@ $(document).ready(function() {
             var input_nickname = $('#nickname_s');
             if (input_nickname.val().length < 2) {
                 validate.errors = true;
-                nickValidate.html('більше 2 символів').show();
+                nickValidate.html('More than 2 characters').show();
                 but_success.hide();
                 input_nickname.removeClass('border border-success').addClass('border border-danger');
             } else {
@@ -24,7 +24,7 @@ $(document).ready(function() {
             var patt = /^.+@.+[.].{2,}$/i;
             if (!patt.test(input_email.val())) {
                 validate.errors = true;
-                emailValidate.html('не коректний email').show();
+                emailValidate.html('Incorrect email').show();
                 but_success.hide();
                 input_email.removeClass('border border-success').addClass('border border-danger');
             } else {
@@ -40,7 +40,7 @@ $(document).ready(function() {
             var input_password = $('#password_s');
             if (input_password.val().length < 6) {
                 validate.errors = true;
-                passwordValidate.html('більше 6 символів').show();
+                passwordValidate.html('More than 6 characters').show();
                 but_success.hide();
                 input_password.removeClass('border border-success').addClass('border border-danger');
             } else {

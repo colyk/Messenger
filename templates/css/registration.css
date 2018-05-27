@@ -1,7 +1,7 @@
 /*https://yldist.com/ms/wp-content/uploads/sites/1/nggallery/website-backgrounds/fall-berries-ss-min.png*/
+
 body {
     background-image: url("https://image.freepik.com/free-photo/beautiful-roses-on-white-underground-with-space-in-the-center_24972-48.jpg");
-    background-repeat: no-repeat;
     background-size: 100%;
 }
 
@@ -34,8 +34,9 @@ button {
 #show_signup_form {
     cursor: pointer;
 }
-p.text-justify.text-dark.bg-light.text_right.msg::after{
-   content: '';
+
+p.text-justify.text-dark.bg-light.text_right.msg::after {
+    content: '';
     display: block;
     position: absolute;
     width: 0;
@@ -44,7 +45,7 @@ p.text-justify.text-dark.bg-light.text_right.msg::after{
     border-bottom: 8px solid transparent;
     border-right: 15px solid #f0f0f0;
     left: -15px;
-    top: 15px; 
+    top: 15px;
 }
 
 #show_login_form {

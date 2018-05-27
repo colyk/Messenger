@@ -138,10 +138,10 @@ $(function() {
 
         $('.header_panel').show();
         $('#send_block').show();
-        show_user_info($(this).find('.user_nickname').html());
         $('.list_users').find('.user_block').removeClass('clicked');;
         $(this).addClass('clicked');
         localStorage.to = $(this).find('.user_nickname').html();
+        show_user_info(localStorage.to);
         show_user_msg();
         search_input_style();
     }
