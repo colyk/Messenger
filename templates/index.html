@@ -90,7 +90,7 @@
             </div>
     </main>
     <!--MODAL IMG PICKER-->
-    <div class="modal fade" id="img_picker" tabindex="-1" role="dialog" aria-labelledby="imagePicker" aria-hidden="true">
+    <div class="modal fade" id="modal_img_picker" tabindex="-1" role="dialog" aria-labelledby="imagePicker" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -99,45 +99,25 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <div class="container-fluid">
-                        <div class="row" id="row_images">
-                            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                                <div class="img_picker">
-                                    <i class="far fa-check-circle choose_img"></i>
-                                    <img src="https://webfon.top/wp-content/uploads/2016/10/krasny_kirpich.png" alt="..." class="img-thumbnail modal_img">
-                                </div>
-                            </div>
-                            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                                <div class="img_picker">
-                                    <i class="far fa-check-circle choose_img"></i>
-                                    <img src="https://webfon.top/wp-content/uploads/2016/10/4.jpg" alt="..." class="img-thumbnail modal_img">
-                                </div>
-                            </div>
-                            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                                <div class="img_picker">
-                                    <i class="far fa-check-circle choose_img"></i>
-                                    <img src="https://webfon.top/wp-content/uploads/2016/10/osennij-ornament.png" alt="..." class="img-thumbnail modal_img">
-                                </div>
-                            </div>
-                            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                                <div class="img_picker">
-                                    <i class="far fa-check-circle choose_img"></i>
-                                    <img src="https://webfon.top/wp-content/uploads/2017/10/tools.png" alt="..." class="img-thumbnail modal_img">
-                                </div>
-                            </div>
-                            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                                <div class="img_picker">
-                                    <i class="far fa-check-circle choose_img"></i>
-                                    <img src="https://webfon.top/wp-content/uploads/2018/04/tic-tac-toe.png" alt="..." class="img-thumbnail modal_img">
-                                </div>
-                            </div>
-                            <div class="form-group col-12 col-sm-6 col-md-4 col-lg-3 col-xl-2">
-                                <div class="img_picker">
-                                    <i class="far fa-check-circle choose_img"></i>
-                                    <img src="https://webfon.top/wp-content/uploads/2016/11/restaurant-1.png" alt="..." class="img-thumbnail modal_img">
-                                </div>
-                            </div>
+                <div class="modal-body d-flex text-center">
+                    <div id="row_images">
+                        <div class="img_picker far fa-check-circle">
+                            <img src="https://webfon.top/wp-content/uploads/2016/10/krasny_kirpich.png" alt="..." class="img-thumbnail modal_img">
+                        </div>
+                        <div class="img_picker far fa-check-circle">
+                            <img src="https://webfon.top/wp-content/uploads/2016/10/4.jpg" alt="..." class="img-thumbnail modal_img">
+                        </div>
+                        <div class="img_picker far fa-check-circle">
+                            <img src="https://webfon.top/wp-content/uploads/2016/10/osennij-ornament.png" alt="..." class="img-thumbnail modal_img">
+                        </div>
+                        <div class="img_picker far fa-check-circle">
+                            <img src="https://webfon.top/wp-content/uploads/2017/10/tools.png" alt="..." class="img-thumbnail modal_img">
+                        </div>
+                        <div class="img_picker far fa-check-circle">
+                            <img src="https://webfon.top/wp-content/uploads/2018/04/tic-tac-toe.png" alt="..." class="img-thumbnail modal_img">
+                        </div>
+                        <div class="img_picker far fa-check-circle">
+                            <img src="https://webfon.top/wp-content/uploads/2016/11/restaurant-1.png" alt="..." class="img-thumbnail modal_img">
                         </div>
                     </div>
                 </div>
@@ -194,19 +174,17 @@
                 <div class="modal-body">
                     <ul class="config">
                         <li class="d-flex">
-                            <div class="">Night mode</div>
+                            <div>Night mode</div>
                             <div class="checkbox">
                                 <input id="night_mode" type="checkbox">
                             </div>
                         </li>
                         <li id="modal_img">
-                            <div id="modal_img_title">
-                                <h5>Chat background</h5>
-                            </div>
+                            <div id="modal_img_title">Chat background</div>
                             <div id="modal_cur_img">
                                 <img src="https://webfon.top/wp-content/uploads/2016/10/4.jpg" alt="Your bg image" title="Your background image" class="img-thumbnail">
                             </div>
-                            <button id="modal_img_picker" type="button" class="btn btn-block btn-primary btn-sm" data-dismiss="modal" data-toggle="modal" data-target="#img_picker">Choose from gallery</button>
+                            <button id="modal_img_picker" type="button" class="btn btn-block btn-primary btn-sm" data-dismiss="modal" data-toggle="modal" data-target="#modal_img_picker">Choose from gallery</button>
                         </li>
                         <li id="sing_out"><i class="fa fa-sign-out-alt"></i> Sing out</li>
                     </ul>

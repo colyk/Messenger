@@ -474,17 +474,9 @@ input:checked[type="checkbox"]::before {
     margin-top: 10px;
 }
 
-.choose_img {
-    color: var(--success);
-    font-size: 1.2em;
-    position: relative;
-    left: 10%;
-    top: 40%;
-}
-
 .modal_img {
-    width: auto;
-    height: auto;
+    width: 100px;
+    height: 100px;
 }
 
 .modal_img:hover {
@@ -492,9 +484,17 @@ input:checked[type="checkbox"]::before {
 }
 
 .img_picker {
-    width: 100px;
-    height: 100px;
-    margin: 10px;
+    margin: 0 10px 10px 0;
+}
+.img_picker:before{
+	color: var(--success);
+    font-size: 1.2em;
+	position: relative;
+	left: 35px;
+    top: -25px;
+}
+#row_images{
+	margin:0 auto;
 }
 
 
