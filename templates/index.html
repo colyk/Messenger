@@ -75,7 +75,7 @@
                     <div class="input-group" id="send_block">
                         <div class="input-group-prepend">
                             <button class="btn" type="button" id="upload" onclick="clickFindFile();"><i class="fa fa-paperclip"></i></button>
-                            <button class="btn" type="button"><i class="fa fa-smile"></i></button>
+                            <button class="btn" type="button" id="smile"><i class="fa fa-smile"></i></button>
                         </div>
                         <textarea placeholder="Start writing here..." class="form-control" rows="1" required id="msg_to_send"></textarea>
                         <div class="input-group-append">
@@ -217,7 +217,16 @@
             </div>
         </div>
     </div>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    
+    <link rel="stylesheet" type="text/css" href="../node_modules/emojionearea/dist/emojionearea.min.css" media="screen">
+    
+    
+
+   
+    <script type="text/javascript" src="../node_modules/emojionearea/dist/emojionearea.min.js"></script>
     <script src="js/jquery.wanker.min.js"></script>
     <script src="js/jquery.timeago.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>

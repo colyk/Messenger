@@ -12,7 +12,11 @@ $(function() {
     const $messages = $('.messages');
     const $find = $('#find');
 
-
+    $("#msg_to_send").emojioneArea({
+        search: false,
+        filtersPosition: "bottom",
+        tones: false
+    });
     find_btn_animation();
     create_user_profile();
     $find.keyup(find_user);
@@ -212,7 +216,7 @@ $(function() {
         }
         $messages
             .append($('<div class="answer right"></div>')
-                .append($('<div class="text"></div>').text(text))
+                .append($('<div class="text"></div>').html(text))
                 .append($('<div class="time"></div>').text(msg_time_converter(time))));
 
         $(".scroll").scrollTop($('.scroll').prop('scrollHeight') + $('.scroll').height());
