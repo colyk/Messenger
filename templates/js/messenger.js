@@ -44,6 +44,15 @@ $(function() {
     }
 
 
+    function sort_dialogs() {
+        const $wrapper = $('ul.list_users');
+        $wrapper.find('li').sort(function(a, b) {
+                return b.dataset.sort - a.dataset.sort;
+            })
+            .appendTo($wrapper);
+    }
+
+
     function hide_messages_body(event) {
         if (event.keyCode == 27) {
             $('.center_list').css({ 'background-image': 'url("https://webfon.top/wp-content/uploads/2016/10/4.jpg"', 'background-size': 'auto' });
@@ -187,16 +196,26 @@ $(function() {
         let to = localStorage.to;
         let text = $('#msg_to_send').val().trim();
         socket.emit('send message to', from, to, text);
-        
+
         $('#msg_to_send').val('');
         $("#msg_to_send").css('height', '40');
-        let time = msg_time_converter(Date.now());
+        let time = Date.now();
+
+        let dialog = $('#' + to + '_nick');
+        dialog.attr('data-sort', time);
+        dialog.find('.last_msg_time').text(last_msg_time_converter(time));
+        if (localStorage.nickname == to) {
+            dialog.find('.last_message').text('You: ' + text);
+        } else {
+            dialog.find('.last_message').text(text);
+        }
         $messages
             .append($('<div class="answer right"></div>')
                 .append($('<div class="text"></div>').text(text))
-                .append($('<div class="time"></div>').text(time)));
+                .append($('<div class="time"></div>').text(msg_time_converter(time))));
 
         $(".scroll").scrollTop($('.scroll').prop('scrollHeight') + $('.scroll').height());
+        sort_dialogs();
     }
 
 
@@ -278,6 +297,7 @@ $(function() {
                 .append($('<div class="text" />').text(text))
                 .append($('<div class="time" />').text(time)));
         }
+        sort_dialogs();
     });
 
 
@@ -324,14 +344,14 @@ $(function() {
 
     socket.on('put last message', (to, author, text, time) => {
         let dialog = $('#' + to + '_nick');
+        dialog.attr('data-sort', time);
         dialog.find('.last_msg_time').text(last_msg_time_converter(time));
         if (localStorage.nickname == author) {
             dialog.find('.last_message').text('You: ' + text);
-
         } else {
             dialog.find('.last_message').text(text);
         }
-
+        sort_dialogs();
     });
 
 });

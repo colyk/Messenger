@@ -6,7 +6,7 @@ $(function() {
         $activeBut = $('.active_but_bar');
     $activeButLeft = $('#active_but_bar1');
     $activeButCenter = $('#active_but_bar2');
-    var
+    let
         flagScreen = 1;
 
     $('[data-wanker]').wanker({ delay: 93000, duration: 2000 });
