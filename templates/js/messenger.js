@@ -12,11 +12,12 @@ $(function() {
     const $messages = $('.messages');
     const $find = $('#find');
 
-    $("#msg_to_send").emojioneArea({
-        search: false,
-        filtersPosition: "bottom",
-        tones: false
-    });
+    // $("#msg_to_send").emojioneArea({
+    //     search: false,
+    //     filtersPosition: "bottom",
+    //     tones: false,
+    //     useSprite         : true
+    // });
     find_btn_animation();
     create_user_profile();
     $find.keyup(find_user);
@@ -253,9 +254,9 @@ $(function() {
 
     function set_user_data() {
         console.log('User info modal window click');
-        let nick = localStorage.nickname.toUpperCase();
+        let nick = localStorage.to.toUpperCase();
         $("#user_info_logo").text(nick.charAt(0) + nick.charAt(1));
-        $('#modal_user_nickname').text(localStorage.nickname);
+        $('#modal_user_nickname').text(localStorage.to);
     }
 
 

@@ -3,9 +3,10 @@
     --lovely_gray: #A8A8A8FF;
 }
 
-
-#smile{
-    height: 40px!important;
+.emojionearea-button-open,.emojionearea-button-close{
+   margin-right: 50px;
+   right: 0;
+    top: 50;
 }
 
 

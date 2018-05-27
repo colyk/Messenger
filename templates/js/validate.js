@@ -50,14 +50,6 @@ $(document).ready(function() {
             }
         }
     };
-    $('#sign_up_button').click(function() {
-        validate.errors = false;
-        validate.user_nickname();
-        validate.user_email();
-        validate.user_password();
-        validate.send();
-        return false;
-    });
     $('#nickname_s').change(validate.user_nickname);
     $('#email').change(validate.user_email);
     $('#password_s').change(validate.user_password);
