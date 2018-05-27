@@ -9,6 +9,7 @@ $(function() {
 
     socket.on("connect_error", () => connect_error_alert());
 
+    localStorage.backgroundImg = 'https://webfon.top/wp-content/uploads/2016/10/4.jpg';
     const $messages = $('.messages');
     const $find = $('#find');
 
@@ -30,6 +31,22 @@ $(function() {
     $('#user_info_show_but').click(set_user_data);
     $('.list_users').on("click", ".user_block", show_dialog);
     $('#msg_to_send').keypress((e) => send_message_enter(e));
+    $('.img_picker').click(change_bg_image);
+
+
+    function change_bg_image() {
+        $('.img_picker').addClass('not_choosen');
+        $(this).removeClass('not_choosen');
+        let link = $(this).find('img').attr('src');
+        if ($('.clicked').length) {
+            $('.scroll').css({ 'background-image': 'url(' + link + ')', 'background-size': 'auto' });
+        } else {
+            $('.scroll').css({ 'background-image': 'url(' + link + ')', 'background-size': 'auto' });
+            $('.center_list').css({ 'background-image': 'url(' + link + ')', 'background-size': 'auto' });
+        }
+        $('#modal_cur_img').find('img').attr('src', link);
+        localStorage.backgroundImg = link;
+    }
 
 
     function send_message_enter(event) {
@@ -62,7 +79,7 @@ $(function() {
 
 
     function hide_messages_body() {
-        $('.center_list').css({ 'background-image': 'url("https://webfon.top/wp-content/uploads/2016/10/4.jpg"', 'background-size': 'auto' });
+        $('.center_list').css({ 'background-image': 'url(' + localStorage.backgroundImg + ')', 'background-size': 'auto' });
         $('.header_panel').hide();
         $('#send_block').hide();
         clean_msg();
