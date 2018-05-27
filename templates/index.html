@@ -40,6 +40,7 @@
                         </ul>
                     </div>
                 </div>
+                <!--HEADER PANEL-->
                 <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-9 center_list">
                     <div class="header_panel">
                         <div class="p-2">
@@ -55,8 +56,9 @@
                                     <i class="fa fa-ellipsis-v" id="button_menu_dialogue"></i>
                                 </div>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="menu_dialogue">
-                                    <a class="dropdown-item" href="#">Delete conversation</a>
-                                    <a class="dropdown-item" href="#">Clear history</a>
+                                    <a class="dropdown-item" role="button" id="delete_conversation">Delete conversation</a>
+                                    <a class="dropdown-item" role="button" id="clear_history">Clear history</a>
+                                    <a class="dropdown-item" role="button" data-toggle="modal" data-target="#modal_user_info" id="user_info_show_but">Show user profile <i class="far fa-id-card"></i></a>
                                 </div>
                             </div>
                         </div>
@@ -150,7 +152,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <div class="user_photo">UN</div>
+                    <div class="user_photo" id="user_info_logo">UN</div>
                     <h5 class="modal-title active" id="modalUserInfo">
                                             <div id="modal_user_nickname">Nickname</div>
                                         </h5>

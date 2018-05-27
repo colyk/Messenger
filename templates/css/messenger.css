@@ -4,6 +4,7 @@
 }
 
 
+
 /*Resizer*/
 
 .wanker {
@@ -28,6 +29,7 @@
 .wanker-content>p {
     color: white;
 }
+
 
 
 /*CHAT LEFT*/
@@ -97,6 +99,7 @@
     position: relative;
     padding-bottom: 1px;
 }
+
 
 
 
@@ -274,6 +277,12 @@ main {
     font-family: 'Gugi', cursive;
 }
 
+.fa-id-card {
+    font-size: 18px;
+    margin-left: 5px;
+    color:var(--dark);
+}
+
 .my_photo {
     margin-top: 15px;
     margin-right: 10px;
@@ -437,9 +446,11 @@ input:checked[type="checkbox"]::before {
 #button_menu_dialogue,
 #sing_out,
 .user_block,
-#button_settings {
+#button_settings,
+.dropdown-item {
     cursor: pointer;
 }
+
 
 
 /*Image picker*/
@@ -480,6 +491,7 @@ input:checked[type="checkbox"]::before {
     height: 100px;
     margin: 10px;
 }
+
 
 
 
@@ -612,6 +624,7 @@ input:checked[type="checkbox"]::before {
 
 
 
+
 /*Полоса прокрутки*/
 
 
@@ -629,6 +642,7 @@ input:checked[type="checkbox"]::before {
 }
 
 
+
 /*слиль повзунка*/
 
 ::-webkit-scrollbar-thumb {
@@ -641,6 +655,7 @@ input:checked[type="checkbox"]::before {
 ::-webkit-scrollbar-thumb:hover {
     /*background-color: #e4d4e4a1;*/
 }
+
 
 
 

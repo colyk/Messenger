@@ -15,12 +15,15 @@ $(function() {
 
     find_btn_animation();
     create_user_profile();
-    $(window).resize(() => $('.last_message').css('max-width', $('.list_users').width() / 1.3));
     $find.keyup(find_user);
-    $('.list_users').on("click", ".user_block", show_dialog);
+    $(window).resize(() => $('.last_message').css('max-width', $('.list_users').width() / 1.3));
+    $(document).keyup((e) => { if (e.keyCode == 27) hide_messages_body() });
     $('#send_btn').click(send_message);
     $('#sing_out').click(exit);
-    $(document).keyup((e) => hide_messages_body(e));
+    $('#delete_conversation').click(delete_conversation);
+    $('#clear_history').click(clear_history);
+    $('#user_info_show_but').click(set_user_data);
+    $('.list_users').on("click", ".user_block", show_dialog);
     $('#msg_to_send').keypress((e) => send_message_enter(e));
 
 
@@ -53,14 +56,12 @@ $(function() {
     }
 
 
-    function hide_messages_body(event) {
-        if (event.keyCode == 27) {
-            $('.center_list').css({ 'background-image': 'url("https://webfon.top/wp-content/uploads/2016/10/4.jpg"', 'background-size': 'auto' });
-            $('.header_panel').hide();
-            $('#send_block').hide();
-            clean_msg();
-            $('.greeting').show();
-        }
+    function hide_messages_body() {
+        $('.center_list').css({ 'background-image': 'url("https://webfon.top/wp-content/uploads/2016/10/4.jpg"', 'background-size': 'auto' });
+        $('.header_panel').hide();
+        $('#send_block').hide();
+        clean_msg();
+        $('.greeting').show();
     }
 
 
@@ -232,6 +233,25 @@ $(function() {
     function exit() {
         localStorage.clear();
         document.location.href = "registration.html";
+    }
+
+
+    function delete_conversation() {
+        $('#' + localStorage.to + '_nick').remove();
+        hide_messages_body();
+    }
+
+
+    function clear_history() {
+        clean_msg();
+    }
+
+
+    function set_user_data() {
+        console.log('User info modal window click');
+        let nick = localStorage.nickname.toUpperCase();
+        $("#user_info_logo").text(nick.charAt(0) + nick.charAt(1));
+        $('#modal_user_nickname').text(localStorage.nickname);
     }
 
 
