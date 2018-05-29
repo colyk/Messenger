@@ -476,7 +476,7 @@ input:checked[type="checkbox"]::before {
     margin-right: auto;
 }
 
-#modal_img_picker {
+#modal_img_picker_btn {
     width: 70%;
     margin-left: auto;
     margin-right: auto;
