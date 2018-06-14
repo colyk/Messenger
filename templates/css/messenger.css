@@ -475,9 +475,11 @@ input:checked[type="checkbox"]::before {
     width: 40px;
     padding: .700rem .700rem;
 }
+
 #smile_btn>i{
     position: relative;
 }
+
 .emoji-wysiwyg-editor{
     border:none;
 }
@@ -515,33 +517,21 @@ input:checked[type="checkbox"]::before {
     margin: 0 10px 10px 0;
 }
 
-<<<<<<< HEAD
 .img_picker:before {
     color: var(--success);
-=======
-.img_picker:before{
-	color: var(--success);
->>>>>>> origin/emotionsedit
     font-size: 1.2em;
     position: relative;
     left: 35px;
     top: -25px;
 }
-<<<<<<< HEAD
-=======
 
 #row_images{
 	margin:0 auto;
 }
 
-
-
-
-
->>>>>>> origin/emotionsedit
-
 .img_picker.not_choosen:before {
-visibility: hidden;}
+    visibility: hidden;
+}
 
 #row_images {
     margin: 0 auto;
