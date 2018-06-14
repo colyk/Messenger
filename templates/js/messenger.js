@@ -19,6 +19,7 @@ $(function() {
     //     tones: false,
     //     useSprite         : true
     // });
+
     find_btn_animation();
     create_user_profile();
     $find.keyup(find_user);
@@ -89,13 +90,12 @@ $(function() {
 
     function find_user() {
         if (!($find.val())) {
-            show_user_blocks();
-            hide_finded_users();
+            show_user_blocks();   
         } else {
             hide_user_blocks();
-            hide_finded_users();
             socket.emit('find user', $find.val());
         }
+        hide_finded_users();
     }
 
 
@@ -221,6 +221,7 @@ $(function() {
         socket.emit('send message to', from, to, text);
 
         $('#msg_to_send').val('');
+        $('.emoji-wysiwyg-editor').empty();
         $("#msg_to_send").css('height', '40');
         let time = Date.now();
 

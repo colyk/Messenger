@@ -6,9 +6,13 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">    
+    <link rel="stylesheet" href="../node_modules/emoji-picker-master/lib/css/emoji.css">
     <link rel="stylesheet" href="css/messenger.css">
+<<<<<<< HEAD
     <link rel="icon" type="image/png" href="images/logo.png" sizes="96x96">
+=======
+>>>>>>> origin/emotionsedit
     <title>Hidden | Messenger</title>
 </head>
 
@@ -72,14 +76,9 @@
                     </div>
                     <button class="btn btn-primary rounded-circle scroll_but"><i class="fa fa-angle-down"></i></button>
                     <div class="input-group" id="send_block">
-                        <div class="input-group-prepend">
-                            <button class="btn" type="button" id="upload" onclick="clickFindFile();"><i class="fa fa-paperclip"></i></button>
-                            <button class="btn" type="button" id="smile"><i class="fa fa-smile"></i></button>
-                        </div>
-                        <textarea placeholder="Start writing here..." class="form-control" rows="1" required id="msg_to_send"></textarea>
-                        <div class="input-group-append">
-                            <button class="btn btn_send" type="button"><i class="fa fa-paper-plane" id="send_btn"></i></button>
-                        </div>
+                        <i class="fa fa-paperclip" id="upload" onclick="clickFindFile();""></i>
+                        <textarea id="msg_to_send" class="form-control" data-emojiable="true" placeholder="Start writing here..."  rows="1" required></textarea>
+                        <i class="btn_send fa fa-paper-plane" id="send_btn"></i>
                     </div>
                     <form id="uploadfiles" enctype="multipart/form-data" method="post" action="#">
                         <input id="uploadfile" name="myfile" type="file" onchange="clickLoadFile();" />
@@ -195,10 +194,37 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <link rel="stylesheet" type="text/css" href="../node_modules/emojionearea/dist/emojionearea.min.css" media="screen">
     <script src="../node_modules/emojionearea/dist/emojionearea.min.js"></script>
+=======
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+
+    <script src="../node_modules/emoji-picker-master/lib/js/config.js"></script>
+    <script src="../node_modules/emoji-picker-master/lib/js/util.js"></script>
+    <script src="../node_modules/emoji-picker-master/lib/js/jquery.emojiarea.js"></script>
+    <script src="../node_modules/emoji-picker-master/lib/js/emoji-picker.js"></script>
+     <script>
+      $(function() {
+        // Initializes and creates emoji set from sprite sheet
+        window.emojiPicker = new EmojiPicker({
+          emojiable_selector: '[data-emojiable=true]',
+          assetsPath: '../node_modules/emoji-picker-master/lib/img/',
+          popupButtonClasses: 'fa fa-smile'
+        });
+        // Finds all elements with `emojiable_selector` and converts them to rich emoji input fields
+        // You may want to delay this step if you have dynamically created input fields that appear later in the loading process
+        // It can be called as many times as necessary; previously converted input fields will not be converted again
+        window.emojiPicker.discover();
+      });
+    </script>
+    
+
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+>>>>>>> origin/emotionsedit
     <script src="js/jquery.wanker.min.js"></script>
     <script src="js/jquery.timeago.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
