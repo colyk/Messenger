@@ -341,9 +341,6 @@ main {
 #msg_to_send {
     min-height: 40px;
     max-height: 140px;
-    margin: 0 -40px 0 -80px;
-    padding-left: 80px;
-    padding-right: 40px;
     z-index: 0;
 }
 
@@ -438,8 +435,8 @@ input:checked[type="checkbox"]::before {
     position: relative;
 }
 
-#send_block>div.input-group-prepend>button,
-#send_block>div.input-group-append>button {
+#upload,
+#send_btn {
     background: none;
 }
 
@@ -452,8 +449,30 @@ input:checked[type="checkbox"]::before {
 #sing_out,
 .user_block,
 #button_settings,
-.dropdown-item {
+.dropdown-item,
+#upload,
+#send_btn {
     cursor: pointer;
+}
+
+.emoji-menu{
+    position: absolute;
+    top: -230px;
+    right: 40px;
+}
+
+.emoji-picker-icon,
+#upload,
+#send_btn{
+    height: 40px;
+    width: 40px;
+    padding: .700rem .700rem;
+}
+#smile_btn>i{
+    position: relative;
+}
+.emoji-wysiwyg-editor{
+    border:none;
 }
 
 

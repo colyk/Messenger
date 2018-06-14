@@ -31,7 +31,7 @@ $(function() {
         $(".scroll").css({ 'height': $(window).height() - 89 });
         $(".scroll_left").css({ 'height': $(window).height() - $(".header_panel_left") });
     });
-
+    
     //scroll messages
     $('.scroll').scroll(function() {
         if ($(this).scrollTop() > $('.scroll').prop('scrollHeight') - $('.scroll').height() - 100) {
@@ -51,6 +51,7 @@ $(function() {
 
     $activeButLeft.on('click', clickActiveBut);
     $activeButCenter.on('click', clickActiveBut);
+
 
     if (localStorage.nickname) {
         let nick = localStorage.nickname.toUpperCase();
