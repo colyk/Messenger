@@ -505,6 +505,7 @@ input:checked[type="checkbox"]::before {
 .img_picker {
     margin: 0 10px 10px 0;
 }
+
 .img_picker:before{
 	color: var(--success);
     font-size: 1.2em;
@@ -512,6 +513,7 @@ input:checked[type="checkbox"]::before {
 	left: 35px;
     top: -25px;
 }
+
 #row_images{
 	margin:0 auto;
 }
