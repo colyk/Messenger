@@ -1,3 +1,6 @@
+let show_alert = true;
+localStorage.backgroundImg = 'https://webfon.top/wp-content/uploads/2016/10/4.jpg';
+
 // TODO: random colors for user logo
 $(function() {
     const socket = io.connect('http://127.0.0.1:3000/', { 'transports': ['websocket'] });
@@ -9,19 +12,13 @@ $(function() {
 
     socket.on("connect_error", () => connect_error_alert());
 
-    localStorage.backgroundImg = 'https://webfon.top/wp-content/uploads/2016/10/4.jpg';
     const $messages = $('.messages');
     const $find = $('#find');
 
-    // $("#msg_to_send").emojioneArea({
-    //     search: false,
-    //     filtersPosition: "bottom",
-    //     tones: false,
-    //     useSprite         : true
-    // });
 
     find_btn_animation();
     create_user_profile();
+    load_theme();
     $find.keyup(find_user);
     $(window).resize(() => $('.last_message').css('max-width', $('.list_users').width() / 1.3));
     $(document).keyup((e) => { if (e.keyCode == 27) hide_messages_body() });
@@ -33,6 +30,7 @@ $(function() {
     $('.list_users').on("click", ".user_block", show_dialog);
     $('#msg_to_send').keypress((e) => send_message_enter(e));
     $('.img_picker').click(change_bg_image);
+    $('#night_mode').change(() => { $('#night_mode').is(':checked') ? change_theme('dark.css') : change_theme('light.css')  });
 
 
     function change_bg_image() {
@@ -90,7 +88,7 @@ $(function() {
 
     function find_user() {
         if (!($find.val())) {
-            show_user_blocks();   
+            show_user_blocks();
         } else {
             hide_user_blocks();
             socket.emit('find user', $find.val());
@@ -235,7 +233,7 @@ $(function() {
         }
         $messages
             .append($('<div class="answer right"></div>')
-                .append($('<div class="text"></div>').html(text))
+                .append($('<div class="text"></div>').text(text))
                 .append($('<div class="time"></div>').text(msg_time_converter(time))));
 
         $(".scroll").scrollTop($('.scroll').prop('scrollHeight') + $('.scroll').height());
@@ -328,8 +326,25 @@ $(function() {
         }
     }
 
+
     function clean_msg() {
         $messages.empty();
+    }
+
+    // Добавить сохранение на сервере
+    function change_theme(theme) {
+        localStorage.theme = theme;
+        $('#theme-switcher').attr('href', 'css/themes/' + theme);
+    }
+
+
+    function load_theme() {
+        if (localStorage.theme) {
+            change_theme(localStorage.theme);
+            if(localStorage.theme === 'dark.css'){
+                $('#night_mode').prop('checked', true);
+            }
+        }
     }
 
 
@@ -399,7 +414,6 @@ $(function() {
 
 });
 
-let show_alert = true;
 
 
 function format_time(time) {
