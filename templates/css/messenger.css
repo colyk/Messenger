@@ -1,17 +1,9 @@
-:root {
-    --main_color: #007BFFFF;
-    --lovely_gray: #A8A8A8FF;
-}
-
 .emojionearea-button-open,
 .emojionearea-button-close {
     margin-right: 50px;
     right: 0;
     top: 50;
 }
-
-
-
 
 /*Resizer*/
 
@@ -37,10 +29,6 @@
 .wanker-content>p {
     color: white;
 }
-
-
-
-
 
 /*CHAT LEFT*/
 
@@ -68,8 +56,6 @@
 }
 
 .chat-body .answer.left .text {
-    background: #FFFFFFFF;
-    color: #000;
     border-radius: 8px 8px 8px 0;
 }
 
@@ -82,7 +68,6 @@
 
 .chat-body .answer.left .text:before {
     left: -30px;
-    border-right-color: #FFFFFFFF;
     border-right-width: 12px;
 }
 
@@ -100,7 +85,6 @@
     font-size: 0.9em;
     margin-top: -5px;
     margin-bottom: 4px;
-    color: #333333;
 }
 
 .chat-body .answer .time {
@@ -109,11 +93,6 @@
     position: relative;
     padding-bottom: 1px;
 }
-
-
-
-
-
 
 /*CHAT RIGHT*/
 
@@ -125,14 +104,11 @@
 
 
 .chat-body .answer.right .text {
-    background: #007BFF;
-    color: #ffffff;
     border-radius: 8px 8px 0 8px;
 }
 
 .chat-body .answer.right .text:before {
     right: -30px;
-    border-left-color: #007BFF;
     border-left-width: 12px;
 }
 
@@ -141,7 +117,6 @@
     padding-right: 12px;
     margin-top: -5px;
     margin-bottom: 4px;
-    color: #333333;
 }
 
 .badge-pill {
@@ -150,29 +125,16 @@
 
 .last_msg_time {
     font-size: 0.9em;
-    color: #333;
 }
 
-body {
-    background: #F5F5F5;
-}
 
 main {
     max-width: 1366px;
     margin: 0 auto;
-    background-color: #fff;
 }
 
-.clicked {
-    background-color: #419FD9FF;
-}
-
-.user_block:hover {
-    background-color: #ddd;
-}
 
 .clicked:hover {
-    background-color: #419FD9FF;
     cursor: default;
 }
 
@@ -187,13 +149,11 @@ main {
     top: -32px;
     margin-right: 5px;
     color: silver;
-    background-color: #fff;
+
     border: none;
 }
 
-#send_btn {
-    color: var(--main_color);
-}
+
 
 #button_settings {
     margin: auto 0;
@@ -208,7 +168,6 @@ main {
 .left_list {
     height: 100%;
     z-index: 1000;
-    border-right: 1px solid #dee2e6!important;
 }
 
 .center_list {
@@ -232,22 +191,15 @@ main {
 
 #button_menu_dialogue,
 #button_settings {
-    color: var(--lovely_gray);
     font-size: 1.4em;
 }
 
-#button_menu_dialogue:hover,
-#button_settings:hover {
-    color: #979797FF;
-}
 
 .d-inline-block {
     font-size: 0.9em;
-    color: #666;
 }
 
 .button_bar {
-    color: var(--main_color);
     font-size: 1.4em;
 }
 
@@ -269,7 +221,6 @@ main {
 .header_panel {
     display: flex;
     align-items: center;
-    border-bottom: 1px solid #dee2e6!important;
 }
 
 .header_panel_left {
@@ -278,8 +229,6 @@ main {
 
 .user_photo {
     border-radius: 50%;
-    color: white;
-    background-color: #555;
     font-size: 26px;
     width: 40px;
     height: 40px;
@@ -292,7 +241,6 @@ main {
 .fa-id-card {
     font-size: 18px;
     margin-left: 5px;
-    color: var(--dark);
 }
 
 .my_photo {
@@ -325,7 +273,6 @@ main {
     border-radius: 8px;
     padding: 3px;
     text-align: justify;
-    background-color: #CBC8CA;
 }
 
 .messages>p.text_left {
@@ -368,13 +315,8 @@ main {
     margin-top: 0px;
     position: relative;
     width: 100%;
-    /*height: 480px;*/
     height: 100%;
     overflow: auto;
-}
-
-.scroll_left {
-    /*height: 518px;*/
 }
 
 .config {
@@ -388,12 +330,7 @@ main {
     padding: 5px;
 }
 
-.config>li:hover {
-    background-color: #F1F1F1;
-}
-
 .config>li>i {
-    color: var(--main_color);
     padding: 5px;
 }
 
@@ -408,16 +345,11 @@ input[type="checkbox"] {
     height: 20px;
     -webkit-appearance: none;
     -moz-appearance: none;
-    background: #c6c6c6;
+
     outline: none;
     border-radius: 50px;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
-    transition: 0.5s;
-    position: relative;
-}
 
-input:checked[type="checkbox"] {
-    background: var(--main_color);
+    position: relative;
 }
 
 input[type="checkbox"]::before {
@@ -428,9 +360,8 @@ input[type="checkbox"]::before {
     border-radius: 50%;
     top: 0;
     left: 0;
-    background: #fff;
+
     transform: scale(1.1);
-    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
     transition: 0.5s;
 }
 
@@ -447,10 +378,6 @@ input:checked[type="checkbox"]::before {
     background: none;
 }
 
-#send_block>div.input-group-prepend>button>i {
-    color: #495057;
-}
-
 .button_bar,
 #button_menu_dialogue,
 #sing_out,
@@ -462,7 +389,7 @@ input:checked[type="checkbox"]::before {
     cursor: pointer;
 }
 
-.emoji-menu{
+.emoji-menu {
     position: absolute;
     top: -230px;
     right: 40px;
@@ -470,23 +397,19 @@ input:checked[type="checkbox"]::before {
 
 .emoji-picker-icon,
 #upload,
-#send_btn{
+#send_btn {
     height: 40px;
     width: 40px;
     padding: .700rem .700rem;
 }
 
-#smile_btn>i{
+#smile_btn>i {
     position: relative;
 }
 
-.emoji-wysiwyg-editor{
-    border:none;
+.emoji-wysiwyg-editor {
+    border: none;
 }
-
-
-
-
 
 /*Image picker*/
 
@@ -509,9 +432,6 @@ input:checked[type="checkbox"]::before {
     height: 100px;
 }
 
-.modal_img:hover {
-    background-color: #007BFF77;
-}
 
 .img_picker {
     margin: 0 10px 10px 0;
@@ -525,8 +445,8 @@ input:checked[type="checkbox"]::before {
     top: -25px;
 }
 
-#row_images{
-	margin:0 auto;
+#row_images {
+    margin: 0 auto;
 }
 
 .img_picker.not_choosen:before {
@@ -536,8 +456,6 @@ input:checked[type="checkbox"]::before {
 #row_images {
     margin: 0 auto;
 }
-
-
 
 /*Bootstrap 4*/
 
@@ -660,16 +578,9 @@ input:checked[type="checkbox"]::before {
     content: none;
 }
 
-
-
-
-
-
 /*Полоса прокрутки*/
 
-
 /*стиль проктутки*/
-
 ::-webkit-scrollbar {
     width: 6px;
     /*background: #0000;*/
@@ -682,11 +593,7 @@ input:checked[type="checkbox"]::before {
 }
 
 
-
-
-
 /*слиль повзунка*/
-
 ::-webkit-scrollbar-thumb {
     width: 6px;
     /*background: #0000;*/
@@ -697,11 +604,6 @@ input:checked[type="checkbox"]::before {
 ::-webkit-scrollbar-thumb:hover {
     /*background-color: #e4d4e4a1;*/
 }
-
-
-
-
-
 
 
 /*::-webkit-scrollbar-track {
@@ -715,7 +617,3 @@ input:checked[type="checkbox"]::before {
     background-color: #b3b3b3;
 }*/
 
-::selection {
-    color: black;
-    background-color: #9EC8E9D0;
-}

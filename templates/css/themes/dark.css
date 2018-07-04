@@ -1,1 +1,143 @@
-body{color:#0f0;}
+:root {
+    --main_color: #007BFFFF;
+    --lovely_gray: #A8A8A8FF;
+}
+
+body {
+    background: #282E33FF;
+}
+
+main {
+    background-color: #282E33FF;
+}
+
+.chat-body .answer.left .text {
+    background: #33393FFF;
+    color: #F5F5F5FF;
+}
+
+.chat-body .answer.left .text:before {
+    border-right-color: #33393FFF;
+}
+
+.chat-body .answer.left .time {
+    color: #333333;
+}
+
+.chat-body .answer.right .text {
+    background: #33393FFF;
+    color: #F5F5F5FF;
+}
+
+.chat-body .answer.right .text:before {
+    border-left-color: #33393FFF;
+}
+
+.chat-body .answer.right .time {
+    color: #333333;
+}
+
+.last_msg_time {
+    color: #333333;
+}
+
+.clicked {
+    background-color: #009687FF;
+}
+
+.user_block {
+    background-color: #282E33FF;
+}
+
+.user_block:hover {
+    background-color: #393f44FF;
+}
+
+
+.clicked:hover {
+    background-color: #009687FF;
+}
+
+#send_btn {
+    color: var(--main_color);
+}
+
+.button_search {
+    background-color: #fff;
+}
+
+.left_list {
+    border-right: 1px solid #dee2e6!important;
+}
+
+#button_menu_dialogue,
+#button_settings {
+    color: var(--lovely_gray);
+}
+
+#button_menu_dialogue:hover,
+#button_settings:hover {
+    color: #979797FF;
+}
+
+.d-inline-block {
+    color: #666;
+}
+
+.button_bar {
+    color: var(--main_color);
+}
+
+.header_panel {
+    border-bottom: 1px solid #dee2e6!important;
+}
+
+
+.user_photo {
+    color: white;
+    background-color: #555;
+}
+
+.fa-id-card {
+    color: var(--dark);
+}
+
+.messages>p {
+    background-color: #CBC8CA;
+}
+
+.config>li:hover {
+    background-color: #F1F1F1;
+}
+
+.config>li>i {
+    color: var(--main_color);
+}
+
+input[type="checkbox"] {
+    background: #c6c6c6;
+    box-shadow: inset 0 0 5px rgba(0, 0, 0, .2);
+}
+
+input:checked[type="checkbox"] {
+    background: var(--main_color);
+}
+
+input[type="checkbox"]::before {
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, .2);
+}
+
+#send_block>div.input-group-prepend>button>i {
+    color: #495057;
+}
+
+.modal_img:hover {
+    background-color: #007BFF77;
+}
+
+::selection {
+    color: black;
+    background-color: #9EC8E9D0;
+}
+

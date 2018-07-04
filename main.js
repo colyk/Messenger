@@ -7,7 +7,7 @@ var redis = require('redis');
 var redisClient = redis.createClient({ host: 'localhost', port: 6379 });
 
 io.set('transports', ['websocket']);
-var port = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3000;
 
 redisClient.on("connect", () => console.log('Redis server connected'));
 redisClient.on("error", (err) => console.log("Error " + err));
@@ -197,7 +197,6 @@ io.on('connection', (socket) => {
 });
 
 
-
-server.listen(port, () => {
-    console.log('Server listening at port %d', port);
+server.listen(PORT, () => {
+    console.log('Server listening at http://127.0.0.1:%d', PORT);
 });
