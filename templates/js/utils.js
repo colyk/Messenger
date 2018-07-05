@@ -3,11 +3,16 @@ let show_alert_error = true;
 const defaultBgImageUrl = 'https: //webfon.top/wp-content/uploads/2016/10/4.jpg';
 
 function setBgImage() {
-	if(!localStorage.backgroundImg){
-		localStorage.backgroundImg = defaultBgImageUrl;
-	}
-	$('#modal_cur_img').find('img').attr('src', localStorage.backgroundImg);
+    if (!localStorage.backgroundImg) {
+        localStorage.backgroundImg = defaultBgImageUrl;
+    }
+    $('#modal_cur_img').find('img').attr('src', localStorage.backgroundImg);
     $('.center_list').css({ 'background-image': 'url(' + localStorage.backgroundImg + ')', 'background-size': 'auto' });
+    $('#row_images').find('img').each(function() {
+        if ($(this).attr('src') === localStorage.backgroundImg) {
+            $(this).parent().removeClass('not_choosen');
+        }
+    });
 }
 
 
