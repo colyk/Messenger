@@ -1,21 +1,36 @@
-var express = require('express');
-var app = express();
-var server = require('http').createServer(app);
-var io = require('socket.io')(server);
-var path = require('path');
-var redis = require('redis');
-var redisClient = redis.createClient({ host: 'localhost', port: 6379 });
+const express = require('express');
+const app = express();
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
+const path = require('path');
+const redis = require('redis');
+const { createLogger, format, transports } = require('winston');
+const { combine, timestamp, label, printf } = format;
+const config = require('./config');
+const redisClient = redis.createClient({ host: 'localhost', port: 6379 });
 
 io.set('transports', ['websocket']);
-var PORT = process.env.PORT || 3000;
 
-redisClient.on("connect", () => console.log('Redis server connected'));
-redisClient.on("error", (err) => console.log("Error " + err));
+
+redisClient.on("connect", () => logger.info('Redis server connected'));
+redisClient.on("error", (err) => logger.error("Error " + err));
+
+const myFormat = printf(info =>  `${info.timestamp} : ${info.level} : ${info.message}`);
+
+const logger = createLogger({
+    format: combine(
+        timestamp(),
+        myFormat
+    ),
+    transports: [
+        new transports.File({ filename: config.infoLogPath }),
+        new transports.File({ filename: config.errorLogPath, level: 'error' })
+    ]
+});
 
 io.on('connection', (socket) => {
-
     socket.on('log in', (nickname, pass) => {
-        console.log("Login data:", nickname, pass);
+        logger.info("Login data:", nickname, pass);
         redisClient.hexists('users', nickname, function(err, reply) {
             if (reply) {
                 redisClient.hget("users", nickname, function(err, reply) {
@@ -33,7 +48,7 @@ io.on('connection', (socket) => {
 
 
     socket.on('sign up', (nickname, pass, email) => {
-        console.log("Signup data: ", nickname, pass, email);
+        logger.info("Signup data: ", nickname, pass, email);
         const user_info = {
             'pass': pass,
             'email': email
@@ -50,7 +65,7 @@ io.on('connection', (socket) => {
 
 
     socket.on('room', (nickname) => {
-        console.log('Joined ' + nickname);
+        logger.info('Joined ' + nickname);
         const user_info = {
             'online': true,
             'time': Date.now()
@@ -125,7 +140,7 @@ io.on('connection', (socket) => {
                     socket.emit('put user info', nickname, online, time);
                 });
             } else {
-                console.log('get user info error');
+                logger.error('get user info error');
             }
         });
     });
@@ -133,13 +148,13 @@ io.on('connection', (socket) => {
 
     socket.on('get my info', () => {
         let nickname = Object.keys(socket.rooms)[1];
-        redisClient.hexists('users', nickname, function(err, reply) {
+        redisClient.hexists('users', nickname, (err, reply) => {
             if (reply) {
-                redisClient.hget("users", nickname, function(err, reply) {
+                redisClient.hget("users", nickname, (err, reply) => {
                     socket.emit('put my info', JSON.parse(reply)['email']);
                 });
             } else {
-                console.log('get my info error.');
+                logger.error('get my info error.');
             }
         });
     });
@@ -179,8 +194,6 @@ io.on('connection', (socket) => {
                 io.to(from).emit('put last message', '');
             }
         });
-
-
     });
 
 
@@ -197,6 +210,6 @@ io.on('connection', (socket) => {
 });
 
 
-server.listen(PORT, () => {
-    console.log('Server listening at http://127.0.0.1:%d', PORT);
+server.listen(config.PORT, () => {
+    logger.info('Server listening at http://127.0.0.1:' + config.PORT);
 });
