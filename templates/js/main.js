@@ -11,7 +11,7 @@ $(function() {
 
     $('[data-wanker]').wanker({ delay: 93000, duration: 2000 });
 
-    $('.center_list').css({ 'background-image': 'url("https://webfon.top/wp-content/uploads/2016/10/4.jpg"', 'background-size': 'auto' });
+    // $('.center_list').css({ 'background-image': 'url("https://webfon.top/wp-content/uploads/2016/10/4.jpg"', 'background-size': 'auto' });
     $('.header_panel').hide();
     $('#send_block').hide();
 
