@@ -1,7 +1,12 @@
-// TODO: random colors for user logo
+another_file_func();
+
+let show_alert_error = true;
+const user_photo_colors = ['#EDA86CFF', '#EE7AAEFF', '#65AADDFF', '#555555FF']
+localStorage.backgroundImg = 'https://webfon.top/wp-content/uploads/2016/10/4.jpg';
+
+
 $(function() {
     const socket = io.connect('http://127.0.0.1:3000/', { 'transports': ['websocket'] });
-
     socket.on('connect', () => {
         socket.emit('room', localStorage.nickname);
         socket.emit('get dialog list');
@@ -12,15 +17,10 @@ $(function() {
     const $messages = $('.messages');
     const $find = $('#find');
 
-    // $("#msg_to_send").emojioneArea({
-    //     search: false,
-    //     filtersPosition: "bottom",
-    //     tones: false,
-    //     useSprite         : true
-    // });
 
-    find_btn_animation();
+    load_theme();
     create_user_profile();
+    find_btn_animation();
     $find.keyup(find_user);
     $(window).resize(() => $('.last_message').css('max-width', $('.list_users').width() / 1.3));
     $(document).keyup((e) => { if (e.keyCode == 27) hide_messages_body() });
@@ -31,6 +31,21 @@ $(function() {
     $('#user_info_show_but').click(set_user_data);
     $('.list_users').on("click", ".user_block", show_dialog);
     $('#msg_to_send').keypress((e) => send_message_enter(e));
+    $('.img_picker').click(change_bg_image);
+    $('#night_mode').change(() => { $('#night_mode').is(':checked') ? change_theme('dark.css') : change_theme('light.css') });
+
+
+    function change_bg_image() {
+        $('.img_picker').addClass('not_choosen');
+        $(this).removeClass('not_choosen');
+        let link = $(this).find('img').attr('src');
+        $('.scroll').css({ 'background-image': 'url(' + link + ')', 'background-size': 'auto' });
+        if (!$('.clicked').length) {
+            $('.center_list').css({ 'background-image': 'url(' + link + ')', 'background-size': 'auto' });
+        }
+        $('#modal_cur_img').find('img').attr('src', link);
+        localStorage.backgroundImg = link;
+    }
 
 
     function send_message_enter(event) {
@@ -53,7 +68,7 @@ $(function() {
     }
 
 
-    function sort_dialogs() {
+    function sort_dialogs_by_time() {
         const $wrapper = $('ul.list_users');
         $wrapper.find('li').sort(function(a, b) {
                 return b.dataset.sort - a.dataset.sort;
@@ -63,7 +78,8 @@ $(function() {
 
 
     function hide_messages_body() {
-        $('.center_list').css({ 'background-image': 'url("https://webfon.top/wp-content/uploads/2016/10/4.jpg"', 'background-size': 'auto' });
+        // TODO: remove clicked class
+        $('.center_list').css({ 'background-image': 'url(' + localStorage.backgroundImg + ')', 'background-size': 'auto' });
         $('.header_panel').hide();
         $('#send_block').hide();
         clean_msg();
@@ -73,7 +89,7 @@ $(function() {
 
     function find_user() {
         if (!($find.val())) {
-            show_user_blocks();   
+            show_user_blocks();
         } else {
             hide_user_blocks();
             socket.emit('find user', $find.val());
@@ -100,11 +116,11 @@ $(function() {
 
     function add_finded_user(nick, last_msg, msg_count, time) {
         let logo = nick.charAt(0).toUpperCase() + nick.charAt(1).toUpperCase();
-        $('<li class="list-group-item d-flex flex-row user_block finded" ></li>')
-            .append($('<div class="user_photo"></div>').text(logo))
-            .append($('<div></div>')
-                .append($('<div class="user_nickname"></div>').text(nick),
-                    $('<div class="d-inline-block text-truncate" class="last_message"></div>').text(last_msg)))
+        $('<li class="list-group-item d-flex flex-row user_block finded" />')
+            .append($('<div class="user_photo" />').text(logo).css('background-color', get_bg_color(logo)))
+            .append($('<div />')
+                .append($('<div class="user_nickname" />').text(nick),
+                    $('<div class="d-inline-block text-truncate" class="last_message" />').text(last_msg)))
 
             .append($('<div class="p-2 ml-auto text-center" />')
                 .append($('<div class="last_msg_time" />').text(time),
@@ -118,7 +134,7 @@ $(function() {
         socket.emit('get messages count', nick);
         let logo = nick.charAt(0).toUpperCase() + nick.charAt(1).toUpperCase();
         $('<li class="list-group-item d-flex flex-row user_block dialog" />').attr('id', nick + '_nick')
-            .append($('<div class="user_photo" />').text(logo))
+            .append($('<div class="user_photo" />').text(logo).css('background-color', get_bg_color(logo)))
             .append($('<div />')
                 .append($('<div class="user_nickname" />').text(nick),
                     $('<div class="d-inline-block text-truncate last_message" />').text('default_last_msg')))
@@ -127,6 +143,11 @@ $(function() {
                 .append($('<div class="last_msg_time" />').text('10:15'),
                     $('<div class="msg_count badge badge-primary badge-pill" />').text(0)))
             .appendTo('.list_users');
+    }
+
+
+    function get_bg_color(nickname) {
+        return user_photo_colors[nickname.charCodeAt() % user_photo_colors.length];
     }
 
 
@@ -218,11 +239,11 @@ $(function() {
         }
         $messages
             .append($('<div class="answer right"></div>')
-                .append($('<div class="text"></div>').html(text))
+                .append($('<div class="text"></div>').text(text))
                 .append($('<div class="time"></div>').text(msg_time_converter(time))));
 
         $(".scroll").scrollTop($('.scroll').prop('scrollHeight') + $('.scroll').height());
-        sort_dialogs();
+        sort_dialogs_by_time();
     }
 
 
@@ -254,7 +275,6 @@ $(function() {
 
 
     function set_user_data() {
-        console.log('User info modal window click');
         let nick = localStorage.to.toUpperCase();
         $("#user_info_logo").text(nick.charAt(0) + nick.charAt(1));
         $('#modal_user_nickname').text(localStorage.to);
@@ -311,10 +331,26 @@ $(function() {
         }
     }
 
+
     function clean_msg() {
         $messages.empty();
     }
 
+    // Добавить сохранение на сервере
+    function change_theme(theme) {
+        localStorage.theme = theme;
+        $('#theme-switcher').attr('href', 'css/themes/' + theme);
+    }
+
+
+    function load_theme() {
+        if (localStorage.theme) {
+            change_theme(localStorage.theme);
+            if (localStorage.theme === 'dark.css') {
+                $('#night_mode').prop('checked', true);
+            }
+        }
+    }
 
     socket.on('get message', (text, from, timestamp) => {
         let time = msg_time_converter(timestamp);
@@ -323,20 +359,13 @@ $(function() {
                 .append($('<div class="text" />').text(text))
                 .append($('<div class="time" />').text(time)));
         }
-        sort_dialogs();
+        sort_dialogs_by_time();
     });
 
 
     socket.on('finded user', (nickname) => {
-        console.info('User ' + nickname + ' exist');
         add_finded_user(nickname, 'last_msg', '11', 'time');
     });
-
-
-    socket.on('user doesnt exist', (nickname) => {
-        console.info('User ' + nickname + ' doesnt exist');
-    });
-
 
     socket.on('put user info', (nickname, online, time) => {
         $('#user_nickname').text(nickname);
@@ -377,12 +406,11 @@ $(function() {
         } else {
             dialog.find('.last_message').text(text);
         }
-        sort_dialogs();
+        sort_dialogs_by_time();
     });
 
 });
 
-let show_alert = true;
 
 
 function format_time(time) {
@@ -414,14 +442,13 @@ function last_msg_time_converter(UNIX_timestamp) {
         let hour = format_time(msg_time.getHours().toString());
         let min = format_time(msg_time.getMinutes().toString());
         return hour + ':' + min + '';
-    } else {
-        return msg_date + '.' + format_time((msg_month + 1).toString()) + '.' + msg_year.toString().slice(-2);
     }
+    return msg_date + '.' + format_time((msg_month + 1).toString()) + '.' + msg_year.toString().slice(-2);
 }
 
 
 function connect_error_alert() {
-    if (show_alert) {
+    if (show_alert_error) {
         swal("Server is not responding!", "It is not your fault. We are working on it...", "error", {
                 buttons: {
                     stop: {
@@ -434,7 +461,7 @@ function connect_error_alert() {
             .then((value) => {
                 switch (value) {
                     case "stop":
-                        show_alert = false;
+                        show_alert_error = false;
                         swal.close();
                         break;
                     default:
