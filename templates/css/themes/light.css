@@ -18,7 +18,6 @@ main {
 }
 
 .chat-body .answer.left .text:before {
-
     border-right-color: #FFFFFFFF;
 }
 
@@ -98,6 +97,10 @@ main {
     color: var(--dark);
 }
 
+.messages{
+    color: #000;
+}
+
 .messages>p {
     background-color: #CBC8CA;
 }
@@ -137,3 +140,14 @@ input[type="checkbox"]::before {
     background-color: #9EC8E9D0;
 }
 
+.user_nickname{
+    color: #000;
+}
+
+.header_panel{
+    background: #fff;
+    color: #000;
+}
+#send_block{
+    background: #fff;
+}

@@ -5,6 +5,9 @@
     top: 50;
 }
 
+.emoji-picker-icon{
+    color: #5fd416;
+}
 /*Resizer*/
 
 .wanker {
@@ -309,7 +312,7 @@ main {
     /*background-image: url("https://webfon.top/wp-content/uploads/2016/10/tetrad-v-kletku.jpg");*/
     /*background-image: url("https://webfon.top/wp-content/uploads/2016/10/osennij-ornament.png");*/
     /*background-image: url("https://webfon.top/wp-content/uploads/2016/10/krasny_kirpich.png");*/
-    background-image: url("https://webfon.top/wp-content/uploads/2016/10/4.jpg");
+    /*background-image: url("https://webfon.top/wp-content/uploads/2016/10/4.jpg");*/
     background-size: auto;
 
     margin-top: 0px;

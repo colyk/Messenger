@@ -75,7 +75,7 @@
                     <button class="btn btn-primary rounded-circle scroll_but"><i class="fa fa-angle-down"></i></button>
                     <div class="input-group" id="send_block">
                         <i class="fa fa-paperclip" id="upload" onclick="clickFindFile();"></i>
-                        <textarea id="msg_to_send" class="form-control" data-emojiable="true" placeholder="Start writing here..."  rows="1" required></textarea>
+                        <div data-emoji-input="unicode" type="input" id="msg_to_send" data-emojiable="true" class="form-control textarea-control"  placeholder="Start writing here..."  rows="1" required></div>
                         <i class="btn_send fa fa-paper-plane" id="send_btn"></i>
                     </div>
                     <form id="uploadfiles" enctype="multipart/form-data" method="post" action="#">
@@ -193,23 +193,22 @@
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="../node_modules/emoji-picker-master/lib/js/config.js"></script>
     <script src="../node_modules/emoji-picker-master/lib/js/util.js"></script>
     <script src="../node_modules/emoji-picker-master/lib/js/jquery.emojiarea.js"></script>
     <script src="../node_modules/emoji-picker-master/lib/js/emoji-picker.js"></script>
-     <script>
+    
+    <script>
       $(function() {
         window.emojiPicker = new EmojiPicker({
           emojiable_selector: '[data-emojiable=true]',
-          assetsPath: '../node_modules/emoji-picker-master/lib/img/',
+          assetsPath: '../node_modules/emoji-picker-master/lib/img',
           popupButtonClasses: 'fa fa-smile'
         });
         window.emojiPicker.discover();
       });
     </script>
     
-
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="js/jquery.wanker.min.js"></script>
     <script src="js/jquery.timeago.js"></script>

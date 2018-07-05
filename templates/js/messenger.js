@@ -39,10 +39,7 @@ $(function() {
         $('.img_picker').addClass('not_choosen');
         $(this).removeClass('not_choosen');
         let link = $(this).find('img').attr('src');
-        $('.scroll').css({ 'background-image': 'url(' + link + ')', 'background-size': 'auto' });
-        if (!$('.clicked').length) {
-            $('.center_list').css({ 'background-image': 'url(' + link + ')', 'background-size': 'auto' });
-        }
+        $('.center_list').css({ 'background-image': 'url(' + link + ')', 'background-size': 'auto' });
         $('#modal_cur_img').find('img').attr('src', link);
         localStorage.backgroundImg = link;
     }
@@ -152,16 +149,8 @@ $(function() {
 
 
     function show_dialog() {
-        $('.center_list').css({ 'background-image': '' });
-        $('.d-inline-block').css('color', '#666');
-        $('.user_nickname').css('color', '#000');
-        $('.last_msg_time').css('color', '#333');
-        //clickActiveBut();//треба функцію тут визвати
+        
         $(this).find('.msg_count').hide();
-
-        $(this).find('.d-inline-block').css('color', '#fff');
-        $(this).find('.user_nickname').css('color', '#fff');
-        $(this).find('.last_msg_time').css('color', '#fff');
 
         $('.header_panel').show();
         $('#send_block').show();

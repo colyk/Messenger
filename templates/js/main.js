@@ -15,8 +15,6 @@ $(function() {
     $('.header_panel').hide();
     $('#send_block').hide();
 
-
-    ///height screen
     $("html").css({ 'height': $(window).height() });
     $(".left_list").css({ 'height': $(window).height() });
     $(".center_list").css({ 'height': $(window).height() });
@@ -32,7 +30,6 @@ $(function() {
         $(".scroll_left").css({ 'height': $(window).height() - $(".header_panel_left") });
     });
     
-    //scroll messages
     $('.scroll').scroll(function() {
         if ($(this).scrollTop() > $('.scroll').prop('scrollHeight') - $('.scroll').height() - 100) {
 
@@ -92,8 +89,6 @@ $(function() {
                     .removeClass('col-md-12')
                     .addClass('col-md-8');
             }
-            // $('#active_but_bar1').removeClass('active_but_bar');
-            // $('#active_but_bar2').addClass('active_but_bar');
             flagScreen = 1;
         } else {
             $leftList.css({ 'display': 'none' });
@@ -120,15 +115,12 @@ $(function() {
                 $centerList
                     .removeClass('col-md-8')
                     .addClass('col-md-12');
-            }
-            // $('#active_but_bar2').removeClass('active_but_bar');
-            // $('#active_but_bar1').addClass('active_but_bar');      
+            }      
             flagScreen = 0;
         }
     }
 });
 
-//завантаження файла(клік по полю)
 function clickFindFile() {
     document.getElementById('uploadfile').click();
 }

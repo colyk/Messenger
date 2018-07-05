@@ -38,7 +38,7 @@ main {
 }
 
 .last_msg_time {
-    color: #333333;
+    color: #fff;
 }
 
 .clicked {
@@ -67,7 +67,7 @@ main {
 }
 
 .left_list {
-    border-right: 1px solid #dee2e6!important;
+    border-right: 1px solid #242A2E!important;
 }
 
 #button_menu_dialogue,
@@ -89,7 +89,9 @@ main {
 }
 
 .header_panel {
-    border-bottom: 1px solid #dee2e6!important;
+    background-color: #282E33;
+    color: #fff;
+    border-bottom: 1px solid #242A2E!important;
 }
 
 
@@ -100,6 +102,10 @@ main {
 
 .fa-id-card {
     color: var(--dark);
+}
+
+.messages{
+    color: #fff;
 }
 
 .messages>p {
@@ -141,3 +147,23 @@ input[type="checkbox"]::before {
     background-color: #9EC8E9D0;
 }
 
+.user_nickname{
+    color: #fff;
+}
+
+.center_list{
+    background-color: #18191D;
+}
+
+#send_block{
+    background-color: #282E33;
+}
+
+.emoji-wysiwyg-editor, .emoji-wysiwyg-editor:focus{
+    background-color: #282E33;
+    color: #fff;
+}
+
+#find, .button_search{
+    background-color: #282E33;
+}
