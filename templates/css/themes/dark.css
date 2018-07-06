@@ -41,21 +41,12 @@ main {
     color: #fff;
 }
 
-.clicked {
-    background-color: #009687FF;
-}
-
 .user_block {
     background-color: #282E33FF;
 }
 
 .user_block:hover {
     background-color: #393f44FF;
-}
-
-
-.clicked:hover {
-    background-color: #009687FF;
 }
 
 #send_btn {
@@ -166,4 +157,42 @@ input[type="checkbox"]::before {
 
 #find, .button_search{
     background-color: #282E33;
+}
+
+.emoji-picker-icon{
+    color: #5fd416;
+}
+
+.bg_badge{
+    background-color: #495159;
+    color: #fff;
+}
+
+.bg_dropdown_menu, .bg_modal{
+    background-color: #282E33;
+    color: #fff;
+}
+
+.bg_dropdown_menu>a>i{
+    color: #fff;
+}
+
+.bg_dropdown_menu>a:hover, .config>li:hover{
+     background-color: #393F44;
+}
+
+.modal-header{
+    border-bottom: 1px solid #242A2E!important;
+}
+
+.modal-footer{
+    border-top: 1px solid #242A2E!important;
+}
+
+.clicked, .clicked:hover{
+    background-color: #009687FF;
+}
+
+.button_bar, #button_menu_dialogue, #button_settings, #upload{
+    color: #8B9096;
 }

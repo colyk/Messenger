@@ -3,9 +3,9 @@ $(function() {
     const
         $leftList = $('.left_list'),
         $centerList = $('.center_list'),
-        $activeBut = $('.active_but_bar');
-    $activeButLeft = $('#active_but_bar1');
-    $activeButCenter = $('#active_but_bar2');
+        $activeBut = $('.active_but_bar'),
+        $activeButLeft = $('#active_but_bar1'),
+        $activeButCenter = $('#active_but_bar2');
     let
         flagScreen = 1;
 
@@ -13,6 +13,7 @@ $(function() {
 
     // $('.center_list').css({ 'background-image': 'url("https://webfon.top/wp-content/uploads/2016/10/4.jpg"', 'background-size': 'auto' });
     $('.header_panel').hide();
+    $('.chat-body').hide();
     $('#send_block').hide();
 
     $("html").css({ 'height': $(window).height() });
@@ -32,7 +33,6 @@ $(function() {
     
     $('.scroll').scroll(function() {
         if ($(this).scrollTop() > $('.scroll').prop('scrollHeight') - $('.scroll').height() - 100) {
-
             $('.scroll_but').fadeOut();
         } else {
             $('.scroll_but').fadeIn();
@@ -62,8 +62,7 @@ $(function() {
         $activeButCenter.toggleClass('rotate');
         if (flagScreen == 0) {
             $leftList.css({
-                'display': 'block',
-                'background': '#fff'
+                'display': 'block'
             });
             if ($leftList.hasClass('col-xl-0')) {
                 $leftList

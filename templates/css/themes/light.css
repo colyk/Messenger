@@ -42,12 +42,12 @@ main {
     color: #333333;
 }
 
-.clicked {
-    background-color: #419FD9FF;
-}
-
 .user_block:hover {
     background-color: #ddd;
+}
+
+.clicked {
+    background-color: #419FD9FF;
 }
 
 .clicked:hover {
@@ -136,8 +136,8 @@ input[type="checkbox"]::before {
 }
 
 ::selection {
-    color: black;
     background-color: #9EC8E9D0;
+    color: black;
 }
 
 .user_nickname{
@@ -145,9 +145,24 @@ input[type="checkbox"]::before {
 }
 
 .header_panel{
-    background: #fff;
+    background-color: #fff;
     color: #000;
 }
+
 #send_block{
     background: #fff;
+}
+
+.emoji-picker-icon{
+    color: #5fd416;
+}
+
+.bg_badge{
+    background-color: var(--main_color);
+    color: #000;
+}
+
+.bg_dropdown_menu{
+    background-color: #fff;
+    color: #000;
 }
