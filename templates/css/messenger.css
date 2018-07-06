@@ -5,9 +5,14 @@
     top: 50;
 }
 
-.emoji-picker-icon{
-    color: #5fd416;
+.hght_64{
+    height: 64px;
 }
+
+.wdth_70{
+    width: 70px;
+}
+
 /*Resizer*/
 
 .wanker {
@@ -166,6 +171,7 @@ main {
 .list_users>li {
     display: flex;
     align-items: center;
+    height: 64px;
 }
 
 .left_list {
@@ -458,6 +464,20 @@ input:checked[type="checkbox"]::before {
 
 #row_images {
     margin: 0 auto;
+}
+
+.emoji-wysiwyg-editor {
+/*padding-right: 0px;*/
+margin-right: 40px;
+}
+
+.emoji-picker-icon.parent-has-scroll{
+right: 40px;
+}
+
+.emoji-picker-icon{
+    top: 0px;
+    right: 40px;
 }
 
 /*Bootstrap 4*/

@@ -22,7 +22,7 @@ $(function() {
     create_user_profile();
     find_btn_animation();
     $find.keyup(find_user);
-    $(window).resize(() => $('.last_message').css('max-width', $('.list_users').width() / 1.3));
+    $(window).resize(() => $('.last_message').css('max-width', $('.list_users').width() - 130));
     $(document).keyup((e) => { if (e.keyCode == 27) hide_messages_body() });
     $('#send_btn').click(send_message);
     $('#sing_out').click(exit);
@@ -39,6 +39,10 @@ $(function() {
         $('.img_picker').addClass('not_choosen');
         $(this).removeClass('not_choosen');
         let link = $(this).find('img').attr('src');
+        // $('.scroll').css({ 'background-image': 'url(' + link + ')', 'background-size': 'auto' });
+        // if (!$('.clicked').length) {
+        //     $('.center_list').css({ 'background-image': 'url(' + link + ')', 'background-size': 'auto' });
+        // }
         $('.center_list').css({ 'background-image': 'url(' + link + ')', 'background-size': 'auto' });
         $('#modal_cur_img').find('img').attr('src', link);
         localStorage.backgroundImg = link;
@@ -119,9 +123,9 @@ $(function() {
                 .append($('<div class="user_nickname" />').text(nick),
                     $('<div class="d-inline-block text-truncate" class="last_message" />').text(last_msg)))
 
-            .append($('<div class="p-2 ml-auto text-center" />')
+            .append($('<div class="p-2 ml-auto text-center hght_64 wdth_70" />')
                 .append($('<div class="last_msg_time" />').text(time),
-                    $('<div class="msg_count badge badge-primary badge-pill" />').text(msg_count)))
+                    $('<div class="msg_count badge badge-pill bg_badge" />').text(msg_count)))
             .appendTo('.list_users');
     }
 
@@ -136,9 +140,9 @@ $(function() {
                 .append($('<div class="user_nickname" />').text(nick),
                     $('<div class="d-inline-block text-truncate last_message" />').text('default_last_msg')))
 
-            .append($('<div class="p-2 ml-auto text-center" />')
+            .append($('<div class="p-2 ml-auto text-center hght_64 wdth_70" />')
                 .append($('<div class="last_msg_time" />').text('10:15'),
-                    $('<div class="msg_count badge badge-primary badge-pill" />').text(0)))
+                    $('<div class="msg_count badge badge-pill bg_badge" />').text(0)))
             .appendTo('.list_users');
     }
 
