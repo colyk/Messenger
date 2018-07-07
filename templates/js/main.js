@@ -35,7 +35,7 @@ $(function() {
 
         $find.keyup(findUser);
         $(document).keyup((e) => { if (e.keyCode == 27) hideMessagesBody() });
-        $('#msg_to_send').keypress((e) => manageMessageBlockKeypress(e));
+        $('.emoji-wysiwyg-editor').keypress((e) => manageMessageBlockKeypress(e));
     }
 
 
@@ -90,6 +90,7 @@ $(function() {
         let from = localStorage.nickname;
         let to = localStorage.to;
         let text = $('#msg_to_send').val().trim();
+        if (text.length == 0) { return; }
         socket.emit('send message to', from, to, text);
 
         $('#msg_to_send').val('');
@@ -316,14 +317,13 @@ $(function() {
 
 
     function manageMessageBlockKeypress(event) {
-        if (!event.ctrlKey && event.which == 13) {
+        console.log(event.keyCode)
+        if (event.keyCode == 13) {
+            console.log('event')
             event.preventDefault();
-            if ($('#msg_to_send').val().length > 0) {
-                sendMessage();
-            }
-            return;
-        }
-        if (event.ctrlKey) {
+            event.stopPropagation();
+            sendMessage();
+        } else if (event.ctrlKey) {
             caretStart = $('#msg_to_send')[0].selectionStart;
             caretEnd = $('#msg_to_send')[0].selectionEnd;
             $('#msg_to_send').val($('#msg_to_send').val().substring(0, caretStart) +
