@@ -27,6 +27,20 @@ const logger = createLogger({
         new transports.File({ filename: config.errorLogPath, level: 'error' })
     ]
 });
+// app.use(express.static("templates/css/"));
+// app.use(express.static("templates"));
+app.use(express.static("templates/"));
+// app.use(express.static("templates/js/"));
+// app.use(express.static("templates/images/"));
+// app.use(express.static("node_modules/"));
+// app.use(express.static("."));
+// app.use(express.static("/"));
+app.use(express.static("node_modules/emoji-picker-master/lib/css"));
+// app.use(express.static(__dirname + '/templates/'));
+app.set('views', 'templates'); 
+app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'html');
+// 
 
 io.on('connection', (socket) => {
     socket.on('log in', (nickname, pass) => {
