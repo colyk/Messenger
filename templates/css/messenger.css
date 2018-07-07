@@ -586,7 +586,7 @@ input:checked[type="checkbox"]::before {
 
 @media (max-width: 992px) {}
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .left_list {
         display: none;
         position: absolute;
