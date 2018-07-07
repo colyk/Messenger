@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <link rel="stylesheet" href="../node_modules/emoji-picker-master/lib/css/emoji.css">
     <link rel="stylesheet" href="css/messenger.css">
     <link rel="stylesheet" type="text/css" href="css/themes/light.css" id="theme-switcher">
@@ -73,9 +73,10 @@
                         </div>
                     </div>
                     <button class="btn btn-primary rounded-circle scroll_but"><i class="fa fa-angle-down"></i></button>
+                    <!--MESSAGE SEND BLOCK-->
                     <div class="input-group" id="send_block">
                         <i class="fa fa-paperclip" id="upload" onclick="clickFindFile();"></i>
-                        <div data-emoji-input="unicode" type="input" id="msg_to_send" data-emojiable="true" class="form-control textarea-control"  placeholder="Start writing here..."  rows="1" required></div>
+                        <div data-emoji-input="unicode" type="input" id="msg_to_send" data-emojiable="true" class="form-control textarea-control" placeholder="Start writing here..." rows="1" required></div>
                         <i class="btn_send fa fa-paper-plane" id="send_btn"></i>
                     </div>
                     <form id="uploadfiles" enctype="multipart/form-data" method="post" action="#">
@@ -161,15 +162,21 @@
                 <div class="modal-header">
                     <div class="my_photo user_photo"></div>
                     <h5 class="modal-title active" id="modalAdminInfo">
-                            <div id="modal_my_nickname"> My Nickname</div>
+                            <div id="modal_my_nickname">My Nickname</div>
                             <div id="modal_my_mail">mail@gmail.com</div>
                         </h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" title="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <ul class="config">
+                        <li class="d-flex">
+                            <div>Message notification</div>
+                            <div class="checkbox">
+                                <input id="notification" type="checkbox">
+                            </div>
+                        </li>
                         <li class="d-flex">
                             <div>Night mode</div>
                             <div class="checkbox">
@@ -197,7 +204,6 @@
     <script src="../node_modules/emoji-picker-master/lib/js/util.js"></script>
     <script src="../node_modules/emoji-picker-master/lib/js/jquery.emojiarea.js"></script>
     <script src="../node_modules/emoji-picker-master/lib/js/emoji-picker.js"></script>
-    
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="js/jquery.wanker.min.js"></script>
     <script src="js/jquery.timeago.js"></script>

@@ -170,6 +170,22 @@ $(function() {
     }
 });
 
+function searchInputStyle() {
+    if ($(window).width() < 768) {
+        $('.but_set_menu').css({ 'display': 'block' });
+        $('.search_input').css({ 'margin-right': '0px' });
+    }
+    $(window).resize(() => {
+        if ($(window).width() >= 768) {
+            $('.but_set_menu').css({ 'display': 'none' });
+            $('.search_input').css({ 'margin-right': '10px' });
+        }
+        if ($(window).width() < 768) {
+            $('.but_set_menu').css({ 'display': 'block' });
+            $('.search_input').css({ 'margin-right': '0px' });
+        }
+    });
+}
 
 
 function clickFindFile() {
