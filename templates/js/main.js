@@ -14,6 +14,9 @@ $(function() {
     initUI();
 
     function initUI() {
+        if(!localStorage.nickname){
+            exit();
+        }
         loadTheme();
         createUserProfile();
         setEmoji();
