@@ -13,7 +13,7 @@ main {
 }
 
 .chat-body .answer.left .text {
-    background: #FFFFFFFF;
+    background: #EFFDDE;
     color: #000;
 }
 
@@ -165,4 +165,13 @@ input[type="checkbox"]::before {
 .bg_dropdown_menu{
     background-color: #fff;
     color: #000;
+}
+
+@media (max-width: 767px) {
+    .left_list {
+        background: #fff;
+    }
+    .header_panel_left {
+        border-bottom: 1px solid #dee2e6!important;
+    }
 }

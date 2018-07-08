@@ -196,3 +196,12 @@ input[type="checkbox"]::before {
 .button_bar, #button_menu_dialogue, #button_settings, #upload{
     color: #8B9096;
 }
+
+@media (max-width: 767px) {
+    .left_list {
+        background-color: #282E33;
+    }
+    .header_panel_left {
+        border-bottom: 1px solid #242A2E!important;
+    }
+}
