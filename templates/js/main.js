@@ -120,14 +120,15 @@ $(function() {
 
 
     socket.on('get message', (text, from, timestamp) => {
-        let time = converterMessageTime(timestamp);
+        dialog = $('#' + from + '_nick').find('.last_message').text(text);;
+        sortDialogsByTime();
+        notificate(from, text);
+        if( !$('.clicked').length ) {return;}
         if (from !== localStorage.nickname) {
             $messages.append($('<div class="answer left" />')
                 .append($('<div class="text" />').text(text))
-                .append($('<div class="time" />').text(time)));
+                .append($('<div class="time" />').text(converterMessageTime(timestamp))));
         }
-        sortDialogsByTime();
-        notificate(from, text);
         $(".scroll").scrollTop($('.scroll').prop('scrollHeight') + $('.scroll').height());
     });
 

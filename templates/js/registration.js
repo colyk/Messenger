@@ -1,21 +1,19 @@
 $(function() {
-
-    const socket = io.connect('http://127.0.0.1:3000/', { 'transports': ['websocket'] });
-
-    $('#log_in').submit(send_login_form);
-    $('#sign_up').submit(send_signup_form);
-    $('#show_signup_form').click(show_signup_form);
-    $('#show_login_form').click(show_login_form);
-    $('#toggle_pass').click(togglePassword);
-
-
-    if (localStorage.nickname ) {
-        console.log(localStorage.remember);
+	
+    if (localStorage.nickname && localStorage.password) {
         document.location.href = "index.html";
     }
 
+    const socket = io.connect('http://127.0.0.1:3000/', { 'transports': ['websocket'] });
 
-    function send_login_form() {
+    $('#log_in').submit(sendLoginForm);
+    $('#sign_up').submit(sendSignupForm);
+    $('#show_signup_form').click(showSignupForm);
+    $('#show_login_form').click(showLoginForm);
+    $('#toggle_pass').click(togglePassword);
+
+
+    function sendLoginForm() {
         event.preventDefault();
         let nickname = $('#nickname').val();
         let pass = $('#password').val();
@@ -24,7 +22,7 @@ $(function() {
     }
 
 
-    function send_signup_form() {
+    function sendSignupForm() {
         event.preventDefault();
         let nickname = $('#nickname_s').val();
         let pass = $('#password_s').val();
@@ -33,13 +31,13 @@ $(function() {
     }
 
 
-    function show_signup_form() {
+    function showSignupForm() {
         $('#log_in').css('display', 'none');
         $('#sign_up').css('display', 'block');
     }
 
 
-    function show_login_form() {
+    function showLoginForm() {
         $('#log_in').css('display', 'block');
         $('#sign_up').css('display', 'none');
     }
@@ -70,8 +68,6 @@ $(function() {
 
 
     socket.on('render user page', (nickname, password) => {
-        console.log('User accepted');
-
         localStorage.nickname = nickname;
         localStorage.password = password;
 
