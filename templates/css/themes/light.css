@@ -22,7 +22,7 @@ main {
 }
 
 .chat-body .answer.left .text:before {
-    border-right-color: #FFFFFFFF;
+    border-right-color: #EFFDDE;
 }
 
 .chat-body .answer.left .time {
