@@ -1,9 +1,9 @@
-/*https://yldist.com/ms/wp-content/uploads/sites/1/nggallery/website-backgrounds/fall-berries-ss-min.png*/
-
 body {
-    background-image: url("https://image.freepik.com/free-photo/beautiful-roses-on-white-underground-with-space-in-the-center_24972-48.jpg");
-    background-size: 100%;
+    background: url("https://image.freepik.com/free-photo/beautiful-roses-on-white-underground-with-space-in-the-center_24972-48.jpg") no-repeat center top fixed;
+    background-size: cover;
+    font-family: 'Muli', sans-serif;
 }
+
 
 .log_in,
 .sign_up {
@@ -11,9 +11,11 @@ body {
     margin: 0 auto;
 }
 
+
 img {
     width: 100%;
 }
+
 
 .but_succes_email,
 .but_succes_nickname,
@@ -23,17 +25,31 @@ img {
     position: relative;
 }
 
+
 button {
     width: 100%;
 }
+
 
 #show_form {
     margin-top: 20px;
 }
 
+
 #show_signup_form {
     cursor: pointer;
 }
+
+
+#show_login_form {
+    cursor: pointer;
+}
+
+
+.change_shown_form_block{
+    margin-top: 10px;
+}
+
 
 p.text-justify.text-dark.bg-light.text_right.msg::after {
     content: '';
@@ -48,17 +64,16 @@ p.text-justify.text-dark.bg-light.text_right.msg::after {
     top: 15px;
 }
 
-#show_login_form {
-    cursor: pointer;
-}
 
 #sign_up {
     display: none;
 }
 
+
 .alert {
     display: none;
 }
+
 
 #logo {
     width: 80%;
@@ -68,13 +83,16 @@ p.text-justify.text-dark.bg-light.text_right.msg::after {
     margin-bottom: 20px;
 }
 
+
 footer {
     margin-top: 30px;
 }
 
+
 footer a {
     color: black;
 }
+
 
 footer i {
     font-size: 45px;

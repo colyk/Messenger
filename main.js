@@ -33,7 +33,7 @@ app.use(express.static("templates/"));
 app.set('views', 'templates'); 
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
-// 
+
 
 io.on('connection', (socket) => {
     socket.on('log in', (nickname, pass) => {
