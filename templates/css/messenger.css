@@ -159,7 +159,7 @@ main {
 }
 
 .last_message {
-    max-width: 200px;
+    width: 100px;
 }
 
     /* Center list */
@@ -284,13 +284,12 @@ main {
     padding: 0 5px;
 }
 
-.button_search {
+#icon_search {
     position: relative;
     float: right;
-    top: -32px;
+    top: -35px;
     margin-right: 5px;
     color: silver;
-    border: none;
 }
 
 #button_settings {

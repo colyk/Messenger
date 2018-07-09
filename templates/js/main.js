@@ -82,7 +82,8 @@ $(function() {
 
 
     function cutLastMsgWidth() {
-        $(window).resize(() => $('.last_message').css('max-width', $usersList.width() - 130));
+        $('.last_message').css('width', ( $usersList.width() - 130));
+        $(window).resize(() => $('.last_message').css('width', ( $usersList.width() - 130) + 'px')); 
     }
 
 
@@ -302,9 +303,9 @@ $(function() {
             .append($('<div class="user_photo" />').text(logo).css('background-color', getRandomBgColor(logo)))
             .append($('<div />')
                 .append($('<div class="user_nickname" />').text(nick),
-                    $('<div class="d-inline-block text-truncate" class="last_message" />').text(last_msg)))
+                    $('<div class="d-inline-block text-truncate last_message" />').text(last_msg)))
 
-            .append($('<div class="p-2 ml-auto text-center hght_64 wdth_70" />')
+            .append($('<div class="p-2 ml-auto text-center date_count_mes" />')
                 .append($('<div class="last_msg_time" />').text(time),
                     $('<div class="msg_count badge badge-pill bg_badge" />').text(msg_count)))
             .appendTo('.list_users');
@@ -352,7 +353,7 @@ $(function() {
                 .append($('<div class="user_nickname" />').text(nick),
                     $('<div class="d-inline-block text-truncate last_message" />').text('default_last_msg')))
 
-            .append($('<div class="p-2 ml-auto text-center hght_64 wdth_70" />')
+            .append($('<div class="p-2 ml-auto text-center date_count_mes" />')
                 .append($('<div class="last_msg_time" />').text('10:15'),
                     $('<div class="msg_count badge badge-pill bg_badge" />').text(0)))
             .appendTo('.list_users');

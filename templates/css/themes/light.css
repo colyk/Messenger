@@ -3,6 +3,10 @@
     --lovely_gray: #A8A8A8FF;
 }
 
+::selection {
+    background-color: #9EC8E9D0;
+    color: black;
+}
 
 body {
     background: #F5F5F5;
@@ -133,11 +137,6 @@ input[type="checkbox"]::before {
 
 .modal_img:hover {
     background-color: #007BFF77;
-}
-
-::selection {
-    background-color: #9EC8E9D0;
-    color: black;
 }
 
 .user_nickname{
